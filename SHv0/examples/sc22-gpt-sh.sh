@@ -2,10 +2,12 @@
 
 rm -rf /tmp/*.pt
 rm -rf /tmp/ray_ssd/*
-rm -rf ./checkpoints/* 
+# rm -rf ./checkpoints/* 
+rm -rf /home/sabiha/stronghold/checkpoints/* 
 
 # CUDA
-export CUDA_HOME=/usr/local/cuda/
+# export CUDA_HOME=/usr/local/cuda/
+export CUDA_HOME=/home/sabiha/miniconda3/envs/stronghold
 # MPS
 export CUDA_MPS_PIPE_DIRECTORY=/tmp/mps/nvidia-mps
 export CUDA_MPS_LOG_DIRECTORY=/tmp/mps/nvidia-log
@@ -23,15 +25,22 @@ GPUS_PER_NODE=1
 export CUDA_VISIBLE_DEVICES=`seq -s ',' 0 1 $(( $GPUS_PER_NODE-1 ))`
 
 # Data
-_BASE=/home/sys/STRONGHOLD/data
-DATA_PATH=${_BASE}/my-gpt2-en_text_document
+# _BASE=/home/sys/STRONGHOLD/data
+# DATA_PATH=${_BASE}/my-gpt2-en_text_document
+# VOCAB_PATH=${_BASE}/gpt2-vocab.json
+# MERGE_PATH=${_BASE}/gpt2-merges.txt
+# CHECKPOINT_PATH=./checkpoints/gpt2
+
+_BASE=/home/sabiha/stronghold/data
+DATA_PATH=${_BASE}/my-gpt2_text_document
 VOCAB_PATH=${_BASE}/gpt2-vocab.json
 MERGE_PATH=${_BASE}/gpt2-merges.txt
-CHECKPOINT_PATH=./checkpoints/gpt2
+CHECKPOINT_PATH=/home/sabiha/stronghold/checkpoints/gpt2
 
 # Todo. Hard code. @gl
-PYTHON_LIB=/usr/local/lib/python3.8/dist-packages
-cp ./scripts/distributed_c10d._gl_.py ${PYTHON_LIB}/torch/distributed/distributed_c10d.py
+# PYTHON_LIB=/usr/local/lib/python3.8/dist-packages
+PYTHON_LIB=$(python -c "import site; print(site.getsitepackages()[0])")
+# cp ./scripts/distributed_c10d._gl_.py ${PYTHON_LIB}/torch/distributed/distributed_c10d.py
 cp ./scripts/deepspeed_cpu_adam._gl_.py ${PYTHON_LIB}/deepspeed/ops/adam/cpu_adam.py
 
 # Model defination
@@ -59,7 +68,6 @@ CMD="PYTHONGIL=1 python pretrain_gpt.py \
        --exit-interval 50 \
        --lr-decay-iters 320000 \
        --save $CHECKPOINT_PATH \
-       --load $CHECKPOINT_PATH \
        --data-path $DATA_PATH \
        --vocab-file $VOCAB_PATH \
        --merge-file ${MERGE_PATH} \
@@ -85,6 +93,6 @@ CMD="PYTHONGIL=1 python pretrain_gpt.py \
        --gl-window-size ${WINDOW_SIZE} \
        --gl-ray-max-concurrency 12
        "
-
+# --load $CHECKPOINT_PATH \
 echo $CMD
 eval $CMD
