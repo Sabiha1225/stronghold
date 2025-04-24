@@ -1,7 +1,8 @@
 #! /bin/bash
 
 # Runs the "345M" parameter model
-rm -rf ./checkpoints/*
+# rm -rf ./checkpoints/*
+rm -rf /home/sabiha/stronghold/checkpoints/*
 
 RANK=0
 WORLD_SIZE=1
@@ -10,11 +11,17 @@ export PYTORCH_JIT=0
 export MASTER_ADDR=localhost
 export MASTER_PORT=6000
 
-_BASE=/home/sys/STRONGHOLD/data
-DATA_PATH=${_BASE}/my-gpt2-en_text_document
+# _BASE=/home/sys/STRONGHOLD/data
+# DATA_PATH=${_BASE}/my-gpt2-en_text_document
+# VOCAB_PATH=${_BASE}/gpt2-vocab.json
+# MERGE_PATH=${_BASE}/gpt2-merges.txt
+# CHECKPOINT_PATH=checkpoints/gpt2
+
+_BASE=/home/sabiha/stronghold/data
+DATA_PATH=${_BASE}/my-gpt2_text_document
 VOCAB_PATH=${_BASE}/gpt2-vocab.json
 MERGE_PATH=${_BASE}/gpt2-merges.txt
-CHECKPOINT_PATH=checkpoints/gpt2
+CHECKPOINT_PATH=/home/sabiha/stronghold/checkpoints/gpt2
 
 NLAYERS=${1-12} 
 NHIDDEN=${2-2560} 
@@ -36,7 +43,6 @@ PYTHONGIL=1 python pretrain_gpt.py \
        --exit-interval 50 \
        --lr-decay-iters 320000 \
        --save $CHECKPOINT_PATH \
-       --load $CHECKPOINT_PATH \
        --data-path $DATA_PATH \
        --vocab-file ${VOCAB_PATH} \
        --merge-file ${MERGE_PATH} \
@@ -53,3 +59,5 @@ PYTHONGIL=1 python pretrain_gpt.py \
        --save-interval 10000 \
        --eval-interval 1000 \
        --eval-iters 1000 
+
+# --load $CHECKPOINT_PATH \
