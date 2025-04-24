@@ -1,0 +1,27 @@
+channels:
+  - nvidia/label/cuda-11.8.0
+  - pytorch # or pytorch-nightly
+  - conda-forge
+dependencies:
+  # - pytorch=2.3.0
+  - pytorch=2.2.0
+  - torchvision=0.17.0
+  # - torchvision=0.18.0
+  #- torchaudio
+  - cuda
+  - pytorch-cuda=11.8
+  - compilers
+  - sysroot_linux-64==2.17
+  - gcc==11.4
+  # - gxx=10.3
+  - ninja
+  - py-cpuinfo
+  - libaio
+  - ca-certificates
+  - certifi
+  - openssl
+  # - python=3.10
+  - python=3.9
+  - pydantic
+  # - numpy=1.26.4
+  - numpy=1.19.5
