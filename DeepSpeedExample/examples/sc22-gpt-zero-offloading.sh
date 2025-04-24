@@ -1,6 +1,7 @@
 #! /bin/bash
 
-rm -rf ./checkpoints/*
+# rm -rf ./checkpoints/*
+rm -rf /home/sabiha/stronghold/checkpoints/*
 
 GPUS_PER_NODE=1
 # Change for multinode config
@@ -13,11 +14,17 @@ WORLD_SIZE=$(($GPUS_PER_NODE*$NNODES))
 export DLWS_NUM_WORKER=${NNODES}
 export DLWS_NUM_GPU_PER_WORKER=${GPUS_PER_NODE}
 
-_BASE=/home/sys/STRONGHOLD/data
-DATA_PATH=${_BASE}/my-gpt2-en_text_document
+# _BASE=/home/sys/STRONGHOLD/data
+# DATA_PATH=${_BASE}/my-gpt2-en_text_document
+# VOCAB_PATH=${_BASE}/gpt2-vocab.json
+# MERGE_PATH=${_BASE}/gpt2-merges.txt
+# CHECKPOINT_PATH=checkpoints/gpt2_ds
+
+_BASE=/home/sabiha/stronghold/data
+DATA_PATH=${_BASE}/my-gpt2_text_document
 VOCAB_PATH=${_BASE}/gpt2-vocab.json
 MERGE_PATH=${_BASE}/gpt2-merges.txt
-CHECKPOINT_PATH=checkpoints/gpt2_ds
+CHECKPOINT_PATH=/home/sabiha/stronghold/checkpoints/gpt2
 
 script_path=$(realpath $0)
 script_dir=$(dirname $script_path)
@@ -62,7 +69,6 @@ gpt_options=" \
         --exit-interval 50 \
         --lr-decay-iters 320000 \
         --save $CHECKPOINT_PATH \
-        --load $CHECKPOINT_PATH \
         --data-path $DATA_PATH \
         --vocab-file $VOCAB_PATH \
         --merge-file $MERGE_PATH \
@@ -80,6 +86,8 @@ gpt_options=" \
         --eval-interval 1000 \
         --eval-iters 1000
 "
+
+# --load $CHECKPOINT_PATH \
   
  deepspeed_options=" \
                 --deepspeed \
