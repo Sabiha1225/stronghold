@@ -30,7 +30,8 @@ from megatron import print_rank_0
 from .clip_grads import clip_grad_norm_fp32, count_zeros_fp32
 from megatron.model.module import param_is_not_shared
 from megatron.mpu.layers import param_is_not_tensor_parallel_duplicate
-from torch._six import inf
+# from torch._six import inf
+from math import inf
 
 
 def _zero_grad_group_helper(group, set_to_none):
