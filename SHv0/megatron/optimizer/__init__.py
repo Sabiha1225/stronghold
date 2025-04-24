@@ -442,7 +442,8 @@ def gl_get_megatron_optimizer(model):
 
         def __getattr__(self, name: str):
             if name not in self.__dict__:
-                return self.optimizers["default"].__getattr__(name)
+                # return self.optimizers["default"].__getattr__(name)
+                return getattr(self.optimizers["default"], name)
             return self.__dict__[name]
 
     class GL_CPU_OptimizerWrapper:
