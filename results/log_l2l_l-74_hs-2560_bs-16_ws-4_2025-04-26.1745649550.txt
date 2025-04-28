@@ -1,0 +1,1400 @@
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+[93m [WARNING] [0m using untested triton version (2.2.0), only 1.0.0 is known to be compatible
+using world size: 1, data-parallel-size: 1, tensor-model-parallel size: 1, pipeline-model-parallel size: 1 
+using torch.float32 for parameters ...
+------------------------ arguments ------------------------
+  accumulate_allreduce_grads_in_fp32 .............. False
+  activations_checkpoint_method ................... uniform
+  activations_checkpoint_num_layers ............... 1
+  adam_beta1 ...................................... 0.9
+  adam_beta2 ...................................... 0.999
+  adam_eps ........................................ 1e-08
+  adlr_autoresume ................................. False
+  adlr_autoresume_interval ........................ 1000
+  apply_query_key_layer_scaling ................... True
+  apply_residual_connection_post_layernorm ........ False
+  attention_dropout ............................... 0.1
+  attention_softmax_in_fp32 ....................... False
+  bert_binary_head ................................ True
+  bert_load ....................................... None
+  bf16 ............................................ False
+  bias_dropout_fusion ............................. True
+  bias_gelu_fusion ................................ True
+  biencoder_projection_dim ........................ 0
+  biencoder_shared_query_context_model ............ False
+  block_data_path ................................. None
+  clip_grad ....................................... 1.0
+  consumed_train_samples .......................... 0
+  consumed_valid_samples .......................... 0
+  data_impl ....................................... mmap
+  data_parallel_size .............................. 1
+  data_path ....................................... ['/home/sabiha/stronghold/data/my-gpt2_text_document']
+  dataloader_type ................................. single
+  DDP_impl ........................................ local
+  decoder_seq_length .............................. None
+  distribute_checkpointed_activations ............. False
+  distributed_backend ............................. nccl
+  embedding_path .................................. None
+  empty_unused_memory_level ....................... 0
+  enable_l2l ...................................... True
+  enbale_strongh .................................. None
+  encoder_seq_length .............................. 1024
+  eod_mask_loss ................................... False
+  eval_interval ................................... 1000
+  eval_iters ...................................... 1000
+  evidence_data_path .............................. None
+  exit_duration_in_mins ........................... None
+  exit_interval ................................... 100
+  ffn_hidden_size ................................. 10240
+  finetune ........................................ False
+  fp16 ............................................ False
+  fp16_lm_cross_entropy ........................... False
+  fp32_residual_connection ........................ False
+  global_batch_size ............................... 16
+  hidden_dropout .................................. 0.1
+  hidden_size ..................................... 2560
+  hysteresis ...................................... 2
+  ict_head_size ................................... None
+  ict_load ........................................ None
+  img_dim ......................................... 224
+  indexer_batch_size .............................. 128
+  indexer_log_interval ............................ 1000
+  init_method_std ................................. 0.02
+  init_method_xavier_uniform ...................... False
+  initial_loss_scale .............................. 4294967296
+  kv_channels ..................................... 160
+  layernorm_epsilon ............................... 1e-05
+  lazy_mpu_init ................................... None
+  load ............................................ None
+  local_rank ...................................... None
+  log_batch_size_to_tensorboard ................... False
+  log_interval .................................... 10
+  log_learning_rate_to_tensorboard ................ True
+  log_loss_scale_to_tensorboard ................... True
+  log_memory_to_tensorboard ....................... False
+  log_num_zeros_in_grad ........................... False
+  log_params_norm ................................. False
+  log_timers_to_tensorboard ....................... False
+  log_validation_ppl_to_tensorboard ............... False
+  loss_scale ...................................... None
+  loss_scale_window ............................... 1000
+  lr .............................................. 0.00015
+  lr_decay_iters .................................. 320000
+  lr_decay_samples ................................ None
+  lr_decay_style .................................. cosine
+  lr_warmup_fraction .............................. 0.01
+  lr_warmup_iters ................................. 0
+  lr_warmup_samples ............................... 0
+  make_vocab_size_divisible_by .................... 128
+  mask_prob ....................................... 0.15
+  masked_softmax_fusion ........................... True
+  max_position_embeddings ......................... 1024
+  merge_file ...................................... /home/sabiha/stronghold/data/gpt2-merges.txt
+  micro_batch_size ................................ 16
+  min_loss_scale .................................. 1.0
+  min_lr .......................................... 1e-05
+  mmap_warmup ..................................... False
+  no_load_optim ................................... None
+  no_load_rng ..................................... None
+  no_save_optim ................................... None
+  no_save_rng ..................................... None
+  num_attention_heads ............................. 16
+  num_channels .................................... 3
+  num_classes ..................................... 1000
+  num_layers ...................................... 74
+  num_layers_per_virtual_pipeline_stage ........... None
+  num_workers ..................................... 2
+  onnx_safe ....................................... None
+  openai_gelu ..................................... False
+  optimizer ....................................... adam
+  override_lr_scheduler ........................... False
+  params_dtype .................................... torch.float32
+  patch_dim ....................................... 16
+  pipeline_model_parallel_size .................... 1
+  query_in_block_prob ............................. 0.1
+  rampup_batch_size ............................... None
+  rank ............................................ 0
+  reset_attention_mask ............................ False
+  reset_position_ids .............................. False
+  retriever_report_topk_accuracies ................ []
+  retriever_score_scaling ......................... False
+  retriever_seq_length ............................ 256
+  sample_rate ..................................... 1.0
+  save ............................................ /home/sabiha/stronghold/checkpoints/gpt2
+  save_interval ................................... 10000
+  scatter_gather_tensors_in_pipeline .............. True
+  seed ............................................ 1234
+  seq_length ...................................... 1024
+  sgd_momentum .................................... 0.9
+  short_seq_prob .................................. 0.1
+  split ........................................... 949,50,1
+  tensor_model_parallel_size ...................... 1
+  tensorboard_dir ................................. None
+  tensorboard_log_interval ........................ 1
+  tensorboard_queue_size .......................... 1000
+  titles_data_path ................................ None
+  tokenizer_type .................................. GPT2BPETokenizer
+  train_iters ..................................... 100
+  train_samples ................................... None
+  use_checkpoint_lr_scheduler ..................... False
+  use_contiguous_buffers_in_local_ddp ............. True
+  use_cpu_initialization .......................... None
+  use_one_sent_docs ............................... False
+  virtual_pipeline_model_parallel_size ............ None
+  vocab_extra_ids ................................. 0
+  vocab_file ...................................... /home/sabiha/stronghold/data/gpt2-vocab.json
+  weight_decay .................................... 0.01
+  world_size ...................................... 1
+-------------------- end of arguments ---------------------
+setting number of micro-batches to constant 1
+> building GPT2BPETokenizer tokenizer ...
+ > padded vocab (size: 50257) with 47 dummy tokens (new size: 50304)
+[W init.cpp:767] Warning: nvfuser is no longer supported in torch script, use _jit_set_nvfuser_enabled is deprecated and a no-op (function operator())
+> initializing torch distributed ...
+> initializing tensor model parallel with size 1
+> initializing pipeline model parallel with size 1
+> setting random seeds to 1234 ...
+> initializing model parallel cuda seeds on global rank 0, model parallel rank 0, and data parallel rank 0 with model parallel seed: 3952 and data parallel seed: 1234
+make: Entering directory '/home/sabiha/stronghold/L2L/megatron/data'
+make: Nothing to be done for 'default'.
+make: Leaving directory '/home/sabiha/stronghold/L2L/megatron/data'
+> compiling dataset index builder ...
+>>> done with dataset index builder. Compilation time: 0.104 seconds
+WARNING: constraints for invoking optimized fused softmax kernel are not met. We default back to unfused kernel invocations.
+> compiling and loading fused kernels ...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /home/sabiha/stronghold/L2L/megatron/fused_kernels/build/build.ninja...
+Building extension module scaled_upper_triang_masked_softmax_cuda...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module scaled_upper_triang_masked_softmax_cuda...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /home/sabiha/stronghold/L2L/megatron/fused_kernels/build/build.ninja...
+Building extension module scaled_masked_softmax_cuda...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module scaled_masked_softmax_cuda...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /home/sabiha/stronghold/L2L/megatron/fused_kernels/build/build.ninja...
+Building extension module fused_mix_prec_layer_norm_cuda...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module fused_mix_prec_layer_norm_cuda...
+>>> done with compiling and loading fused kernels. Compilation time: 0.847 seconds
+> compiling and loading optimizer utils ...
+Emitting ninja build file /home/sabiha/stronghold/L2L/megatron/optimizer/build/build.ninja...
+Building extension module optimizer_utils...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module optimizer_utils...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /home/sabiha/stronghold/L2L/megatron/optimizer/build/build.ninja...
+Building extension module ds_cpu_adam...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module ds_cpu_adam...
+>>> done with compiling and loading strongh utils. Compilation time: 0.440 seconds
+/home/sabiha/stronghold/L2L/megatron/training.py:103: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at /opt/conda/conda-bld/pytorch_1704987277512/work/torch/csrc/tensor/python_tensor.cpp:83.)
+  start_time_tensor = torch.cuda.DoubleTensor([_TRAIN_START_TIME])
+time to initialize megatron (seconds): 3.035
+[after megatron is initialized] datetime: 2025-04-26 06:39:15 
+building GPT model ...
+ > number of parameters on (tensor, pipeline) model parallel rank (0, 0): 5953464320
+Initiating L2L model
+module  is cuda True
+module language_model is cuda True
+module language_model.embedding is cuda True
+module language_model.embedding.word_embeddings is cuda True
+module language_model.embedding.position_embeddings is cuda True
+module language_model.embedding.embedding_dropout has no parameters
+module language_model.encoder is cuda True
+module language_model.encoder.layers is cuda False
+module language_model.encoder.layers.0 is cuda False
+module language_model.encoder.layers.0.input_layernorm is cuda False
+module language_model.encoder.layers.0.self_attention is cuda False
+module language_model.encoder.layers.0.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.0.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.0.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.0.self_attention.dense is cuda False
+module language_model.encoder.layers.0.post_attention_layernorm is cuda False
+module language_model.encoder.layers.0.mlp is cuda False
+module language_model.encoder.layers.0.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.0.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.1 is cuda False
+module language_model.encoder.layers.1.input_layernorm is cuda False
+module language_model.encoder.layers.1.self_attention is cuda False
+module language_model.encoder.layers.1.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.1.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.1.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.1.self_attention.dense is cuda False
+module language_model.encoder.layers.1.post_attention_layernorm is cuda False
+module language_model.encoder.layers.1.mlp is cuda False
+module language_model.encoder.layers.1.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.1.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.2 is cuda False
+module language_model.encoder.layers.2.input_layernorm is cuda False
+module language_model.encoder.layers.2.self_attention is cuda False
+module language_model.encoder.layers.2.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.2.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.2.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.2.self_attention.dense is cuda False
+module language_model.encoder.layers.2.post_attention_layernorm is cuda False
+module language_model.encoder.layers.2.mlp is cuda False
+module language_model.encoder.layers.2.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.2.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.3 is cuda False
+module language_model.encoder.layers.3.input_layernorm is cuda False
+module language_model.encoder.layers.3.self_attention is cuda False
+module language_model.encoder.layers.3.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.3.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.3.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.3.self_attention.dense is cuda False
+module language_model.encoder.layers.3.post_attention_layernorm is cuda False
+module language_model.encoder.layers.3.mlp is cuda False
+module language_model.encoder.layers.3.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.3.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.4 is cuda False
+module language_model.encoder.layers.4.input_layernorm is cuda False
+module language_model.encoder.layers.4.self_attention is cuda False
+module language_model.encoder.layers.4.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.4.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.4.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.4.self_attention.dense is cuda False
+module language_model.encoder.layers.4.post_attention_layernorm is cuda False
+module language_model.encoder.layers.4.mlp is cuda False
+module language_model.encoder.layers.4.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.4.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.5 is cuda False
+module language_model.encoder.layers.5.input_layernorm is cuda False
+module language_model.encoder.layers.5.self_attention is cuda False
+module language_model.encoder.layers.5.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.5.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.5.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.5.self_attention.dense is cuda False
+module language_model.encoder.layers.5.post_attention_layernorm is cuda False
+module language_model.encoder.layers.5.mlp is cuda False
+module language_model.encoder.layers.5.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.5.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.6 is cuda False
+module language_model.encoder.layers.6.input_layernorm is cuda False
+module language_model.encoder.layers.6.self_attention is cuda False
+module language_model.encoder.layers.6.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.6.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.6.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.6.self_attention.dense is cuda False
+module language_model.encoder.layers.6.post_attention_layernorm is cuda False
+module language_model.encoder.layers.6.mlp is cuda False
+module language_model.encoder.layers.6.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.6.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.7 is cuda False
+module language_model.encoder.layers.7.input_layernorm is cuda False
+module language_model.encoder.layers.7.self_attention is cuda False
+module language_model.encoder.layers.7.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.7.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.7.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.7.self_attention.dense is cuda False
+module language_model.encoder.layers.7.post_attention_layernorm is cuda False
+module language_model.encoder.layers.7.mlp is cuda False
+module language_model.encoder.layers.7.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.7.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.8 is cuda False
+module language_model.encoder.layers.8.input_layernorm is cuda False
+module language_model.encoder.layers.8.self_attention is cuda False
+module language_model.encoder.layers.8.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.8.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.8.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.8.self_attention.dense is cuda False
+module language_model.encoder.layers.8.post_attention_layernorm is cuda False
+module language_model.encoder.layers.8.mlp is cuda False
+module language_model.encoder.layers.8.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.8.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.9 is cuda False
+module language_model.encoder.layers.9.input_layernorm is cuda False
+module language_model.encoder.layers.9.self_attention is cuda False
+module language_model.encoder.layers.9.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.9.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.9.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.9.self_attention.dense is cuda False
+module language_model.encoder.layers.9.post_attention_layernorm is cuda False
+module language_model.encoder.layers.9.mlp is cuda False
+module language_model.encoder.layers.9.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.9.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.10 is cuda False
+module language_model.encoder.layers.10.input_layernorm is cuda False
+module language_model.encoder.layers.10.self_attention is cuda False
+module language_model.encoder.layers.10.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.10.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.10.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.10.self_attention.dense is cuda False
+module language_model.encoder.layers.10.post_attention_layernorm is cuda False
+module language_model.encoder.layers.10.mlp is cuda False
+module language_model.encoder.layers.10.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.10.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.11 is cuda False
+module language_model.encoder.layers.11.input_layernorm is cuda False
+module language_model.encoder.layers.11.self_attention is cuda False
+module language_model.encoder.layers.11.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.11.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.11.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.11.self_attention.dense is cuda False
+module language_model.encoder.layers.11.post_attention_layernorm is cuda False
+module language_model.encoder.layers.11.mlp is cuda False
+module language_model.encoder.layers.11.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.11.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.12 is cuda False
+module language_model.encoder.layers.12.input_layernorm is cuda False
+module language_model.encoder.layers.12.self_attention is cuda False
+module language_model.encoder.layers.12.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.12.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.12.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.12.self_attention.dense is cuda False
+module language_model.encoder.layers.12.post_attention_layernorm is cuda False
+module language_model.encoder.layers.12.mlp is cuda False
+module language_model.encoder.layers.12.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.12.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.13 is cuda False
+module language_model.encoder.layers.13.input_layernorm is cuda False
+module language_model.encoder.layers.13.self_attention is cuda False
+module language_model.encoder.layers.13.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.13.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.13.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.13.self_attention.dense is cuda False
+module language_model.encoder.layers.13.post_attention_layernorm is cuda False
+module language_model.encoder.layers.13.mlp is cuda False
+module language_model.encoder.layers.13.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.13.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.14 is cuda False
+module language_model.encoder.layers.14.input_layernorm is cuda False
+module language_model.encoder.layers.14.self_attention is cuda False
+module language_model.encoder.layers.14.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.14.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.14.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.14.self_attention.dense is cuda False
+module language_model.encoder.layers.14.post_attention_layernorm is cuda False
+module language_model.encoder.layers.14.mlp is cuda False
+module language_model.encoder.layers.14.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.14.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.15 is cuda False
+module language_model.encoder.layers.15.input_layernorm is cuda False
+module language_model.encoder.layers.15.self_attention is cuda False
+module language_model.encoder.layers.15.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.15.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.15.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.15.self_attention.dense is cuda False
+module language_model.encoder.layers.15.post_attention_layernorm is cuda False
+module language_model.encoder.layers.15.mlp is cuda False
+module language_model.encoder.layers.15.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.15.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.16 is cuda False
+module language_model.encoder.layers.16.input_layernorm is cuda False
+module language_model.encoder.layers.16.self_attention is cuda False
+module language_model.encoder.layers.16.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.16.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.16.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.16.self_attention.dense is cuda False
+module language_model.encoder.layers.16.post_attention_layernorm is cuda False
+module language_model.encoder.layers.16.mlp is cuda False
+module language_model.encoder.layers.16.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.16.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.17 is cuda False
+module language_model.encoder.layers.17.input_layernorm is cuda False
+module language_model.encoder.layers.17.self_attention is cuda False
+module language_model.encoder.layers.17.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.17.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.17.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.17.self_attention.dense is cuda False
+module language_model.encoder.layers.17.post_attention_layernorm is cuda False
+module language_model.encoder.layers.17.mlp is cuda False
+module language_model.encoder.layers.17.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.17.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.18 is cuda False
+module language_model.encoder.layers.18.input_layernorm is cuda False
+module language_model.encoder.layers.18.self_attention is cuda False
+module language_model.encoder.layers.18.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.18.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.18.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.18.self_attention.dense is cuda False
+module language_model.encoder.layers.18.post_attention_layernorm is cuda False
+module language_model.encoder.layers.18.mlp is cuda False
+module language_model.encoder.layers.18.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.18.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.19 is cuda False
+module language_model.encoder.layers.19.input_layernorm is cuda False
+module language_model.encoder.layers.19.self_attention is cuda False
+module language_model.encoder.layers.19.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.19.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.19.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.19.self_attention.dense is cuda False
+module language_model.encoder.layers.19.post_attention_layernorm is cuda False
+module language_model.encoder.layers.19.mlp is cuda False
+module language_model.encoder.layers.19.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.19.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.20 is cuda False
+module language_model.encoder.layers.20.input_layernorm is cuda False
+module language_model.encoder.layers.20.self_attention is cuda False
+module language_model.encoder.layers.20.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.20.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.20.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.20.self_attention.dense is cuda False
+module language_model.encoder.layers.20.post_attention_layernorm is cuda False
+module language_model.encoder.layers.20.mlp is cuda False
+module language_model.encoder.layers.20.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.20.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.21 is cuda False
+module language_model.encoder.layers.21.input_layernorm is cuda False
+module language_model.encoder.layers.21.self_attention is cuda False
+module language_model.encoder.layers.21.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.21.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.21.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.21.self_attention.dense is cuda False
+module language_model.encoder.layers.21.post_attention_layernorm is cuda False
+module language_model.encoder.layers.21.mlp is cuda False
+module language_model.encoder.layers.21.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.21.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.22 is cuda False
+module language_model.encoder.layers.22.input_layernorm is cuda False
+module language_model.encoder.layers.22.self_attention is cuda False
+module language_model.encoder.layers.22.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.22.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.22.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.22.self_attention.dense is cuda False
+module language_model.encoder.layers.22.post_attention_layernorm is cuda False
+module language_model.encoder.layers.22.mlp is cuda False
+module language_model.encoder.layers.22.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.22.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.23 is cuda False
+module language_model.encoder.layers.23.input_layernorm is cuda False
+module language_model.encoder.layers.23.self_attention is cuda False
+module language_model.encoder.layers.23.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.23.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.23.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.23.self_attention.dense is cuda False
+module language_model.encoder.layers.23.post_attention_layernorm is cuda False
+module language_model.encoder.layers.23.mlp is cuda False
+module language_model.encoder.layers.23.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.23.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.24 is cuda False
+module language_model.encoder.layers.24.input_layernorm is cuda False
+module language_model.encoder.layers.24.self_attention is cuda False
+module language_model.encoder.layers.24.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.24.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.24.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.24.self_attention.dense is cuda False
+module language_model.encoder.layers.24.post_attention_layernorm is cuda False
+module language_model.encoder.layers.24.mlp is cuda False
+module language_model.encoder.layers.24.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.24.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.25 is cuda False
+module language_model.encoder.layers.25.input_layernorm is cuda False
+module language_model.encoder.layers.25.self_attention is cuda False
+module language_model.encoder.layers.25.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.25.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.25.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.25.self_attention.dense is cuda False
+module language_model.encoder.layers.25.post_attention_layernorm is cuda False
+module language_model.encoder.layers.25.mlp is cuda False
+module language_model.encoder.layers.25.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.25.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.26 is cuda False
+module language_model.encoder.layers.26.input_layernorm is cuda False
+module language_model.encoder.layers.26.self_attention is cuda False
+module language_model.encoder.layers.26.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.26.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.26.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.26.self_attention.dense is cuda False
+module language_model.encoder.layers.26.post_attention_layernorm is cuda False
+module language_model.encoder.layers.26.mlp is cuda False
+module language_model.encoder.layers.26.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.26.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.27 is cuda False
+module language_model.encoder.layers.27.input_layernorm is cuda False
+module language_model.encoder.layers.27.self_attention is cuda False
+module language_model.encoder.layers.27.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.27.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.27.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.27.self_attention.dense is cuda False
+module language_model.encoder.layers.27.post_attention_layernorm is cuda False
+module language_model.encoder.layers.27.mlp is cuda False
+module language_model.encoder.layers.27.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.27.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.28 is cuda False
+module language_model.encoder.layers.28.input_layernorm is cuda False
+module language_model.encoder.layers.28.self_attention is cuda False
+module language_model.encoder.layers.28.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.28.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.28.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.28.self_attention.dense is cuda False
+module language_model.encoder.layers.28.post_attention_layernorm is cuda False
+module language_model.encoder.layers.28.mlp is cuda False
+module language_model.encoder.layers.28.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.28.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.29 is cuda False
+module language_model.encoder.layers.29.input_layernorm is cuda False
+module language_model.encoder.layers.29.self_attention is cuda False
+module language_model.encoder.layers.29.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.29.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.29.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.29.self_attention.dense is cuda False
+module language_model.encoder.layers.29.post_attention_layernorm is cuda False
+module language_model.encoder.layers.29.mlp is cuda False
+module language_model.encoder.layers.29.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.29.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.30 is cuda False
+module language_model.encoder.layers.30.input_layernorm is cuda False
+module language_model.encoder.layers.30.self_attention is cuda False
+module language_model.encoder.layers.30.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.30.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.30.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.30.self_attention.dense is cuda False
+module language_model.encoder.layers.30.post_attention_layernorm is cuda False
+module language_model.encoder.layers.30.mlp is cuda False
+module language_model.encoder.layers.30.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.30.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.31 is cuda False
+module language_model.encoder.layers.31.input_layernorm is cuda False
+module language_model.encoder.layers.31.self_attention is cuda False
+module language_model.encoder.layers.31.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.31.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.31.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.31.self_attention.dense is cuda False
+module language_model.encoder.layers.31.post_attention_layernorm is cuda False
+module language_model.encoder.layers.31.mlp is cuda False
+module language_model.encoder.layers.31.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.31.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.32 is cuda False
+module language_model.encoder.layers.32.input_layernorm is cuda False
+module language_model.encoder.layers.32.self_attention is cuda False
+module language_model.encoder.layers.32.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.32.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.32.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.32.self_attention.dense is cuda False
+module language_model.encoder.layers.32.post_attention_layernorm is cuda False
+module language_model.encoder.layers.32.mlp is cuda False
+module language_model.encoder.layers.32.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.32.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.33 is cuda False
+module language_model.encoder.layers.33.input_layernorm is cuda False
+module language_model.encoder.layers.33.self_attention is cuda False
+module language_model.encoder.layers.33.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.33.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.33.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.33.self_attention.dense is cuda False
+module language_model.encoder.layers.33.post_attention_layernorm is cuda False
+module language_model.encoder.layers.33.mlp is cuda False
+module language_model.encoder.layers.33.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.33.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.34 is cuda False
+module language_model.encoder.layers.34.input_layernorm is cuda False
+module language_model.encoder.layers.34.self_attention is cuda False
+module language_model.encoder.layers.34.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.34.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.34.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.34.self_attention.dense is cuda False
+module language_model.encoder.layers.34.post_attention_layernorm is cuda False
+module language_model.encoder.layers.34.mlp is cuda False
+module language_model.encoder.layers.34.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.34.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.35 is cuda False
+module language_model.encoder.layers.35.input_layernorm is cuda False
+module language_model.encoder.layers.35.self_attention is cuda False
+module language_model.encoder.layers.35.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.35.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.35.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.35.self_attention.dense is cuda False
+module language_model.encoder.layers.35.post_attention_layernorm is cuda False
+module language_model.encoder.layers.35.mlp is cuda False
+module language_model.encoder.layers.35.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.35.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.36 is cuda False
+module language_model.encoder.layers.36.input_layernorm is cuda False
+module language_model.encoder.layers.36.self_attention is cuda False
+module language_model.encoder.layers.36.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.36.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.36.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.36.self_attention.dense is cuda False
+module language_model.encoder.layers.36.post_attention_layernorm is cuda False
+module language_model.encoder.layers.36.mlp is cuda False
+module language_model.encoder.layers.36.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.36.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.37 is cuda False
+module language_model.encoder.layers.37.input_layernorm is cuda False
+module language_model.encoder.layers.37.self_attention is cuda False
+module language_model.encoder.layers.37.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.37.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.37.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.37.self_attention.dense is cuda False
+module language_model.encoder.layers.37.post_attention_layernorm is cuda False
+module language_model.encoder.layers.37.mlp is cuda False
+module language_model.encoder.layers.37.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.37.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.38 is cuda False
+module language_model.encoder.layers.38.input_layernorm is cuda False
+module language_model.encoder.layers.38.self_attention is cuda False
+module language_model.encoder.layers.38.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.38.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.38.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.38.self_attention.dense is cuda False
+module language_model.encoder.layers.38.post_attention_layernorm is cuda False
+module language_model.encoder.layers.38.mlp is cuda False
+module language_model.encoder.layers.38.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.38.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.39 is cuda False
+module language_model.encoder.layers.39.input_layernorm is cuda False
+module language_model.encoder.layers.39.self_attention is cuda False
+module language_model.encoder.layers.39.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.39.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.39.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.39.self_attention.dense is cuda False
+module language_model.encoder.layers.39.post_attention_layernorm is cuda False
+module language_model.encoder.layers.39.mlp is cuda False
+module language_model.encoder.layers.39.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.39.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.40 is cuda False
+module language_model.encoder.layers.40.input_layernorm is cuda False
+module language_model.encoder.layers.40.self_attention is cuda False
+module language_model.encoder.layers.40.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.40.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.40.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.40.self_attention.dense is cuda False
+module language_model.encoder.layers.40.post_attention_layernorm is cuda False
+module language_model.encoder.layers.40.mlp is cuda False
+module language_model.encoder.layers.40.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.40.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.41 is cuda False
+module language_model.encoder.layers.41.input_layernorm is cuda False
+module language_model.encoder.layers.41.self_attention is cuda False
+module language_model.encoder.layers.41.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.41.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.41.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.41.self_attention.dense is cuda False
+module language_model.encoder.layers.41.post_attention_layernorm is cuda False
+module language_model.encoder.layers.41.mlp is cuda False
+module language_model.encoder.layers.41.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.41.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.42 is cuda False
+module language_model.encoder.layers.42.input_layernorm is cuda False
+module language_model.encoder.layers.42.self_attention is cuda False
+module language_model.encoder.layers.42.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.42.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.42.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.42.self_attention.dense is cuda False
+module language_model.encoder.layers.42.post_attention_layernorm is cuda False
+module language_model.encoder.layers.42.mlp is cuda False
+module language_model.encoder.layers.42.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.42.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.43 is cuda False
+module language_model.encoder.layers.43.input_layernorm is cuda False
+module language_model.encoder.layers.43.self_attention is cuda False
+module language_model.encoder.layers.43.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.43.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.43.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.43.self_attention.dense is cuda False
+module language_model.encoder.layers.43.post_attention_layernorm is cuda False
+module language_model.encoder.layers.43.mlp is cuda False
+module language_model.encoder.layers.43.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.43.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.44 is cuda False
+module language_model.encoder.layers.44.input_layernorm is cuda False
+module language_model.encoder.layers.44.self_attention is cuda False
+module language_model.encoder.layers.44.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.44.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.44.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.44.self_attention.dense is cuda False
+module language_model.encoder.layers.44.post_attention_layernorm is cuda False
+module language_model.encoder.layers.44.mlp is cuda False
+module language_model.encoder.layers.44.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.44.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.45 is cuda False
+module language_model.encoder.layers.45.input_layernorm is cuda False
+module language_model.encoder.layers.45.self_attention is cuda False
+module language_model.encoder.layers.45.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.45.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.45.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.45.self_attention.dense is cuda False
+module language_model.encoder.layers.45.post_attention_layernorm is cuda False
+module language_model.encoder.layers.45.mlp is cuda False
+module language_model.encoder.layers.45.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.45.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.46 is cuda False
+module language_model.encoder.layers.46.input_layernorm is cuda False
+module language_model.encoder.layers.46.self_attention is cuda False
+module language_model.encoder.layers.46.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.46.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.46.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.46.self_attention.dense is cuda False
+module language_model.encoder.layers.46.post_attention_layernorm is cuda False
+module language_model.encoder.layers.46.mlp is cuda False
+module language_model.encoder.layers.46.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.46.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.47 is cuda False
+module language_model.encoder.layers.47.input_layernorm is cuda False
+module language_model.encoder.layers.47.self_attention is cuda False
+module language_model.encoder.layers.47.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.47.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.47.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.47.self_attention.dense is cuda False
+module language_model.encoder.layers.47.post_attention_layernorm is cuda False
+module language_model.encoder.layers.47.mlp is cuda False
+module language_model.encoder.layers.47.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.47.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.48 is cuda False
+module language_model.encoder.layers.48.input_layernorm is cuda False
+module language_model.encoder.layers.48.self_attention is cuda False
+module language_model.encoder.layers.48.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.48.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.48.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.48.self_attention.dense is cuda False
+module language_model.encoder.layers.48.post_attention_layernorm is cuda False
+module language_model.encoder.layers.48.mlp is cuda False
+module language_model.encoder.layers.48.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.48.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.49 is cuda False
+module language_model.encoder.layers.49.input_layernorm is cuda False
+module language_model.encoder.layers.49.self_attention is cuda False
+module language_model.encoder.layers.49.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.49.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.49.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.49.self_attention.dense is cuda False
+module language_model.encoder.layers.49.post_attention_layernorm is cuda False
+module language_model.encoder.layers.49.mlp is cuda False
+module language_model.encoder.layers.49.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.49.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.50 is cuda False
+module language_model.encoder.layers.50.input_layernorm is cuda False
+module language_model.encoder.layers.50.self_attention is cuda False
+module language_model.encoder.layers.50.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.50.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.50.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.50.self_attention.dense is cuda False
+module language_model.encoder.layers.50.post_attention_layernorm is cuda False
+module language_model.encoder.layers.50.mlp is cuda False
+module language_model.encoder.layers.50.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.50.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.51 is cuda False
+module language_model.encoder.layers.51.input_layernorm is cuda False
+module language_model.encoder.layers.51.self_attention is cuda False
+module language_model.encoder.layers.51.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.51.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.51.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.51.self_attention.dense is cuda False
+module language_model.encoder.layers.51.post_attention_layernorm is cuda False
+module language_model.encoder.layers.51.mlp is cuda False
+module language_model.encoder.layers.51.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.51.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.52 is cuda False
+module language_model.encoder.layers.52.input_layernorm is cuda False
+module language_model.encoder.layers.52.self_attention is cuda False
+module language_model.encoder.layers.52.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.52.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.52.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.52.self_attention.dense is cuda False
+module language_model.encoder.layers.52.post_attention_layernorm is cuda False
+module language_model.encoder.layers.52.mlp is cuda False
+module language_model.encoder.layers.52.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.52.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.53 is cuda False
+module language_model.encoder.layers.53.input_layernorm is cuda False
+module language_model.encoder.layers.53.self_attention is cuda False
+module language_model.encoder.layers.53.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.53.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.53.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.53.self_attention.dense is cuda False
+module language_model.encoder.layers.53.post_attention_layernorm is cuda False
+module language_model.encoder.layers.53.mlp is cuda False
+module language_model.encoder.layers.53.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.53.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.54 is cuda False
+module language_model.encoder.layers.54.input_layernorm is cuda False
+module language_model.encoder.layers.54.self_attention is cuda False
+module language_model.encoder.layers.54.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.54.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.54.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.54.self_attention.dense is cuda False
+module language_model.encoder.layers.54.post_attention_layernorm is cuda False
+module language_model.encoder.layers.54.mlp is cuda False
+module language_model.encoder.layers.54.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.54.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.55 is cuda False
+module language_model.encoder.layers.55.input_layernorm is cuda False
+module language_model.encoder.layers.55.self_attention is cuda False
+module language_model.encoder.layers.55.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.55.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.55.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.55.self_attention.dense is cuda False
+module language_model.encoder.layers.55.post_attention_layernorm is cuda False
+module language_model.encoder.layers.55.mlp is cuda False
+module language_model.encoder.layers.55.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.55.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.56 is cuda False
+module language_model.encoder.layers.56.input_layernorm is cuda False
+module language_model.encoder.layers.56.self_attention is cuda False
+module language_model.encoder.layers.56.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.56.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.56.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.56.self_attention.dense is cuda False
+module language_model.encoder.layers.56.post_attention_layernorm is cuda False
+module language_model.encoder.layers.56.mlp is cuda False
+module language_model.encoder.layers.56.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.56.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.57 is cuda False
+module language_model.encoder.layers.57.input_layernorm is cuda False
+module language_model.encoder.layers.57.self_attention is cuda False
+module language_model.encoder.layers.57.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.57.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.57.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.57.self_attention.dense is cuda False
+module language_model.encoder.layers.57.post_attention_layernorm is cuda False
+module language_model.encoder.layers.57.mlp is cuda False
+module language_model.encoder.layers.57.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.57.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.58 is cuda False
+module language_model.encoder.layers.58.input_layernorm is cuda False
+module language_model.encoder.layers.58.self_attention is cuda False
+module language_model.encoder.layers.58.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.58.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.58.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.58.self_attention.dense is cuda False
+module language_model.encoder.layers.58.post_attention_layernorm is cuda False
+module language_model.encoder.layers.58.mlp is cuda False
+module language_model.encoder.layers.58.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.58.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.59 is cuda False
+module language_model.encoder.layers.59.input_layernorm is cuda False
+module language_model.encoder.layers.59.self_attention is cuda False
+module language_model.encoder.layers.59.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.59.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.59.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.59.self_attention.dense is cuda False
+module language_model.encoder.layers.59.post_attention_layernorm is cuda False
+module language_model.encoder.layers.59.mlp is cuda False
+module language_model.encoder.layers.59.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.59.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.60 is cuda False
+module language_model.encoder.layers.60.input_layernorm is cuda False
+module language_model.encoder.layers.60.self_attention is cuda False
+module language_model.encoder.layers.60.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.60.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.60.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.60.self_attention.dense is cuda False
+module language_model.encoder.layers.60.post_attention_layernorm is cuda False
+module language_model.encoder.layers.60.mlp is cuda False
+module language_model.encoder.layers.60.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.60.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.61 is cuda False
+module language_model.encoder.layers.61.input_layernorm is cuda False
+module language_model.encoder.layers.61.self_attention is cuda False
+module language_model.encoder.layers.61.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.61.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.61.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.61.self_attention.dense is cuda False
+module language_model.encoder.layers.61.post_attention_layernorm is cuda False
+module language_model.encoder.layers.61.mlp is cuda False
+module language_model.encoder.layers.61.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.61.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.62 is cuda False
+module language_model.encoder.layers.62.input_layernorm is cuda False
+module language_model.encoder.layers.62.self_attention is cuda False
+module language_model.encoder.layers.62.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.62.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.62.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.62.self_attention.dense is cuda False
+module language_model.encoder.layers.62.post_attention_layernorm is cuda False
+module language_model.encoder.layers.62.mlp is cuda False
+module language_model.encoder.layers.62.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.62.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.63 is cuda False
+module language_model.encoder.layers.63.input_layernorm is cuda False
+module language_model.encoder.layers.63.self_attention is cuda False
+module language_model.encoder.layers.63.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.63.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.63.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.63.self_attention.dense is cuda False
+module language_model.encoder.layers.63.post_attention_layernorm is cuda False
+module language_model.encoder.layers.63.mlp is cuda False
+module language_model.encoder.layers.63.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.63.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.64 is cuda False
+module language_model.encoder.layers.64.input_layernorm is cuda False
+module language_model.encoder.layers.64.self_attention is cuda False
+module language_model.encoder.layers.64.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.64.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.64.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.64.self_attention.dense is cuda False
+module language_model.encoder.layers.64.post_attention_layernorm is cuda False
+module language_model.encoder.layers.64.mlp is cuda False
+module language_model.encoder.layers.64.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.64.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.65 is cuda False
+module language_model.encoder.layers.65.input_layernorm is cuda False
+module language_model.encoder.layers.65.self_attention is cuda False
+module language_model.encoder.layers.65.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.65.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.65.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.65.self_attention.dense is cuda False
+module language_model.encoder.layers.65.post_attention_layernorm is cuda False
+module language_model.encoder.layers.65.mlp is cuda False
+module language_model.encoder.layers.65.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.65.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.66 is cuda False
+module language_model.encoder.layers.66.input_layernorm is cuda False
+module language_model.encoder.layers.66.self_attention is cuda False
+module language_model.encoder.layers.66.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.66.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.66.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.66.self_attention.dense is cuda False
+module language_model.encoder.layers.66.post_attention_layernorm is cuda False
+module language_model.encoder.layers.66.mlp is cuda False
+module language_model.encoder.layers.66.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.66.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.67 is cuda False
+module language_model.encoder.layers.67.input_layernorm is cuda False
+module language_model.encoder.layers.67.self_attention is cuda False
+module language_model.encoder.layers.67.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.67.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.67.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.67.self_attention.dense is cuda False
+module language_model.encoder.layers.67.post_attention_layernorm is cuda False
+module language_model.encoder.layers.67.mlp is cuda False
+module language_model.encoder.layers.67.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.67.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.68 is cuda False
+module language_model.encoder.layers.68.input_layernorm is cuda False
+module language_model.encoder.layers.68.self_attention is cuda False
+module language_model.encoder.layers.68.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.68.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.68.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.68.self_attention.dense is cuda False
+module language_model.encoder.layers.68.post_attention_layernorm is cuda False
+module language_model.encoder.layers.68.mlp is cuda False
+module language_model.encoder.layers.68.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.68.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.69 is cuda False
+module language_model.encoder.layers.69.input_layernorm is cuda False
+module language_model.encoder.layers.69.self_attention is cuda False
+module language_model.encoder.layers.69.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.69.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.69.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.69.self_attention.dense is cuda False
+module language_model.encoder.layers.69.post_attention_layernorm is cuda False
+module language_model.encoder.layers.69.mlp is cuda False
+module language_model.encoder.layers.69.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.69.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.70 is cuda False
+module language_model.encoder.layers.70.input_layernorm is cuda False
+module language_model.encoder.layers.70.self_attention is cuda False
+module language_model.encoder.layers.70.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.70.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.70.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.70.self_attention.dense is cuda False
+module language_model.encoder.layers.70.post_attention_layernorm is cuda False
+module language_model.encoder.layers.70.mlp is cuda False
+module language_model.encoder.layers.70.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.70.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.71 is cuda False
+module language_model.encoder.layers.71.input_layernorm is cuda False
+module language_model.encoder.layers.71.self_attention is cuda False
+module language_model.encoder.layers.71.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.71.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.71.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.71.self_attention.dense is cuda False
+module language_model.encoder.layers.71.post_attention_layernorm is cuda False
+module language_model.encoder.layers.71.mlp is cuda False
+module language_model.encoder.layers.71.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.71.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.72 is cuda False
+module language_model.encoder.layers.72.input_layernorm is cuda False
+module language_model.encoder.layers.72.self_attention is cuda False
+module language_model.encoder.layers.72.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.72.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.72.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.72.self_attention.dense is cuda False
+module language_model.encoder.layers.72.post_attention_layernorm is cuda False
+module language_model.encoder.layers.72.mlp is cuda False
+module language_model.encoder.layers.72.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.72.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.layers.73 is cuda False
+module language_model.encoder.layers.73.input_layernorm is cuda False
+module language_model.encoder.layers.73.self_attention is cuda False
+module language_model.encoder.layers.73.self_attention.query_key_value is cuda False
+module language_model.encoder.layers.73.self_attention.scale_mask_softmax has no parameters
+module language_model.encoder.layers.73.self_attention.attention_dropout has no parameters
+module language_model.encoder.layers.73.self_attention.dense is cuda False
+module language_model.encoder.layers.73.post_attention_layernorm is cuda False
+module language_model.encoder.layers.73.mlp is cuda False
+module language_model.encoder.layers.73.mlp.dense_h_to_4h is cuda False
+module language_model.encoder.layers.73.mlp.dense_4h_to_h is cuda False
+module language_model.encoder.final_layernorm is cuda True
+> learning rate decay style: cosine
+[after model, optimizer, and learning rate scheduler are built] datetime: 2025-04-26 06:39:30 
+> building train, validation, and test datasets ...
+ > datasets target sizes (minimum size):
+    train:      1600
+    validation: 16000
+    test:       16000
+> building train, validation, and test datasets for GPT ...
+ > building dataset index ...
+    reading sizes...
+    reading pointers...
+    reading document index...
+    creating numpy buffer of mmap...
+    creating memory view of numpy buffer...
+ > finished creating indexed dataset in 0.000350 seconds
+    number of documents: 6351519
+ > dataset split:
+    train:
+     document indices in [0, 6027591) total of 6027591 documents
+    validation:
+     document indices in [6027591, 6345167) total of 317576 documents
+    test:
+     document indices in [6345167, 6351519) total of 6352 documents
+ > loading doc-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_train_indexmap_1600ns_1024sl_1234s_doc_idx.npy
+ > loading sample-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_train_indexmap_1600ns_1024sl_1234s_sample_idx.npy
+ > loading shuffle-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_train_indexmap_1600ns_1024sl_1234s_shuffle_idx.npy
+    loaded indexed file in 0.004 seconds
+    total number of samples: 3061569
+    total number of epochs: 1
+ > loading doc-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_valid_indexmap_16000ns_1024sl_1234s_doc_idx.npy
+ > loading sample-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_valid_indexmap_16000ns_1024sl_1234s_sample_idx.npy
+ > loading shuffle-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_valid_indexmap_16000ns_1024sl_1234s_shuffle_idx.npy
+    loaded indexed file in 0.002 seconds
+    total number of samples: 143830
+    total number of epochs: 1
+ > loading doc-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_test_indexmap_16000ns_1024sl_1234s_doc_idx.npy
+ > loading sample-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_test_indexmap_16000ns_1024sl_1234s_sample_idx.npy
+ > loading shuffle-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_test_indexmap_16000ns_1024sl_1234s_shuffle_idx.npy
+    loaded indexed file in 0.002 seconds
+    total number of samples: 17453
+    total number of epochs: 7
+> finished creating GPT datasets ...
+[after dataloaders are built] datetime: 2025-04-26 06:39:32 
+done with setup ...
+time (ms) | model-and-optimizer-setup: 14824.70 | train/valid/test-data-iterators-setup: 2802.81
+training ...
+[before the start of training step] datetime: 2025-04-26 06:39:32 
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+pre forward
+module language_model.encoder.final_layernorm is cuda True
+post forward
+module language_model.encoder.final_layernorm is cuda True
+Traceback (most recent call last):
+  File "/home/sabiha/stronghold/L2L/pretrain_gpt.py", line 124, in <module>
+    pretrain(train_valid_test_datasets_provider, model_provider, forward_step,
+  File "/home/sabiha/stronghold/L2L/megatron/training.py", line 145, in pretrain
+    iteration = train(forward_step_func,
+  File "/home/sabiha/stronghold/L2L/megatron/training.py", line 727, in train
+    train_step(forward_step_func,
+  File "/home/sabiha/stronghold/L2L/megatron/training.py", line 449, in train_step
+    losses_reduced = forward_backward_func(
+  File "/home/sabiha/stronghold/L2L/megatron/schedules.py", line 145, in forward_backward_no_pipelining
+    backward_step(optimizer, input_tensor, output_tensor, output_tensor_grad)
+  File "/home/sabiha/stronghold/L2L/megatron/schedules.py", line 96, in backward_step
+    torch.autograd.backward(output_tensor, grad_tensors=output_tensor_grad)
+  File "/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/autograd/__init__.py", line 266, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+  File "/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/autograd/function.py", line 289, in apply
+    return user_fn(self, *args)
+  File "/home/sabiha/stronghold/L2L/megatron/mpu/random.py", line 277, in backward
+    outputs = ctx.run_function(*detached_inputs)
+  File "/home/sabiha/stronghold/L2L/megatron/model/transformer.py", line 602, in custom_forward
+    x_ = layer(x_, attention_mask, encoder_output, enc_dec_attn_mask)
+  File "/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1550, in _call_impl
+    args_result = hook(self, args)
+  File "/home/sabiha/stronghold/L2L/megatron/training.py", line 271, in _forward_pre_hook
+    torch._current_layers.cpu()
+  File "/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/__init__.py", line 1932, in __getattr__
+    raise AttributeError(f"module '{__name__}' has no attribute '{name}'")
+AttributeError: module 'torch' has no attribute '_current_layers'

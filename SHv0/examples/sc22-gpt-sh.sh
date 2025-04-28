@@ -63,9 +63,9 @@ CMD="PYTHONGIL=1 python pretrain_gpt.py \
        --micro-batch-size ${BATCH_SIZE} \
        --global-batch-size ${GLOBAL_BATCH_SIZE} \
        --max-position-embeddings ${SEQ_LEN} \
-       --train-iters 50 \
+       --train-iters 100 \
        --log-interval 10 \
-       --exit-interval 50 \
+       --exit-interval 100 \
        --lr-decay-iters 320000 \
        --save $CHECKPOINT_PATH \
        --data-path $DATA_PATH \

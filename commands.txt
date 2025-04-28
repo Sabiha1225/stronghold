@@ -1,0 +1,4 @@
+./examples/run.sh -m "zero-infinity" -l 74 -h 2560
+./examples/run.sh -m "stronghold" -l 74 -h 2560
+./examples/run.sh -m "megatron-lm" -l 74 -h 2560
+./examples/run.sh -m "smart-cache" -l 74 -h 2560

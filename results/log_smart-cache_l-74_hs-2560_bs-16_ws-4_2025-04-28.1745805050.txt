@@ -1,0 +1,185 @@
+deepspeed --num_nodes 1 --num_gpus 1 pretrain_gpt2.py --model-parallel-size 1 --num-layers 74 --hidden-size 2560 --num-attention-heads 16 --seq-length 1024 --max-position-embeddings 1024 --batch-size 16 --train-iters 100 --log-interval 10 --exit-interval 100 --lr-decay-iters 320000 --save /home/sabiha/stronghold/checkpoints/gpt2 --data-path /home/sabiha/stronghold/data/my-gpt2_text_document --vocab-file /home/sabiha/stronghold/data/gpt2-vocab.json --merge-file /home/sabiha/stronghold/data/gpt2-merges.txt --data-impl mmap --split 949,50,1 --distributed-backend nccl --lr 1.5e-4 --lr-decay-style cosine --min-lr 1.0e-5 --weight-decay 1e-2 --clip-grad 1.0 --warmup 0.01 --checkpoint-activations --save-interval 10000 --eval-interval 1000 --eval-iters 1000 --cpu-optimizer --deepspeed --deepspeed_config /home/sabiha/stronghold/DeepSpeedExample/examples/ds_zero_stage_infinity-smart-cache.json --zero-stage 3 --zero-reduce-bucket-size 50000000 --zero-allgather-bucket-size 5000000000 --zero-contigious-gradients --zero-reduce-scatter --checkpoint-activations --checkpoint-num-layers 1 --partition-activations --synchronize-each-layer --contigious-checkpointing
+[2025-04-28 01:50:52,946] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+[93m [WARNING] [0m using untested triton version (2.2.0), only 1.0.0 is known to be compatible
+[2025-04-28 01:50:53,932] [WARNING] [runner.py:202:fetch_hostfile] Unable to find hostfile, will proceed with training with local resources only.
+[2025-04-28 01:50:53,932] [INFO] [runner.py:568:main] cmd = /home/sabiha/miniconda3/envs/stronghold_deepspeed_mine/bin/python3.9 -u -m deepspeed.launcher.launch --world_info=eyJsb2NhbGhvc3QiOiBbMF19 --master_addr=127.0.0.1 --master_port=29500 --enable_each_rank_log=None pretrain_gpt2.py --model-parallel-size 1 --num-layers 74 --hidden-size 2560 --num-attention-heads 16 --seq-length 1024 --max-position-embeddings 1024 --batch-size 16 --train-iters 100 --log-interval 10 --exit-interval 100 --lr-decay-iters 320000 --save /home/sabiha/stronghold/checkpoints/gpt2 --data-path /home/sabiha/stronghold/data/my-gpt2_text_document --vocab-file /home/sabiha/stronghold/data/gpt2-vocab.json --merge-file /home/sabiha/stronghold/data/gpt2-merges.txt --data-impl mmap --split 949,50,1 --distributed-backend nccl --lr 1.5e-4 --lr-decay-style cosine --min-lr 1.0e-5 --weight-decay 1e-2 --clip-grad 1.0 --warmup 0.01 --checkpoint-activations --save-interval 10000 --eval-interval 1000 --eval-iters 1000 --cpu-optimizer --deepspeed --deepspeed_config /home/sabiha/stronghold/DeepSpeedExample/examples/ds_zero_stage_infinity-smart-cache.json --zero-stage 3 --zero-reduce-bucket-size 50000000 --zero-allgather-bucket-size 5000000000 --zero-contigious-gradients --zero-reduce-scatter --checkpoint-activations --checkpoint-num-layers 1 --partition-activations --synchronize-each-layer --contigious-checkpointing
+[2025-04-28 01:50:56,178] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+[93m [WARNING] [0m using untested triton version (2.2.0), only 1.0.0 is known to be compatible
+[2025-04-28 01:50:57,138] [INFO] [launch.py:146:main] WORLD INFO DICT: {'localhost': [0]}
+[2025-04-28 01:50:57,138] [INFO] [launch.py:152:main] nnodes=1, num_local_procs=1, node_rank=0
+[2025-04-28 01:50:57,138] [INFO] [launch.py:163:main] global_rank_mapping=defaultdict(<class 'list'>, {'localhost': [0]})
+[2025-04-28 01:50:57,138] [INFO] [launch.py:164:main] dist_world_size=1
+[2025-04-28 01:50:57,139] [INFO] [launch.py:168:main] Setting CUDA_VISIBLE_DEVICES=0
+[2025-04-28 01:50:57,162] [INFO] [launch.py:256:main] process 30841 spawned with command: ['/home/sabiha/miniconda3/envs/stronghold_deepspeed_mine/bin/python3.9', '-u', 'pretrain_gpt2.py', '--local_rank=0', '--model-parallel-size', '1', '--num-layers', '74', '--hidden-size', '2560', '--num-attention-heads', '16', '--seq-length', '1024', '--max-position-embeddings', '1024', '--batch-size', '16', '--train-iters', '100', '--log-interval', '10', '--exit-interval', '100', '--lr-decay-iters', '320000', '--save', '/home/sabiha/stronghold/checkpoints/gpt2', '--data-path', '/home/sabiha/stronghold/data/my-gpt2_text_document', '--vocab-file', '/home/sabiha/stronghold/data/gpt2-vocab.json', '--merge-file', '/home/sabiha/stronghold/data/gpt2-merges.txt', '--data-impl', 'mmap', '--split', '949,50,1', '--distributed-backend', 'nccl', '--lr', '1.5e-4', '--lr-decay-style', 'cosine', '--min-lr', '1.0e-5', '--weight-decay', '1e-2', '--clip-grad', '1.0', '--warmup', '0.01', '--checkpoint-activations', '--save-interval', '10000', '--eval-interval', '1000', '--eval-iters', '1000', '--cpu-optimizer', '--deepspeed', '--deepspeed_config', '/home/sabiha/stronghold/DeepSpeedExample/examples/ds_zero_stage_infinity-smart-cache.json', '--zero-stage', '3', '--zero-reduce-bucket-size', '50000000', '--zero-allgather-bucket-size', '5000000000', '--zero-contigious-gradients', '--zero-reduce-scatter', '--checkpoint-activations', '--checkpoint-num-layers', '1', '--partition-activations', '--synchronize-each-layer', '--contigious-checkpointing']
+[2025-04-28 01:50:59,824] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+[93m [WARNING] [0m using untested triton version (2.2.0), only 1.0.0 is known to be compatible
+using world size: 1 and model-parallel size: 1 
+using torch.float32 for parameters ...
+-------------------- arguments --------------------
+  adam_beta1 ...................... 0.9
+  adam_beta2 ...................... 0.999
+  adam_eps ........................ 1e-08
+  adlr_autoresume ................. False
+  adlr_autoresume_interval ........ 1000
+  apply_query_key_layer_scaling ... False
+  apply_residual_connection_post_layernorm  False
+  attention_dropout ............... 0.1
+  attention_softmax_in_fp32 ....... False
+  batch_size ...................... 16
+  bert_load ....................... None
+  bias_dropout_fusion ............. False
+  bias_gelu_fusion ................ False
+  block_data_path ................. None
+  checkpoint_activations .......... True
+  checkpoint_in_cpu ............... False
+  checkpoint_num_layers ........... 1
+  clip_grad ....................... 1.0
+  contigious_checkpointing ........ True
+  cpu_optimizer ................... True
+  cpu_torch_adam .................. False
+  data_impl ....................... mmap
+  data_path ....................... /home/sabiha/stronghold/data/my-gpt2_text_document
+  DDP_impl ........................ local
+  deepscale ....................... False
+  deepscale_config ................ None
+  deepspeed ....................... True
+  deepspeed_activation_checkpointing  False
+  deepspeed_config ................ /home/sabiha/stronghold/DeepSpeedExample/examples/ds_zero_stage_infinity-smart-cache.json
+  distribute_checkpointed_activations  False
+  distributed_backend ............. nccl
+  dynamic_loss_scale .............. True
+  eod_mask_loss ................... False
+  eval_interval ................... 1000
+  eval_iters ...................... 1000
+  exit_interval ................... 100
+  faiss_use_gpu ................... False
+  finetune ........................ False
+  fp16 ............................ False
+  fp16_lm_cross_entropy ........... False
+  fp32_allreduce .................. False
+  hidden_dropout .................. 0.1
+  hidden_size ..................... 2560
+  hysteresis ...................... 2
+  ict_head_size ................... None
+  ict_load ........................ None
+  indexer_batch_size .............. 128
+  indexer_log_interval ............ 1000
+  init_method_std ................. 0.02
+  layernorm_epsilon ............... 1e-05
+  lazy_mpu_init ................... None
+  load ............................ None
+  local_rank ...................... 0
+  log_interval .................... 10
+  loss_scale ...................... None
+  loss_scale_window ............... 1000
+  lr .............................. 0.00015
+  lr_decay_iters .................. 320000
+  lr_decay_style .................. cosine
+  lr_decay_tokens ................. None
+  make_vocab_size_divisible_by .... 128
+  mask_prob ....................... 0.15
+  max_position_embeddings ......... 1024
+  memory_centric_tiled_linear ..... False
+  merge_file ...................... /home/sabiha/stronghold/data/gpt2-merges.txt
+  min_lr .......................... 1e-05
+  min_scale ....................... 1
+  mmap_warmup ..................... False
+  model_parallel_size ............. 1
+  no_load_optim ................... False
+  no_load_rng ..................... False
+  no_save_optim ................... False
+  no_save_rng ..................... False
+  num_attention_heads ............. 16
+  num_layers ...................... 74
+  num_unique_layers ............... None
+  num_workers ..................... 2
+  onnx_safe ....................... None
+  openai_gelu ..................... False
+  override_lr_scheduler ........... False
+  param_sharing_style ............. grouped
+  params_dtype .................... torch.float32
+  partition_activations ........... True
+  profile_backward ................ False
+  query_in_block_prob ............. 0.1
+  rank ............................ 0
+  remote_device ................... none
+  report_topk_accuracies .......... []
+  reset_attention_mask ............ False
+  reset_position_ids .............. False
+  save ............................ /home/sabiha/stronghold/checkpoints/gpt2
+  save_interval ................... 10000
+  scaled_masked_softmax_fusion .... False
+  scaled_upper_triang_masked_softmax_fusion  False
+  scattered_embeddings ............ False
+  seed ............................ 1234
+  seq_length ...................... 1024
+  short_seq_prob .................. 0.1
+  split ........................... 949,50,1
+  split_transformers .............. False
+  synchronize_each_layer .......... True
+  tensorboard_dir ................. None
+  tile_factor ..................... 1
+  titles_data_path ................ None
+  tokenizer_type .................. GPT2BPETokenizer
+  tokens .......................... 0
+  train_iters ..................... 100
+  train_tokens .................... None
+  use_checkpoint_lr_scheduler ..... False
+  use_cpu_initialization .......... False
+  use_one_sent_docs ............... False
+  use_pin_memory .................. False
+  vocab_file ...................... /home/sabiha/stronghold/data/gpt2-vocab.json
+  warmup .......................... 0.01
+  warmup_iters .................... None
+  weight_decay .................... 0.01
+  world_size ...................... 1
+  zero_allgather_bucket_size ...... 5000000000
+  zero_contigious_gradients ....... True
+  zero_reduce_bucket_size ......... 50000000
+  zero_reduce_scatter ............. True
+  zero_stage ...................... 3
+---------------- end of arguments ----------------
+> building GPT2BPETokenizer tokenizer ...
+ > padded vocab (size: 50257) with 47 dummy tokens (new size: 50304)
+> initializing torch distributed ...
+> initializing model parallel with size 1
+> setting random seeds to 1234 ...
+> initializing model parallel cuda seeds on global rank 0, model parallel rank 0, and data parallel rank 0 with model parallel seed: 3952 and data parallel seed: 1234
+building GPT2 model ...
+[2025-04-28 01:51:00,773] [INFO] [utils.py:780:see_memory_usage] Before Building Model
+[2025-04-28 01:51:00,774] [INFO] [utils.py:781:see_memory_usage] MA 0.0 GB         Max_MA 0.0 GB         CA 0.0 GB         Max_CA 0 GB 
+[2025-04-28 01:51:00,774] [INFO] [utils.py:788:see_memory_usage] CPU Virtual Memory:  used = 5.58 GB, percent = 2.2%
+[2025-04-28 01:51:00,774] [WARNING] [partition_parameters.py:981:__init__] zero.Init: the `config` argument is deprecated. Please use `config_dict_or_path` instead.
+[2025-04-28 01:51:00,775] [INFO] [comm.py:637:init_distributed] cdb=None
+Traceback (most recent call last):
+  File "/home/sabiha/stronghold/DeepSpeedExample/pretrain_gpt2.py", line 133, in <module>
+    pretrain(train_valid_test_datasets_provider, model_provider, forward_step,
+  File "/home/sabiha/stronghold/DeepSpeedExample/megatron/training.py", line 95, in pretrain
+    model, optimizer, lr_scheduler = setup_model_and_optimizer(model_provider)
+  File "/home/sabiha/stronghold/DeepSpeedExample/megatron/training.py", line 249, in setup_model_and_optimizer
+    model = get_model(model_provider_func)
+  File "/home/sabiha/stronghold/DeepSpeedExample/megatron/training.py", line 139, in get_model
+    model = model_provider_func()
+  File "/home/sabiha/stronghold/DeepSpeedExample/pretrain_gpt2.py", line 41, in model_provider
+    with deepspeed.zero.Init(data_parallel_group=mpu.get_data_parallel_group(),
+  File "/home/sabiha/miniconda3/envs/stronghold_deepspeed_mine/lib/python3.9/site-packages/deepspeed/runtime/zero/partition_parameters.py", line 1068, in __init__
+    self.param_swapper = param_swapper or AsyncPartitionedParameterSwapper(_ds_config, self.dtype)
+  File "/home/sabiha/miniconda3/envs/stronghold_deepspeed_mine/lib/python3.9/site-packages/deepspeed/runtime/swap_tensor/partitioned_param_swapper.py", line 45, in __init__
+    self._configure_aio(ds_config)
+  File "/home/sabiha/miniconda3/envs/stronghold_deepspeed_mine/lib/python3.9/site-packages/deepspeed/runtime/swap_tensor/partitioned_param_swapper.py", line 90, in _configure_aio
+    os.makedirs(self.swap_folder, exist_ok=True)
+  File "/home/sabiha/miniconda3/envs/stronghold_deepspeed_mine/lib/python3.9/os.py", line 215, in makedirs
+    makedirs(head, exist_ok=exist_ok)
+  File "/home/sabiha/miniconda3/envs/stronghold_deepspeed_mine/lib/python3.9/os.py", line 215, in makedirs
+    makedirs(head, exist_ok=exist_ok)
+  File "/home/sabiha/miniconda3/envs/stronghold_deepspeed_mine/lib/python3.9/os.py", line 225, in makedirs
+    mkdir(name, mode)
+PermissionError: [Errno 13] Permission denied: '/mnt/nvme/zero_stage_3'
+[2025-04-28 01:51:05,170] [INFO] [launch.py:319:sigkill_handler] Killing subprocess 30841
+[2025-04-28 01:51:05,171] [ERROR] [launch.py:325:sigkill_handler] ['/home/sabiha/miniconda3/envs/stronghold_deepspeed_mine/bin/python3.9', '-u', 'pretrain_gpt2.py', '--local_rank=0', '--model-parallel-size', '1', '--num-layers', '74', '--hidden-size', '2560', '--num-attention-heads', '16', '--seq-length', '1024', '--max-position-embeddings', '1024', '--batch-size', '16', '--train-iters', '100', '--log-interval', '10', '--exit-interval', '100', '--lr-decay-iters', '320000', '--save', '/home/sabiha/stronghold/checkpoints/gpt2', '--data-path', '/home/sabiha/stronghold/data/my-gpt2_text_document', '--vocab-file', '/home/sabiha/stronghold/data/gpt2-vocab.json', '--merge-file', '/home/sabiha/stronghold/data/gpt2-merges.txt', '--data-impl', 'mmap', '--split', '949,50,1', '--distributed-backend', 'nccl', '--lr', '1.5e-4', '--lr-decay-style', 'cosine', '--min-lr', '1.0e-5', '--weight-decay', '1e-2', '--clip-grad', '1.0', '--warmup', '0.01', '--checkpoint-activations', '--save-interval', '10000', '--eval-interval', '1000', '--eval-iters', '1000', '--cpu-optimizer', '--deepspeed', '--deepspeed_config', '/home/sabiha/stronghold/DeepSpeedExample/examples/ds_zero_stage_infinity-smart-cache.json', '--zero-stage', '3', '--zero-reduce-bucket-size', '50000000', '--zero-allgather-bucket-size', '5000000000', '--zero-contigious-gradients', '--zero-reduce-scatter', '--checkpoint-activations', '--checkpoint-num-layers', '1', '--partition-activations', '--synchronize-each-layer', '--contigious-checkpointing'] exits with return code = 1

@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/home/sabiha/stronghold/L2L/pretrain_gpt.py", line 27, in <module>
+    from megatron.training import pretrain
+  File "/home/sabiha/stronghold/L2L/megatron/training.py", line 41, in <module>
+    from megatron.optimizer import get_megatron_optimizer
+  File "/home/sabiha/stronghold/L2L/megatron/optimizer/__init__.py", line 29, in <module>
+    from .optimizer import Float16OptimizerWithFloat16Params, FP32Optimizer
+  File "/home/sabiha/stronghold/L2L/megatron/optimizer/optimizer.py", line 30, in <module>
+    from .clip_grads import clip_grad_norm_fp32, count_zeros_fp32
+  File "/home/sabiha/stronghold/L2L/megatron/optimizer/clip_grads.py", line 19, in <module>
+    from torch._six import inf
+ModuleNotFoundError: No module named 'torch._six'

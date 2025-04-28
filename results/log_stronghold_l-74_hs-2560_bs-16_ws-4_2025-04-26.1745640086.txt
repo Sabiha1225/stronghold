@@ -1,0 +1,471 @@
+PYTHONGIL=1 python pretrain_gpt.py --num-layers 74 --hidden-size 2560 --num-attention-heads 16 --seq-length 1024 --micro-batch-size 16 --global-batch-size 16 --max-position-embeddings 1024 --train-iters 100 --log-interval 10 --exit-interval 100 --lr-decay-iters 320000 --save /home/sabiha/stronghold/checkpoints/gpt2 --data-path /home/sabiha/stronghold/data/my-gpt2_text_document --vocab-file /home/sabiha/stronghold/data/gpt2-vocab.json --merge-file /home/sabiha/stronghold/data/gpt2-merges.txt --data-impl mmap --distributed-backend nccl --split 949,50,1 --lr 0.00015 --min-lr 0.00001 --lr-decay-style cosine --lr-warmup-fraction .01 --weight-decay 1e-2 --clip-grad 1.0 --log-interval 10 --save-interval 10000 --eval-interval 1000 --eval-iters 1000 --checkpoint-activations --activations-checkpoint-method 'uniform' --activations-checkpoint-num-layers 1 --enable-gl --use-cpu-initialization --gl-world-size 1 --gl-window-size 4 --gl-ray-max-concurrency 12
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+[93m [WARNING] [0m using untested triton version (2.2.0), only 1.0.0 is known to be compatible
+using world size: 1, data-parallel-size: 1, tensor-model-parallel size: 1, pipeline-model-parallel size: 1 
+--checkpoint-activations is no longer valid, use --activation-checkpoint-method instead. Defaulting to activation-checkpoint-method=uniform.
+using torch.float32 for parameters ...
+------------------------ arguments ------------------------
+  accumulate_allreduce_grads_in_fp32 .............. False
+  activations_checkpoint_method ................... uniform
+  activations_checkpoint_num_layers ............... 1
+  adam_beta1 ...................................... 0.9
+  adam_beta2 ...................................... 0.999
+  adam_eps ........................................ 1e-08
+  adlr_autoresume ................................. False
+  adlr_autoresume_interval ........................ 1000
+  apply_query_key_layer_scaling ................... True
+  apply_residual_connection_post_layernorm ........ False
+  attention_dropout ............................... 0.1
+  attention_softmax_in_fp32 ....................... False
+  bert_binary_head ................................ True
+  bert_load ....................................... None
+  bf16 ............................................ False
+  bias_dropout_fusion ............................. True
+  bias_gelu_fusion ................................ True
+  biencoder_projection_dim ........................ 0
+  biencoder_shared_query_context_model ............ False
+  block_data_path ................................. None
+  clip_grad ....................................... 1.0
+  consumed_train_samples .......................... 0
+  consumed_valid_samples .......................... 0
+  data_impl ....................................... mmap
+  data_parallel_size .............................. 1
+  data_path ....................................... ['/home/sabiha/stronghold/data/my-gpt2_text_document']
+  dataloader_type ................................. single
+  DDP_impl ........................................ local
+  decoder_seq_length .............................. None
+  distribute_checkpointed_activations ............. False
+  distributed_backend ............................. nccl
+  embedding_path .................................. None
+  empty_unused_memory_level ....................... 0
+  enable_gl ....................................... True
+  enable_l2l ...................................... False
+  encoder_seq_length .............................. 1024
+  eod_mask_loss ................................... False
+  eval_interval ................................... 1000
+  eval_iters ...................................... 1000
+  evidence_data_path .............................. None
+  exit_duration_in_mins ........................... None
+  exit_interval ................................... 100
+  ffn_hidden_size ................................. 10240
+  finetune ........................................ False
+  fp16 ............................................ False
+  fp16_lm_cross_entropy ........................... False
+  fp32_residual_connection ........................ False
+  gl_debug_print .................................. False
+  gl_enable_ddp ................................... False
+  gl_ray_max_concurrency .......................... 12
+  gl_window_size .................................. 4
+  gl_world_size ................................... 1
+  global_batch_size ............................... 16
+  hidden_dropout .................................. 0.1
+  hidden_size ..................................... 2560
+  hysteresis ...................................... 2
+  ict_head_size ................................... None
+  ict_load ........................................ None
+  img_dim ......................................... 224
+  indexer_batch_size .............................. 128
+  indexer_log_interval ............................ 1000
+  init_method_std ................................. 0.02
+  init_method_xavier_uniform ...................... False
+  initial_loss_scale .............................. 4294967296
+  kv_channels ..................................... 160
+  layernorm_epsilon ............................... 1e-05
+  lazy_mpu_init ................................... None
+  load ............................................ None
+  local_rank ...................................... 0
+  log_batch_size_to_tensorboard ................... False
+  log_interval .................................... 10
+  log_learning_rate_to_tensorboard ................ True
+  log_loss_scale_to_tensorboard ................... True
+  log_memory_to_tensorboard ....................... False
+  log_num_zeros_in_grad ........................... False
+  log_params_norm ................................. False
+  log_timers_to_tensorboard ....................... False
+  log_validation_ppl_to_tensorboard ............... False
+  loss_scale ...................................... None
+  loss_scale_window ............................... 1000
+  lr .............................................. 0.00015
+  lr_decay_iters .................................. 320000
+  lr_decay_samples ................................ None
+  lr_decay_style .................................. cosine
+  lr_warmup_fraction .............................. 0.01
+  lr_warmup_iters ................................. 0
+  lr_warmup_samples ............................... 0
+  make_vocab_size_divisible_by .................... 128
+  mask_prob ....................................... 0.15
+  masked_softmax_fusion ........................... True
+  max_position_embeddings ......................... 1024
+  merge_file ...................................... /home/sabiha/stronghold/data/gpt2-merges.txt
+  micro_batch_size ................................ 16
+  min_loss_scale .................................. 1.0
+  min_lr .......................................... 1e-05
+  mmap_warmup ..................................... False
+  no_async_tensor_model_parallel_allreduce ........ False
+  no_load_optim ................................... None
+  no_load_rng ..................................... None
+  no_save_optim ................................... None
+  no_save_rng ..................................... None
+  num_attention_heads ............................. 16
+  num_channels .................................... 3
+  num_classes ..................................... 1000
+  num_layers ...................................... 74
+  num_layers_per_virtual_pipeline_stage ........... None
+  num_workers ..................................... 2
+  onnx_safe ....................................... None
+  openai_gelu ..................................... False
+  optimizer ....................................... adam
+  override_lr_scheduler ........................... False
+  params_dtype .................................... torch.float32
+  patch_dim ....................................... 16
+  pipeline_model_parallel_size .................... 1
+  pipeline_model_parallel_split_rank .............. None
+  query_in_block_prob ............................. 0.1
+  rampup_batch_size ............................... None
+  rank ............................................ 0
+  reset_attention_mask ............................ False
+  reset_position_ids .............................. False
+  retriever_report_topk_accuracies ................ []
+  retriever_score_scaling ......................... False
+  retriever_seq_length ............................ 256
+  sample_rate ..................................... 1.0
+  save ............................................ /home/sabiha/stronghold/checkpoints/gpt2
+  save_interval ................................... 10000
+  scatter_gather_tensors_in_pipeline .............. True
+  seed ............................................ 1234
+  seq_length ...................................... 1024
+  sgd_momentum .................................... 0.9
+  short_seq_prob .................................. 0.1
+  split ........................................... 949,50,1
+  tensor_model_parallel_size ...................... 1
+  tensorboard_dir ................................. None
+  tensorboard_log_interval ........................ 1
+  tensorboard_queue_size .......................... 1000
+  titles_data_path ................................ None
+  tokenizer_type .................................. None
+  train_iters ..................................... 100
+  train_samples ................................... None
+  use_checkpoint_lr_scheduler ..................... False
+  use_contiguous_buffers_in_local_ddp ............. True
+  use_cpu_initialization .......................... True
+  use_one_sent_docs ............................... False
+  virtual_pipeline_model_parallel_size ............ None
+  vocab_extra_ids ................................. 0
+  vocab_file ...................................... /home/sabiha/stronghold/data/gpt2-vocab.json
+  weight_decay .................................... 0.01
+  world_size ...................................... 1
+-------------------- end of arguments ---------------------
+using world size: 1, data-parallel-size: 1, tensor-model-parallel size: 1, pipeline-model-parallel size: 1 
+--checkpoint-activations is no longer valid, use --activation-checkpoint-method instead. Defaulting to activation-checkpoint-method=uniform.
+using torch.float32 for parameters ...
+------------------------ arguments ------------------------
+  accumulate_allreduce_grads_in_fp32 .............. False
+  activations_checkpoint_method ................... uniform
+  activations_checkpoint_num_layers ............... 1
+  adam_beta1 ...................................... 0.9
+  adam_beta2 ...................................... 0.999
+  adam_eps ........................................ 1e-08
+  adlr_autoresume ................................. False
+  adlr_autoresume_interval ........................ 1000
+  apply_query_key_layer_scaling ................... True
+  apply_residual_connection_post_layernorm ........ False
+  attention_dropout ............................... 0.1
+  attention_softmax_in_fp32 ....................... False
+  bert_binary_head ................................ True
+  bert_load ....................................... None
+  bf16 ............................................ False
+  bias_dropout_fusion ............................. True
+  bias_gelu_fusion ................................ True
+  biencoder_projection_dim ........................ 0
+  biencoder_shared_query_context_model ............ False
+  block_data_path ................................. None
+  clip_grad ....................................... 1.0
+  consumed_train_samples .......................... 0
+  consumed_valid_samples .......................... 0
+  data_impl ....................................... mmap
+  data_parallel_size .............................. 1
+  data_path ....................................... ['/home/sabiha/stronghold/data/my-gpt2_text_document']
+  dataloader_type ................................. single
+  DDP_impl ........................................ local
+  decoder_seq_length .............................. None
+  distribute_checkpointed_activations ............. False
+  distributed_backend ............................. nccl
+  embedding_path .................................. None
+  empty_unused_memory_level ....................... 0
+  enable_gl ....................................... True
+  enable_l2l ...................................... False
+  encoder_seq_length .............................. 1024
+  eod_mask_loss ................................... False
+  eval_interval ................................... 1000
+  eval_iters ...................................... 1000
+  evidence_data_path .............................. None
+  exit_duration_in_mins ........................... None
+  exit_interval ................................... 100
+  ffn_hidden_size ................................. 10240
+  finetune ........................................ False
+  fp16 ............................................ False
+  fp16_lm_cross_entropy ........................... False
+  fp32_residual_connection ........................ False
+  gl_debug_print .................................. False
+  gl_enable_ddp ................................... False
+  gl_ray_max_concurrency .......................... 12
+  gl_window_size .................................. 4
+  gl_world_size ................................... 1
+  global_batch_size ............................... 16
+  hidden_dropout .................................. 0.1
+  hidden_size ..................................... 2560
+  hysteresis ...................................... 2
+  ict_head_size ................................... None
+  ict_load ........................................ None
+  img_dim ......................................... 224
+  indexer_batch_size .............................. 128
+  indexer_log_interval ............................ 1000
+  init_method_std ................................. 0.02
+  init_method_xavier_uniform ...................... False
+  initial_loss_scale .............................. 4294967296
+  kv_channels ..................................... 160
+  layernorm_epsilon ............................... 1e-05
+  lazy_mpu_init ................................... None
+  load ............................................ None
+  local_rank ...................................... 0
+  log_batch_size_to_tensorboard ................... False
+  log_interval .................................... 10
+  log_learning_rate_to_tensorboard ................ True
+  log_loss_scale_to_tensorboard ................... True
+  log_memory_to_tensorboard ....................... False
+  log_num_zeros_in_grad ........................... False
+  log_params_norm ................................. False
+  log_timers_to_tensorboard ....................... False
+  log_validation_ppl_to_tensorboard ............... False
+  loss_scale ...................................... None
+  loss_scale_window ............................... 1000
+  lr .............................................. 0.00015
+  lr_decay_iters .................................. 320000
+  lr_decay_samples ................................ None
+  lr_decay_style .................................. cosine
+  lr_warmup_fraction .............................. 0.01
+  lr_warmup_iters ................................. 0
+  lr_warmup_samples ............................... 0
+  make_vocab_size_divisible_by .................... 128
+  mask_prob ....................................... 0.15
+  masked_softmax_fusion ........................... True
+  max_position_embeddings ......................... 1024
+  merge_file ...................................... /home/sabiha/stronghold/data/gpt2-merges.txt
+  micro_batch_size ................................ 16
+  min_loss_scale .................................. 1.0
+  min_lr .......................................... 1e-05
+  mmap_warmup ..................................... False
+  no_async_tensor_model_parallel_allreduce ........ False
+  no_load_optim ................................... None
+  no_load_rng ..................................... None
+  no_save_optim ................................... None
+  no_save_rng ..................................... None
+  num_attention_heads ............................. 16
+  num_channels .................................... 3
+  num_classes ..................................... 1000
+  num_layers ...................................... 74
+  num_layers_per_virtual_pipeline_stage ........... None
+  num_workers ..................................... 2
+  onnx_safe ....................................... None
+  openai_gelu ..................................... False
+  optimizer ....................................... adam
+  override_lr_scheduler ........................... False
+  params_dtype .................................... torch.float32
+  patch_dim ....................................... 16
+  pipeline_model_parallel_size .................... 1
+  pipeline_model_parallel_split_rank .............. None
+  query_in_block_prob ............................. 0.1
+  rampup_batch_size ............................... None
+  rank ............................................ 0
+  reset_attention_mask ............................ False
+  reset_position_ids .............................. False
+  retriever_report_topk_accuracies ................ []
+  retriever_score_scaling ......................... False
+  retriever_seq_length ............................ 256
+  sample_rate ..................................... 1.0
+  save ............................................ /home/sabiha/stronghold/checkpoints/gpt2
+  save_interval ................................... 10000
+  scatter_gather_tensors_in_pipeline .............. True
+  seed ............................................ 1234
+  seq_length ...................................... 1024
+  sgd_momentum .................................... 0.9
+  short_seq_prob .................................. 0.1
+  split ........................................... 949,50,1
+  tensor_model_parallel_size ...................... 1
+  tensorboard_dir ................................. None
+  tensorboard_log_interval ........................ 1
+  tensorboard_queue_size .......................... 1000
+  titles_data_path ................................ None
+  tokenizer_type .................................. GPT2BPETokenizer
+  train_iters ..................................... 100
+  train_samples ................................... None
+  use_checkpoint_lr_scheduler ..................... False
+  use_contiguous_buffers_in_local_ddp ............. True
+  use_cpu_initialization .......................... True
+  use_one_sent_docs ............................... False
+  virtual_pipeline_model_parallel_size ............ None
+  vocab_extra_ids ................................. 0
+  vocab_file ...................................... /home/sabiha/stronghold/data/gpt2-vocab.json
+  weight_decay .................................... 0.01
+  world_size ...................................... 1
+-------------------- end of arguments ---------------------
+setting number of micro-batches to constant 1
+> building GPT2BPETokenizer tokenizer ...
+ > padded vocab (size: 50257) with 47 dummy tokens (new size: 50304)
+>-- rank=0; local_rank=0;
+> building GPT2BPETokenizer tokenizer ...
+ > padded vocab (size: 50257) with 47 dummy tokens (new size: 50304)
+[W init.cpp:767] Warning: nvfuser is no longer supported in torch script, use _jit_set_nvfuser_enabled is deprecated and a no-op (function operator())
+> initializing torch distributed ...
+.  > the rank=0 is ready...
+.   > rank=0; local_rank=0, device=0
+--------distributed env init done ----------
+> initializing tensor model parallel with size 1
+> initializing pipeline model parallel with size 1
+> setting random seeds to 1234 ...
+> initializing model parallel cuda seeds on global rank 0, model parallel rank 0, and data parallel rank 0 with model parallel seed: 3952 and data parallel seed: 1234
+make: Entering directory '/home/sabiha/stronghold/SHv0/megatron/data'
+make: Nothing to be done for 'default'.
+make: Leaving directory '/home/sabiha/stronghold/SHv0/megatron/data'
+> compiling dataset index builder ...
+>>> done with dataset index builder. Compilation time: 0.113 seconds
+WARNING: constraints for invoking optimized fused softmax kernel are not met. We default back to unfused kernel invocations.
+> compiling and loading fused kernels ...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /home/sabiha/stronghold/SHv0/megatron/fused_kernels/build/build.ninja...
+Building extension module scaled_upper_triang_masked_softmax_cuda...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module scaled_upper_triang_masked_softmax_cuda...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /home/sabiha/stronghold/SHv0/megatron/fused_kernels/build/build.ninja...
+Building extension module scaled_masked_softmax_cuda...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module scaled_masked_softmax_cuda...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /home/sabiha/stronghold/SHv0/megatron/fused_kernels/build/build.ninja...
+Building extension module fused_mix_prec_layer_norm_cuda...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module fused_mix_prec_layer_norm_cuda...
+>>> done with compiling and loading fused kernels. Compilation time: 0.917 seconds
+> compiling and loading optimizer utils ...
+Emitting ninja build file /home/sabiha/stronghold/SHv0/megatron/optimizer/build/build.ninja...
+Building extension module optimizer_utils...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module optimizer_utils...
+Emitting ninja build file /home/sabiha/stronghold/SHv0/megatron/optimizer/build/build.ninja...
+Building extension module offloading_utils...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module offloading_utils...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /home/sabiha/stronghold/SHv0/megatron/optimizer/build/build.ninja...
+Building extension module deepspeed_cpu_adam...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module deepspeed_cpu_adam...
+>>> done with compiling and loading optimizer utilss. Compilation time: 0.586 seconds
+/home/sabiha/stronghold/SHv0/megatron/training.py:678: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at /opt/conda/conda-bld/pytorch_1704987277512/work/torch/csrc/tensor/python_tensor.cpp:83.)
+  start_time_tensor = torch.cuda.DoubleTensor([_TRAIN_START_TIME])
+time to initialize megatron (seconds): 3.507
+[after megatron is initialized] datetime: 2025-04-26 04:01:35 
+building GPT model ...
+ > number of parameters on (tensor, pipeline) model parallel rank (0, 0): 5953464320
+--- init model: rank=0   world-size=1---
+ > number of parameters on pipeline model parallel rank 0,             tensor model parallel rank 0             5.953 Billion
+> learning rate decay style: cosine
+[after model, optimizer, and learning rate scheduler are built] datetime: 2025-04-26 04:02:46 
+> building train, validation, and test datasets ...
+ > datasets target sizes (minimum size):
+    train:      1600
+    validation: 16000
+    test:       16000
+> building train, validation, and test datasets for GPT ...
+ > building dataset index ...
+    reading sizes...
+    reading pointers...
+    reading document index...
+    creating numpy buffer of mmap...
+    creating memory view of numpy buffer...
+ > finished creating indexed dataset in 0.000437 seconds
+    number of documents: 6351519
+ > dataset split:
+    train:
+     document indices in [0, 6027591) total of 6027591 documents
+    validation:
+     document indices in [6027591, 6345167) total of 317576 documents
+    test:
+     document indices in [6345167, 6351519) total of 6352 documents
+ > loading doc-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_train_indexmap_1600ns_1024sl_1234s_doc_idx.npy
+ > loading sample-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_train_indexmap_1600ns_1024sl_1234s_sample_idx.npy
+ > loading shuffle-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_train_indexmap_1600ns_1024sl_1234s_shuffle_idx.npy
+    loaded indexed file in 0.004 seconds
+    total number of samples: 3061569
+    total number of epochs: 1
+ > loading doc-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_valid_indexmap_16000ns_1024sl_1234s_doc_idx.npy
+ > loading sample-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_valid_indexmap_16000ns_1024sl_1234s_sample_idx.npy
+ > loading shuffle-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_valid_indexmap_16000ns_1024sl_1234s_shuffle_idx.npy
+    loaded indexed file in 0.003 seconds
+    total number of samples: 143830
+    total number of epochs: 1
+ > loading doc-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_test_indexmap_16000ns_1024sl_1234s_doc_idx.npy
+ > loading sample-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_test_indexmap_16000ns_1024sl_1234s_sample_idx.npy
+ > loading shuffle-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_test_indexmap_16000ns_1024sl_1234s_shuffle_idx.npy
+    loaded indexed file in 0.002 seconds
+    total number of samples: 17453
+    total number of epochs: 7
+> finished creating GPT datasets ...
+[after dataloaders are built] datetime: 2025-04-26 04:02:46 
+done with setup ...
+time (ms) | model-and-optimizer-setup: 71556.16 | train/valid/test-data-iterators-setup: 338.28
+training ...
+[before the start of training step] datetime: 2025-04-26 04:02:46 
+ iteration       10/     100 | elapsed time per iteration (ms): 39007.8 | learning rate: 4.687E-07 | global batch size:    16 | lm loss: 1.081015E+01 | loss scale: 1.0 | grad norm: 381.830 | number of skipped iterations:   0 | number of nan iterations:   0 |
+Effective Tera Flops per GPU: 20.0 and total parameters 5.953 B
+NumWorkers: 1; SamplesPerStep: 16; IterationTime: 39.007770490646365;  SamplesPerSecond: 0.4101746856779888
+[Rank 0] (after 10 iterations) memory (MB) | allocated: 9553.25732421875 | max allocated: 30574.75927734375 | reserved: 36114.0 | max reserved: 36114.0
+time (ms) | e2e-time: 39008.34 | forward-compute: 8911.66 | backward-compute: 30077.31 | backward-embedding-all-reduce: 0.05 | optimizer: 4.14 | batch-generator: 5.08 | offloading-func-call-overhead: 8672.40 | offloading-fwd-overhead: 6691.57 | offloading-bwd-overhead: 16042.42 | offloading-fwd-2gpu-overhead: 2037.14 | offloading-fwd-2cpu-overhead: 4652.50 | offloading-bwd-2gpu-overhead: 917.97 | offloading-bwd-2cpu-overhead: 15121.57
+ iteration       20/     100 | elapsed time per iteration (ms): 36083.4 | learning rate: 9.375E-07 | global batch size:    16 | lm loss: 1.067350E+01 | loss scale: 1.0 | grad norm: 205.776 | number of skipped iterations:   0 | number of nan iterations:   0 |
+Effective Tera Flops per GPU: 21.63 and total parameters 5.953 B
+NumWorkers: 1; SamplesPerStep: 16; IterationTime: 36.08341388702392;  SamplesPerSecond: 0.4434170239571986
+time (ms) | e2e-time: 36083.30 | forward-compute: 8656.74 | backward-compute: 27407.46 | backward-embedding-all-reduce: 0.03 | optimizer: 4.27 | batch-generator: 1.82 | offloading-func-call-overhead: 86.30 | offloading-fwd-overhead: 8308.06 | offloading-bwd-overhead: 18744.44 | offloading-fwd-2gpu-overhead: 2775.78 | offloading-fwd-2cpu-overhead: 5530.63 | offloading-bwd-2gpu-overhead: 2079.37 | offloading-bwd-2cpu-overhead: 16661.86
+ iteration       30/     100 | elapsed time per iteration (ms): 36541.9 | learning rate: 1.406E-06 | global batch size:    16 | lm loss: 1.053541E+01 | loss scale: 1.0 | grad norm: 307.819 | number of skipped iterations:   0 | number of nan iterations:   0 |
+Effective Tera Flops per GPU: 21.35 and total parameters 5.953 B
+NumWorkers: 1; SamplesPerStep: 16; IterationTime: 36.541868162155154;  SamplesPerSecond: 0.4378539140089864
+time (ms) | e2e-time: 36541.91 | forward-compute: 8566.54 | backward-compute: 27956.27 | backward-embedding-all-reduce: 0.03 | optimizer: 4.33 | batch-generator: 1.72 | offloading-func-call-overhead: 76.70 | offloading-fwd-overhead: 8246.19 | offloading-bwd-overhead: 19115.16 | offloading-fwd-2gpu-overhead: 2128.99 | offloading-fwd-2cpu-overhead: 6115.60 | offloading-bwd-2gpu-overhead: 1418.83 | offloading-bwd-2cpu-overhead: 17693.12
+ iteration       40/     100 | elapsed time per iteration (ms): 36814.9 | learning rate: 1.875E-06 | global batch size:    16 | lm loss: 1.052958E+01 | loss scale: 1.0 | grad norm: 54.073 | number of skipped iterations:   0 | number of nan iterations:   0 |
+Effective Tera Flops per GPU: 21.2 and total parameters 5.953 B
+NumWorkers: 1; SamplesPerStep: 16; IterationTime: 36.81491312980652;  SamplesPerSecond: 0.43460648524648815
+time (ms) | e2e-time: 36814.93 | forward-compute: 8525.51 | backward-compute: 28270.38 | backward-embedding-all-reduce: 0.03 | optimizer: 4.18 | batch-generator: 1.87 | offloading-func-call-overhead: 82.33 | offloading-fwd-overhead: 8159.80 | offloading-bwd-overhead: 20012.72 | offloading-fwd-2gpu-overhead: 2684.29 | offloading-fwd-2cpu-overhead: 5473.33 | offloading-bwd-2gpu-overhead: 1813.16 | offloading-bwd-2cpu-overhead: 18195.79
+ iteration       50/     100 | elapsed time per iteration (ms): 36382.1 | learning rate: 2.344E-06 | global batch size:    16 | lm loss: 1.059964E+01 | loss scale: 1.0 | grad norm: 1940.870 | number of skipped iterations:   0 | number of nan iterations:   0 |
+Effective Tera Flops per GPU: 21.45 and total parameters 5.953 B
+NumWorkers: 1; SamplesPerStep: 16; IterationTime: 36.38205466270447;  SamplesPerSecond: 0.43977725140415797
+time (ms) | e2e-time: 36381.95 | forward-compute: 8574.74 | backward-compute: 27788.32 | backward-embedding-all-reduce: 0.02 | optimizer: 4.16 | batch-generator: 1.95 | offloading-func-call-overhead: 70.30 | offloading-fwd-overhead: 8236.45 | offloading-bwd-overhead: 19408.79 | offloading-fwd-2gpu-overhead: 1984.08 | offloading-fwd-2cpu-overhead: 6250.30 | offloading-bwd-2gpu-overhead: 2204.84 | offloading-bwd-2cpu-overhead: 17200.64
+ iteration       60/     100 | elapsed time per iteration (ms): 36169.4 | learning rate: 2.812E-06 | global batch size:    16 | lm loss: 1.058686E+01 | loss scale: 1.0 | grad norm: 2273.566 | number of skipped iterations:   0 | number of nan iterations:   0 |
+Effective Tera Flops per GPU: 21.57 and total parameters 5.953 B
+NumWorkers: 1; SamplesPerStep: 16; IterationTime: 36.16940972805023;  SamplesPerSecond: 0.44236276235361455
+time (ms) | e2e-time: 36169.45 | forward-compute: 8592.50 | backward-compute: 27557.94 | backward-embedding-all-reduce: 0.03 | optimizer: 4.27 | batch-generator: 1.72 | offloading-func-call-overhead: 90.36 | offloading-fwd-overhead: 8248.20 | offloading-bwd-overhead: 19469.74 | offloading-fwd-2gpu-overhead: 2725.61 | offloading-fwd-2cpu-overhead: 5520.87 | offloading-bwd-2gpu-overhead: 1810.30 | offloading-bwd-2cpu-overhead: 17653.86
+ iteration       70/     100 | elapsed time per iteration (ms): 36364.8 | learning rate: 3.281E-06 | global batch size:    16 | lm loss: 1.050403E+01 | loss scale: 1.0 | grad norm: 1458.471 | number of skipped iterations:   0 | number of nan iterations:   0 |
+Effective Tera Flops per GPU: 21.46 and total parameters 5.953 B
+NumWorkers: 1; SamplesPerStep: 16; IterationTime: 36.36482856273651;  SamplesPerSecond: 0.4399855748638231
+time (ms) | e2e-time: 36364.83 | forward-compute: 8535.00 | backward-compute: 27810.77 | backward-embedding-all-reduce: 0.02 | optimizer: 4.29 | batch-generator: 1.59 | offloading-func-call-overhead: 89.20 | offloading-fwd-overhead: 8192.96 | offloading-bwd-overhead: 18870.85 | offloading-fwd-2gpu-overhead: 1924.14 | offloading-fwd-2cpu-overhead: 6266.78 | offloading-bwd-2gpu-overhead: 1771.26 | offloading-bwd-2cpu-overhead: 17096.59
+ iteration       80/     100 | elapsed time per iteration (ms): 36247.4 | learning rate: 3.750E-06 | global batch size:    16 | lm loss: 1.047017E+01 | loss scale: 1.0 | grad norm: 5.453 | number of skipped iterations:   0 | number of nan iterations:   0 |
+Effective Tera Flops per GPU: 21.53 and total parameters 5.953 B
+NumWorkers: 1; SamplesPerStep: 16; IterationTime: 36.247407627105716;  SamplesPerSecond: 0.4414108772853384
+time (ms) | e2e-time: 36247.33 | forward-compute: 8544.51 | backward-compute: 27683.92 | backward-embedding-all-reduce: 0.04 | optimizer: 4.20 | batch-generator: 1.80 | offloading-func-call-overhead: 98.61 | offloading-fwd-overhead: 8203.02 | offloading-bwd-overhead: 19904.81 | offloading-fwd-2gpu-overhead: 2724.08 | offloading-fwd-2cpu-overhead: 5477.22 | offloading-bwd-2gpu-overhead: 2050.94 | offloading-bwd-2cpu-overhead: 17851.13
+ iteration       90/     100 | elapsed time per iteration (ms): 36202.6 | learning rate: 4.219E-06 | global batch size:    16 | lm loss: 1.079581E+01 | loss scale: 1.0 | grad norm: 3.963 | number of skipped iterations:   0 | number of nan iterations:   0 |
+Effective Tera Flops per GPU: 21.55 and total parameters 5.953 B
+NumWorkers: 1; SamplesPerStep: 16; IterationTime: 36.202604103088376;  SamplesPerSecond: 0.44195715740335567
+time (ms) | e2e-time: 36202.68 | forward-compute: 8625.18 | backward-compute: 27558.46 | backward-embedding-all-reduce: 0.03 | optimizer: 4.29 | batch-generator: 1.69 | offloading-func-call-overhead: 91.09 | offloading-fwd-overhead: 8286.51 | offloading-bwd-overhead: 19042.65 | offloading-fwd-2gpu-overhead: 2150.29 | offloading-fwd-2cpu-overhead: 6134.52 | offloading-bwd-2gpu-overhead: 1375.43 | offloading-bwd-2cpu-overhead: 17662.88
+ iteration      100/     100 | elapsed time per iteration (ms): 36506.0 | learning rate: 4.687E-06 | global batch size:    16 | lm loss: 1.071692E+01 | loss scale: 1.0 | grad norm: 426.576 | number of skipped iterations:   0 | number of nan iterations:   0 |
+Effective Tera Flops per GPU: 21.38 and total parameters 5.953 B
+NumWorkers: 1; SamplesPerStep: 16; IterationTime: 36.506022930145264;  SamplesPerSecond: 0.43828384238448004
+time (ms) | e2e-time: 36506.00 | forward-compute: 8558.85 | backward-compute: 27928.10 | backward-embedding-all-reduce: 0.03 | optimizer: 4.27 | batch-generator: 1.78 | offloading-func-call-overhead: 82.09 | offloading-fwd-overhead: 8221.00 | offloading-bwd-overhead: 19140.28 | offloading-fwd-2gpu-overhead: 2837.31 | offloading-fwd-2cpu-overhead: 5380.35 | offloading-bwd-2gpu-overhead: 2359.04 | offloading-bwd-2cpu-overhead: 16778.36
+[exiting program at iteration 100] datetime: 2025-04-26 05:03:50 
+Training Time taken: 3663.2076172828674 s
+Finished Training
+[after training is done] datetime: 2025-04-26 05:03:50 

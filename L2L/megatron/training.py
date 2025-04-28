@@ -192,6 +192,29 @@ def update_train_iters(args):
 
     print_rank_0('setting training iterations to {}'.format(args.train_iters))
 
+def _assert_language_model(self):
+    _models = self.model if isinstance(self.model, list) else [self.model]
+
+    if self._language_model is None:
+        for name, module in _models[0].named_modules():
+            if name.endswith("language_model"):
+                self._language_model = module
+                break
+
+    assert (
+        self._language_model is not None
+    ), "--- _assert_language_model training.py --- language_model not found !"
+
+def _get_layers(model):
+    _models = model if isinstance(model, list) else [model]
+    _language_model = None
+    for name, module in _models[0].named_modules():
+        if name.endswith("language_model"):
+            _language_model = module
+            break
+
+    _transformer_layers = _language_model.encoder.layers
+    return _transformer_layers
 
 def get_model(model_provider_func):
     """Build the model."""
@@ -241,16 +264,39 @@ def get_model(model_provider_func):
 
     # GPU allocation.
     if args.enable_l2l:
+        print_rank_0("Initiating L2L model")
+        layers = _get_layers(model)
         def _forward_pre_hook(module, input):
             if hasattr(torch, '_strongh_is_backward_now') and torch._strongh_is_backward_now:
                 torch._current_layers.cpu()
+                print_rank_0(f"post backword")
             module.cuda()
+            print_rank_0(f"pre forward")
+            params = list(module.parameters())
+            if params:
+                print_rank_0(f"module {module_name} is cuda {params[0].is_cuda}")
+            else:
+                print_rank_0(f"module {module_name} has no parameters")
 
         def _forward_post_hook(module, input, output):
             if hasattr(torch, '_strongh_is_backward_now') and torch._strongh_is_backward_now:
                 pass
+                print_rank_0(f"pre backword")
             else:
                 module.cpu()
+                print_rank_0(f"post forward")
+
+            if params:
+                print_rank_0(f"module {module_name} is cuda {params[0].is_cuda}")
+            else:
+                print_rank_0(f"module {module_name} has no parameters")
+
+        # for i in range(len(layers)):
+        #     layers[i].register_forward_pre_hook(_forward_pre_hook)
+        #     layers[i].register_forward_hook(_forward_post_hook)
+        #     torch._current_layers = layers[i]
+        #     # module.cpu()
+
 
         for model_module in model:
             for module_name, module in model_module.named_modules():
@@ -262,11 +308,24 @@ def get_model(model_provider_func):
                         child.register_forward_pre_hook(_forward_pre_hook)
                         child.register_forward_hook(_forward_post_hook)
                         child.cpu()
+                        params = list(child.parameters())
+                        if params:
+                            print_rank_0(f"child module {child_name} is cuda {params[0].is_cuda}")
+                        else:
+                            print_rank_0(f"child module {child_name} has no parameters")
+                    module.register_forward_pre_hook(_forward_pre_hook)
+                    module.register_forward_hook(_forward_post_hook)
                 if module_name.startswith('language_model.encoder.layers'):
                     # skip moving to cuda
                     module.cpu()
                 else:
                     module.cuda(torch.cuda.current_device())
+
+                params = list(module.parameters())
+                if params:
+                    print_rank_0(f"module {module_name} is cuda {params[0].is_cuda}")
+                else:
+                    print_rank_0(f"module {module_name} has no parameters")
     else:
         for model_module in model:
             model_module.cuda(torch.cuda.current_device())
@@ -666,6 +725,8 @@ def train(forward_step_func, model, optimizer, lr_scheduler,
     timers('interval-time').start()
     print_datetime('before the start of training step')
     report_memory_flag = True
+    torch.cuda.synchronize()
+    t0 = time.time()
     while iteration < args.train_iters:
         update_num_microbatches(args.consumed_train_samples)
         loss_dict, skipped_iter, grad_norm, num_zeros_in_grad = \
@@ -738,6 +799,13 @@ def train(forward_step_func, model, optimizer, lr_scheduler,
                                          lr_scheduler)
             torch.distributed.barrier()
             print_datetime('exiting program at iteration {}'.format(iteration))
+            torch.cuda.synchronize()
+            t1 = time.time()
+            training_time = t1 - t0
+            print_rank_0(f"Training Time taken: {training_time / 1} s")
+            print_rank_0("Finished Training")
+            with open("/home/sabiha/stronghold/training_time.txt", 'a') as file:
+                file.write(f"Training Time taken l2l batch size 16: {training_time / 1} s \n")
             sys.exit()
 
 

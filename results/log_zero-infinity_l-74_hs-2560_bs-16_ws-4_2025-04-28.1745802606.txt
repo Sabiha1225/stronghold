@@ -1,0 +1,609 @@
+deepspeed --num_nodes 1 --num_gpus 1 pretrain_gpt2.py --model-parallel-size 1 --num-layers 74 --hidden-size 2560 --num-attention-heads 16 --seq-length 1024 --max-position-embeddings 1024 --batch-size 16 --train-iters 100 --log-interval 10 --exit-interval 100 --lr-decay-iters 320000 --save /home/sabiha/stronghold/checkpoints/gpt2 --data-path /home/sabiha/stronghold/data/my-gpt2_text_document --vocab-file /home/sabiha/stronghold/data/gpt2-vocab.json --merge-file /home/sabiha/stronghold/data/gpt2-merges.txt --data-impl mmap --split 949,50,1 --distributed-backend nccl --lr 1.5e-4 --lr-decay-style cosine --min-lr 1.0e-5 --weight-decay 1e-2 --clip-grad 1.0 --warmup 0.01 --checkpoint-activations --save-interval 10000 --eval-interval 1000 --eval-iters 1000 --cpu-optimizer --deepspeed --deepspeed_config /home/sabiha/stronghold/DeepSpeedExample/examples/ds_zero_stage_infinity-cpu.json --zero-stage 3 --zero-reduce-bucket-size 50000000 --zero-allgather-bucket-size 5000000000 --zero-contigious-gradients --zero-reduce-scatter --checkpoint-activations --checkpoint-num-layers 1 --partition-activations --synchronize-each-layer --contigious-checkpointing
+[2025-04-28 01:10:08,871] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+[93m [WARNING] [0m using untested triton version (2.2.0), only 1.0.0 is known to be compatible
+[2025-04-28 01:10:09,834] [WARNING] [runner.py:202:fetch_hostfile] Unable to find hostfile, will proceed with training with local resources only.
+[2025-04-28 01:10:09,834] [INFO] [runner.py:568:main] cmd = /home/sabiha/miniconda3/envs/stronghold_deepspeed/bin/python3.9 -u -m deepspeed.launcher.launch --world_info=eyJsb2NhbGhvc3QiOiBbMF19 --master_addr=127.0.0.1 --master_port=29500 --enable_each_rank_log=None pretrain_gpt2.py --model-parallel-size 1 --num-layers 74 --hidden-size 2560 --num-attention-heads 16 --seq-length 1024 --max-position-embeddings 1024 --batch-size 16 --train-iters 100 --log-interval 10 --exit-interval 100 --lr-decay-iters 320000 --save /home/sabiha/stronghold/checkpoints/gpt2 --data-path /home/sabiha/stronghold/data/my-gpt2_text_document --vocab-file /home/sabiha/stronghold/data/gpt2-vocab.json --merge-file /home/sabiha/stronghold/data/gpt2-merges.txt --data-impl mmap --split 949,50,1 --distributed-backend nccl --lr 1.5e-4 --lr-decay-style cosine --min-lr 1.0e-5 --weight-decay 1e-2 --clip-grad 1.0 --warmup 0.01 --checkpoint-activations --save-interval 10000 --eval-interval 1000 --eval-iters 1000 --cpu-optimizer --deepspeed --deepspeed_config /home/sabiha/stronghold/DeepSpeedExample/examples/ds_zero_stage_infinity-cpu.json --zero-stage 3 --zero-reduce-bucket-size 50000000 --zero-allgather-bucket-size 5000000000 --zero-contigious-gradients --zero-reduce-scatter --checkpoint-activations --checkpoint-num-layers 1 --partition-activations --synchronize-each-layer --contigious-checkpointing
+[2025-04-28 01:10:12,119] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+[93m [WARNING] [0m using untested triton version (2.2.0), only 1.0.0 is known to be compatible
+[2025-04-28 01:10:13,117] [INFO] [launch.py:146:main] WORLD INFO DICT: {'localhost': [0]}
+[2025-04-28 01:10:13,117] [INFO] [launch.py:152:main] nnodes=1, num_local_procs=1, node_rank=0
+[2025-04-28 01:10:13,117] [INFO] [launch.py:163:main] global_rank_mapping=defaultdict(<class 'list'>, {'localhost': [0]})
+[2025-04-28 01:10:13,117] [INFO] [launch.py:164:main] dist_world_size=1
+[2025-04-28 01:10:13,117] [INFO] [launch.py:168:main] Setting CUDA_VISIBLE_DEVICES=0
+[2025-04-28 01:10:13,142] [INFO] [launch.py:256:main] process 25334 spawned with command: ['/home/sabiha/miniconda3/envs/stronghold_deepspeed/bin/python3.9', '-u', 'pretrain_gpt2.py', '--local_rank=0', '--model-parallel-size', '1', '--num-layers', '74', '--hidden-size', '2560', '--num-attention-heads', '16', '--seq-length', '1024', '--max-position-embeddings', '1024', '--batch-size', '16', '--train-iters', '100', '--log-interval', '10', '--exit-interval', '100', '--lr-decay-iters', '320000', '--save', '/home/sabiha/stronghold/checkpoints/gpt2', '--data-path', '/home/sabiha/stronghold/data/my-gpt2_text_document', '--vocab-file', '/home/sabiha/stronghold/data/gpt2-vocab.json', '--merge-file', '/home/sabiha/stronghold/data/gpt2-merges.txt', '--data-impl', 'mmap', '--split', '949,50,1', '--distributed-backend', 'nccl', '--lr', '1.5e-4', '--lr-decay-style', 'cosine', '--min-lr', '1.0e-5', '--weight-decay', '1e-2', '--clip-grad', '1.0', '--warmup', '0.01', '--checkpoint-activations', '--save-interval', '10000', '--eval-interval', '1000', '--eval-iters', '1000', '--cpu-optimizer', '--deepspeed', '--deepspeed_config', '/home/sabiha/stronghold/DeepSpeedExample/examples/ds_zero_stage_infinity-cpu.json', '--zero-stage', '3', '--zero-reduce-bucket-size', '50000000', '--zero-allgather-bucket-size', '5000000000', '--zero-contigious-gradients', '--zero-reduce-scatter', '--checkpoint-activations', '--checkpoint-num-layers', '1', '--partition-activations', '--synchronize-each-layer', '--contigious-checkpointing']
+[2025-04-28 01:10:15,784] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+[93m [WARNING] [0m using untested triton version (2.2.0), only 1.0.0 is known to be compatible
+using world size: 1 and model-parallel size: 1 
+using torch.float32 for parameters ...
+-------------------- arguments --------------------
+  adam_beta1 ...................... 0.9
+  adam_beta2 ...................... 0.999
+  adam_eps ........................ 1e-08
+  adlr_autoresume ................. False
+  adlr_autoresume_interval ........ 1000
+  apply_query_key_layer_scaling ... False
+  apply_residual_connection_post_layernorm  False
+  attention_dropout ............... 0.1
+  attention_softmax_in_fp32 ....... False
+  batch_size ...................... 16
+  bert_load ....................... None
+  bias_dropout_fusion ............. False
+  bias_gelu_fusion ................ False
+  block_data_path ................. None
+  checkpoint_activations .......... True
+  checkpoint_in_cpu ............... False
+  checkpoint_num_layers ........... 1
+  clip_grad ....................... 1.0
+  contigious_checkpointing ........ True
+  cpu_optimizer ................... True
+  cpu_torch_adam .................. False
+  data_impl ....................... mmap
+  data_path ....................... /home/sabiha/stronghold/data/my-gpt2_text_document
+  DDP_impl ........................ local
+  deepscale ....................... False
+  deepscale_config ................ None
+  deepspeed ....................... True
+  deepspeed_activation_checkpointing  False
+  deepspeed_config ................ /home/sabiha/stronghold/DeepSpeedExample/examples/ds_zero_stage_infinity-cpu.json
+  distribute_checkpointed_activations  False
+  distributed_backend ............. nccl
+  dynamic_loss_scale .............. True
+  eod_mask_loss ................... False
+  eval_interval ................... 1000
+  eval_iters ...................... 1000
+  exit_interval ................... 100
+  faiss_use_gpu ................... False
+  finetune ........................ False
+  fp16 ............................ False
+  fp16_lm_cross_entropy ........... False
+  fp32_allreduce .................. False
+  hidden_dropout .................. 0.1
+  hidden_size ..................... 2560
+  hysteresis ...................... 2
+  ict_head_size ................... None
+  ict_load ........................ None
+  indexer_batch_size .............. 128
+  indexer_log_interval ............ 1000
+  init_method_std ................. 0.02
+  layernorm_epsilon ............... 1e-05
+  lazy_mpu_init ................... None
+  load ............................ None
+  local_rank ...................... 0
+  log_interval .................... 10
+  loss_scale ...................... None
+  loss_scale_window ............... 1000
+  lr .............................. 0.00015
+  lr_decay_iters .................. 320000
+  lr_decay_style .................. cosine
+  lr_decay_tokens ................. None
+  make_vocab_size_divisible_by .... 128
+  mask_prob ....................... 0.15
+  max_position_embeddings ......... 1024
+  memory_centric_tiled_linear ..... False
+  merge_file ...................... /home/sabiha/stronghold/data/gpt2-merges.txt
+  min_lr .......................... 1e-05
+  min_scale ....................... 1
+  mmap_warmup ..................... False
+  model_parallel_size ............. 1
+  no_load_optim ................... False
+  no_load_rng ..................... False
+  no_save_optim ................... False
+  no_save_rng ..................... False
+  num_attention_heads ............. 16
+  num_layers ...................... 74
+  num_unique_layers ............... None
+  num_workers ..................... 2
+  onnx_safe ....................... None
+  openai_gelu ..................... False
+  override_lr_scheduler ........... False
+  param_sharing_style ............. grouped
+  params_dtype .................... torch.float32
+  partition_activations ........... True
+  profile_backward ................ False
+  query_in_block_prob ............. 0.1
+  rank ............................ 0
+  remote_device ................... none
+  report_topk_accuracies .......... []
+  reset_attention_mask ............ False
+  reset_position_ids .............. False
+  save ............................ /home/sabiha/stronghold/checkpoints/gpt2
+  save_interval ................... 10000
+  scaled_masked_softmax_fusion .... False
+  scaled_upper_triang_masked_softmax_fusion  False
+  scattered_embeddings ............ False
+  seed ............................ 1234
+  seq_length ...................... 1024
+  short_seq_prob .................. 0.1
+  split ........................... 949,50,1
+  split_transformers .............. False
+  synchronize_each_layer .......... True
+  tensorboard_dir ................. None
+  tile_factor ..................... 1
+  titles_data_path ................ None
+  tokenizer_type .................. GPT2BPETokenizer
+  tokens .......................... 0
+  train_iters ..................... 100
+  train_tokens .................... None
+  use_checkpoint_lr_scheduler ..... False
+  use_cpu_initialization .......... False
+  use_one_sent_docs ............... False
+  use_pin_memory .................. False
+  vocab_file ...................... /home/sabiha/stronghold/data/gpt2-vocab.json
+  warmup .......................... 0.01
+  warmup_iters .................... None
+  weight_decay .................... 0.01
+  world_size ...................... 1
+  zero_allgather_bucket_size ...... 5000000000
+  zero_contigious_gradients ....... True
+  zero_reduce_bucket_size ......... 50000000
+  zero_reduce_scatter ............. True
+  zero_stage ...................... 3
+---------------- end of arguments ----------------
+> building GPT2BPETokenizer tokenizer ...
+ > padded vocab (size: 50257) with 47 dummy tokens (new size: 50304)
+> initializing torch distributed ...
+> initializing model parallel with size 1
+> setting random seeds to 1234 ...
+> initializing model parallel cuda seeds on global rank 0, model parallel rank 0, and data parallel rank 0 with model parallel seed: 3952 and data parallel seed: 1234
+building GPT2 model ...
+[2025-04-28 01:10:16,707] [INFO] [utils.py:779:see_memory_usage] Before Building Model
+[2025-04-28 01:10:16,708] [INFO] [utils.py:780:see_memory_usage] MA 0.0 GB         Max_MA 0.0 GB         CA 0.0 GB         Max_CA 0 GB 
+[2025-04-28 01:10:16,708] [INFO] [utils.py:787:see_memory_usage] CPU Virtual Memory:  used = 5.03 GB, percent = 2.0%
+[2025-04-28 01:10:16,708] [WARNING] [partition_parameters.py:906:__init__] zero.Init: the `config` argument is deprecated. Please use `config_dict_or_path` instead.
+[2025-04-28 01:10:16,709] [INFO] [comm.py:637:init_distributed] cdb=None
+[2025-04-28 01:10:24,676] [INFO] [partition_parameters.py:345:__exit__] finished initializing model - num_params = 892, num_elems = 5.95B
+[2025-04-28 01:10:24,774] [INFO] [utils.py:779:see_memory_usage] After Building Model
+[2025-04-28 01:10:24,774] [INFO] [utils.py:780:see_memory_usage] MA 0.0 GB         Max_MA 0.72 GB         CA 0.72 GB         Max_CA 1 GB 
+[2025-04-28 01:10:24,774] [INFO] [utils.py:787:see_memory_usage] CPU Virtual Memory:  used = 20.88 GB, percent = 8.3%
+ > number of parameters on model parallel rank 0            5.953 Billion
+Adam Optimizer #0 is created with AVX512 arithmetic capability.
+Config: alpha=0.000150, betas=(0.900000, 0.999000), weight_decay=0.010000, adam_w=1
+> learning rate decay style: cosine
+DeepSpeed is enabled.
+[2025-04-28 01:10:26,310] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed info: version=0.14.2, git-hash=unknown, git-branch=unknown
+[2025-04-28 01:10:26,327] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2025-04-28 01:10:26,329] [INFO] [logging.py:96:log_dist] [Rank 0] Using client Optimizer as basic optimizer
+[2025-04-28 01:10:26,329] [INFO] [logging.py:96:log_dist] [Rank 0] Removing param_group that has no 'params' in the basic Optimizer
+[2025-04-28 01:10:26,388] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Basic Optimizer = DeepSpeedCPUAdam
+[2025-04-28 01:10:26,388] [INFO] [utils.py:56:is_zero_supported_optimizer] Checking ZeRO support for optimizer=DeepSpeedCPUAdam type=<class 'deepspeed.ops.adam.cpu_adam.DeepSpeedCPUAdam'>
+[2025-04-28 01:10:26,388] [INFO] [logging.py:96:log_dist] [Rank 0] Creating fp16 ZeRO stage 3 optimizer, MiCS is enabled False, Hierarchical params gather False
+[2025-04-28 01:10:26,388] [INFO] [logging.py:96:log_dist] [Rank 0] Creating torch.float16 ZeRO stage 3 optimizer
+[2025-04-28 01:10:26,466] [INFO] [utils.py:779:see_memory_usage] Stage 3 initialize beginning
+[2025-04-28 01:10:26,467] [INFO] [utils.py:780:see_memory_usage] MA 0.0 GB         Max_MA 0.0 GB         CA 0.72 GB         Max_CA 1 GB 
+[2025-04-28 01:10:26,467] [INFO] [utils.py:787:see_memory_usage] CPU Virtual Memory:  used = 21.92 GB, percent = 8.7%
+[2025-04-28 01:10:26,469] [INFO] [stage3.py:130:__init__] Reduce bucket size 50000000
+[2025-04-28 01:10:26,469] [INFO] [stage3.py:131:__init__] Prefetch bucket size 50,000,000
+[2025-04-28 01:10:26,534] [INFO] [utils.py:779:see_memory_usage] DeepSpeedZeRoOffload initialize [begin]
+[2025-04-28 01:10:26,535] [INFO] [utils.py:780:see_memory_usage] MA 0.0 GB         Max_MA 0.0 GB         CA 0.72 GB         Max_CA 1 GB 
+[2025-04-28 01:10:26,535] [INFO] [utils.py:787:see_memory_usage] CPU Virtual Memory:  used = 21.92 GB, percent = 8.7%
+[2025-04-28 01:10:26,629] [INFO] [utils.py:779:see_memory_usage] DeepSpeedZeRoOffload initialize [end]
+[2025-04-28 01:10:26,629] [INFO] [utils.py:780:see_memory_usage] MA 0.0 GB         Max_MA 0.0 GB         CA 0.72 GB         Max_CA 1 GB 
+[2025-04-28 01:10:26,630] [INFO] [utils.py:787:see_memory_usage] CPU Virtual Memory:  used = 21.92 GB, percent = 8.7%
+[2025-04-28 01:10:26,697] [INFO] [utils.py:779:see_memory_usage] Before creating fp16 partitions
+[2025-04-28 01:10:26,698] [INFO] [utils.py:780:see_memory_usage] MA 0.0 GB         Max_MA 0.0 GB         CA 0.72 GB         Max_CA 1 GB 
+[2025-04-28 01:10:26,698] [INFO] [utils.py:787:see_memory_usage] CPU Virtual Memory:  used = 21.92 GB, percent = 8.7%
+[2025-04-28 01:10:33,230] [INFO] [utils.py:779:see_memory_usage] After creating fp16 partitions: 58
+[2025-04-28 01:10:33,231] [INFO] [utils.py:780:see_memory_usage] MA 0.0 GB         Max_MA 0.0 GB         CA 0.72 GB         Max_CA 1 GB 
+[2025-04-28 01:10:33,231] [INFO] [utils.py:787:see_memory_usage] CPU Virtual Memory:  used = 38.3 GB, percent = 15.2%
+[2025-04-28 01:10:33,302] [INFO] [utils.py:779:see_memory_usage] Before creating fp32 partitions
+[2025-04-28 01:10:33,302] [INFO] [utils.py:780:see_memory_usage] MA 0.0 GB         Max_MA 0.0 GB         CA 0.72 GB         Max_CA 1 GB 
+[2025-04-28 01:10:33,302] [INFO] [utils.py:787:see_memory_usage] CPU Virtual Memory:  used = 38.3 GB, percent = 15.2%
+[2025-04-28 01:10:35,326] [INFO] [utils.py:779:see_memory_usage] After creating fp32 partitions
+[2025-04-28 01:10:35,327] [INFO] [utils.py:780:see_memory_usage] MA 0.0 GB         Max_MA 0.0 GB         CA 0.72 GB         Max_CA 1 GB 
+[2025-04-28 01:10:35,327] [INFO] [utils.py:787:see_memory_usage] CPU Virtual Memory:  used = 60.78 GB, percent = 24.2%
+[2025-04-28 01:10:35,397] [INFO] [utils.py:779:see_memory_usage] Before initializing optimizer states
+[2025-04-28 01:10:35,398] [INFO] [utils.py:780:see_memory_usage] MA 0.0 GB         Max_MA 0.0 GB         CA 0.72 GB         Max_CA 1 GB 
+[2025-04-28 01:10:35,398] [INFO] [utils.py:787:see_memory_usage] CPU Virtual Memory:  used = 60.78 GB, percent = 24.2%
+[2025-04-28 01:10:48,376] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | init_optimizer_state: 12956.99
+[2025-04-28 01:10:48,472] [INFO] [utils.py:779:see_memory_usage] After initializing optimizer states
+[2025-04-28 01:10:48,473] [INFO] [utils.py:780:see_memory_usage] MA 0.0 GB         Max_MA 0.0 GB         CA 0.72 GB         Max_CA 1 GB 
+[2025-04-28 01:10:48,473] [INFO] [utils.py:787:see_memory_usage] CPU Virtual Memory:  used = 90.26 GB, percent = 35.9%
+[2025-04-28 01:10:48,474] [INFO] [stage3.py:487:_setup_for_real_optimizer] optimizer state initialized
+[2025-04-28 01:10:56,067] [INFO] [utils.py:779:see_memory_usage] After initializing ZeRO optimizer
+[2025-04-28 01:10:56,068] [INFO] [utils.py:780:see_memory_usage] MA 0.39 GB         Max_MA 0.87 GB         CA 0.96 GB         Max_CA 1 GB 
+[2025-04-28 01:10:56,068] [INFO] [utils.py:787:see_memory_usage] CPU Virtual Memory:  used = 106.63 GB, percent = 42.4%
+[2025-04-28 01:10:56,068] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Final Optimizer = DeepSpeedCPUAdam
+[2025-04-28 01:10:56,068] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed using configured LR scheduler = WarmupLR
+[2025-04-28 01:10:56,068] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed LR Scheduler = <deepspeed.runtime.lr_schedules.WarmupLR object at 0x7111200a5a30>
+[2025-04-28 01:10:56,068] [INFO] [logging.py:96:log_dist] [Rank 0] step=0, skipped=0, lr=[0.0, 0.0], mom=[(0.9, 0.999), (0.9, 0.999)]
+[2025-04-28 01:10:56,069] [INFO] [config.py:996:print] DeepSpeedEngine configuration:
+[2025-04-28 01:10:56,069] [INFO] [config.py:1000:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   amp_enabled .................. False
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   amp_params ................... False
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   bfloat16_enabled ............. False
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   bfloat16_immediate_grad_update  False
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   checkpoint_parallel_write_pipeline  False
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   checkpoint_tag_validation_enabled  True
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   checkpoint_tag_validation_fail  False
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x71116052f5e0>
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   communication_data_type ...... None
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   compile_config ............... enabled=False backend='inductor' kwargs={}
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   curriculum_enabled_legacy .... False
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   curriculum_params_legacy ..... False
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   data_efficiency_enabled ...... False
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   dataloader_drop_last ......... False
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   disable_allgather ............ False
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   dump_state ................... False
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   dynamic_loss_scale_args ...... {'init_scale': 17179869184, 'scale_window': 1000, 'delayed_shift': 2, 'consecutive_hysteresis': False, 'min_scale': 1e-10}
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   eigenvalue_enabled ........... False
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   eigenvalue_gas_boundary_resolution  1
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   eigenvalue_layer_num ......... 0
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   eigenvalue_max_iter .......... 100
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   eigenvalue_stability ......... 1e-06
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   eigenvalue_tol ............... 0.01
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   eigenvalue_verbose ........... False
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   elasticity_enabled ........... False
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   fp16_auto_cast ............... False
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   fp16_enabled ................. True
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   fp16_master_weights_and_gradients  False
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   global_rank .................. 0
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   grad_accum_dtype ............. None
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   gradient_accumulation_steps .. 1
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   gradient_clipping ............ 1
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   gradient_predivide_factor .... 1.0
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   graph_harvesting ............. False
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   initial_dynamic_scale ........ 17179869184
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   load_universal_checkpoint .... False
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   loss_scale ................... 0
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   memory_breakdown ............. False
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   mics_hierarchial_params_gather  False
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   mics_shard_size .............. -1
+[2025-04-28 01:10:56,070] [INFO] [config.py:1000:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2025-04-28 01:10:56,071] [INFO] [config.py:1000:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2025-04-28 01:10:56,071] [INFO] [config.py:1000:print]   optimizer_legacy_fusion ...... False
+[2025-04-28 01:10:56,071] [INFO] [config.py:1000:print]   optimizer_name ............... adam
+[2025-04-28 01:10:56,071] [INFO] [config.py:1000:print]   optimizer_params ............. {'lr': 0.001, 'betas': [0.8, 0.999], 'eps': 1e-08, 'weight_decay': 3e-07}
+[2025-04-28 01:10:56,071] [INFO] [config.py:1000:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0, 'pipe_partitioned': True, 'grad_partitioned': True}
+[2025-04-28 01:10:56,071] [INFO] [config.py:1000:print]   pld_enabled .................. False
+[2025-04-28 01:10:56,071] [INFO] [config.py:1000:print]   pld_params ................... False
+[2025-04-28 01:10:56,071] [INFO] [config.py:1000:print]   prescale_gradients ........... False
+[2025-04-28 01:10:56,071] [INFO] [config.py:1000:print]   scheduler_name ............... WarmupLR
+[2025-04-28 01:10:56,071] [INFO] [config.py:1000:print]   scheduler_params ............. {'warmup_min_lr': 0, 'warmup_max_lr': 0.001, 'warmup_num_steps': 1000}
+[2025-04-28 01:10:56,071] [INFO] [config.py:1000:print]   seq_parallel_communication_data_type  torch.float32
+[2025-04-28 01:10:56,071] [INFO] [config.py:1000:print]   sparse_attention ............. None
+[2025-04-28 01:10:56,071] [INFO] [config.py:1000:print]   sparse_gradients_enabled ..... False
+[2025-04-28 01:10:56,071] [INFO] [config.py:1000:print]   steps_per_print .............. 10
+[2025-04-28 01:10:56,071] [INFO] [config.py:1000:print]   train_batch_size ............. 16
+[2025-04-28 01:10:56,071] [INFO] [config.py:1000:print]   train_micro_batch_size_per_gpu  16
+[2025-04-28 01:10:56,071] [INFO] [config.py:1000:print]   use_data_before_expert_parallel_  False
+[2025-04-28 01:10:56,071] [INFO] [config.py:1000:print]   use_node_local_storage ....... False
+[2025-04-28 01:10:56,071] [INFO] [config.py:1000:print]   wall_clock_breakdown ......... True
+[2025-04-28 01:10:56,071] [INFO] [config.py:1000:print]   weight_quantization_config ... None
+[2025-04-28 01:10:56,071] [INFO] [config.py:1000:print]   world_size ................... 1
+[2025-04-28 01:10:56,071] [INFO] [config.py:1000:print]   zero_allow_untested_optimizer  False
+[2025-04-28 01:10:56,071] [INFO] [config.py:1000:print]   zero_config .................. stage=3 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=50000000 use_multi_rank_bucket_allreduce=True allgather_partitions=True allgather_bucket_size=50000000 overlap_comm=True load_from_fp32_weights=True elastic_checkpoint=False offload_param=DeepSpeedZeroOffloadParamConfig(device='cpu', nvme_path=None, buffer_count=5, buffer_size=3000000000, max_in_cpu=10000, pin_memory=True) offload_optimizer=DeepSpeedZeroOffloadOptimizerConfig(device='cpu', nvme_path=None, buffer_count=5, pin_memory=True, pipeline=False, pipeline_read=False, pipeline_write=False, fast_init=False, ratio=1.0) sub_group_size=100000000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_nontrainable_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True pipeline_loading_checkpoint=False override_module_apply=True
+[2025-04-28 01:10:56,071] [INFO] [config.py:1000:print]   zero_enabled ................. True
+[2025-04-28 01:10:56,071] [INFO] [config.py:1000:print]   zero_force_ds_cpu_optimizer .. True
+[2025-04-28 01:10:56,071] [INFO] [config.py:1000:print]   zero_optimization_stage ...... 3
+[2025-04-28 01:10:56,071] [INFO] [config.py:986:print_user_config]   json = {
+    "train_batch_size": 16, 
+    "gradient_accumulation_steps": 1, 
+    "steps_per_print": 10, 
+    "optimizer": {
+        "type": "Adam", 
+        "params": {
+            "lr": 0.001, 
+            "betas": [0.8, 0.999], 
+            "eps": 1e-08, 
+            "weight_decay": 3e-07
+        }
+    }, 
+    "scheduler": {
+        "type": "WarmupLR", 
+        "params": {
+            "warmup_min_lr": 0, 
+            "warmup_max_lr": 0.001, 
+            "warmup_num_steps": 1000
+        }
+    }, 
+    "zero_optimization": {
+        "stage": 3, 
+        "allgather_partitions": true, 
+        "reduce_scatter": true, 
+        "allgather_bucket_size": 5.000000e+07, 
+        "reduce_bucket_size": 5.000000e+07, 
+        "overlap_comm": true, 
+        "contiguous_gradients": true, 
+        "sub_group_size": 1.000000e+08, 
+        "offload_optimizer": {
+            "device": "cpu", 
+            "pin_memory": true, 
+            "ratio": 1, 
+            "buffer_count": 5, 
+            "fast_init": false
+        }, 
+        "offload_param": {
+            "device": "cpu", 
+            "pin_memory": true, 
+            "buffer_count": 5, 
+            "buffer_size": 3.000000e+09, 
+            "max_in_cpu": 1.000000e+04
+        }
+    }, 
+    "gradient_clipping": 1, 
+    "fp16": {
+        "enabled": true, 
+        "fp16_master_weights_and_grads": false, 
+        "loss_scale": 0, 
+        "loss_scale_window": 1000, 
+        "hysteresis": 2, 
+        "min_loss_scale": 1e-10, 
+        "initial_scale_power": 34
+    }, 
+    "wall_clock_breakdown": true, 
+    "zero_allow_untested_optimizer": false
+}
+> building train, validation, and test datasets ...
+ > datasets target sizes (minimum size):
+    train:      1600
+    validation: 16000
+    test:       16000
+> building train, validation, and test datasets for GPT2 ...
+ > building dataset index ...
+    reading sizes...
+    reading pointers...
+    reading document index...
+    creating numpy buffer of mmap...
+    creating memory view of numpy buffer...
+ > finished creating indexed dataset in 0.000245 seconds
+    number of documents: 6351519
+ > dataset split:
+    train:
+     document indices in [0, 6027591) total of 6027591 documents
+    validation:
+     document indices in [6027591, 6345167) total of 317576 documents
+    test:
+     document indices in [6345167, 6351519) total of 6352 documents
+/home/sabiha/stronghold/DeepSpeedExample/megatron/data/gpt2_dataset.py:205: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at /opt/conda/conda-bld/pytorch_1704987277512/work/torch/csrc/tensor/python_tensor.cpp:83.)
+  counts = torch.cuda.LongTensor([1])
+ > loading doc-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_train_indexmap_1600ns_1024sl_1234s_doc_idx.npy
+ > loading sample-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_train_indexmap_1600ns_1024sl_1234s_sample_idx.npy
+ > loading shuffle-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_train_indexmap_1600ns_1024sl_1234s_shuffle_idx.npy
+    loaded indexed file in 0.013 seconds
+    total number of samples: 3061569
+    total number of epochs: 1
+ > loading doc-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_valid_indexmap_16000ns_1024sl_1234s_doc_idx.npy
+ > loading sample-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_valid_indexmap_16000ns_1024sl_1234s_sample_idx.npy
+ > loading shuffle-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_valid_indexmap_16000ns_1024sl_1234s_shuffle_idx.npy
+    loaded indexed file in 0.001 seconds
+    total number of samples: 143830
+    total number of epochs: 1
+ > loading doc-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_test_indexmap_16000ns_1024sl_1234s_doc_idx.npy
+ > loading sample-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_test_indexmap_16000ns_1024sl_1234s_sample_idx.npy
+ > loading shuffle-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_test_indexmap_16000ns_1024sl_1234s_shuffle_idx.npy
+    loaded indexed file in 0.001 seconds
+    total number of samples: 17453
+    total number of epochs: 7
+> finished creating GPT2 datasets ...
+setting training data start iteration to 0
+setting validation data start iteration to 0
+done with setups ...
+time (ms) | model and optimizer: 39503.68 | train/valid/test data iterators: 1361.95
+training ...
+[2025-04-28 01:11:30,558] [INFO] [loss_scaler.py:190:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 17179869184, but hysteresis is 2. Reducing hysteresis to 1
+[2025-04-28 01:11:30,561] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 2058.07 | bwd_microstep: 27832.77 | bwd_inner_microstep: 27611.65 | bwd_allreduce_microstep: 220.98 | step_microstep: 3187.38
+[2025-04-28 01:11:30,561] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 2058.05 | bwd: 27832.77 | bwd_inner: 27611.66 | bwd_allreduce: 220.99 | step: 3187.38
+[2025-04-28 01:12:03,020] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 17179869184, reducing to 8589934592
+[2025-04-28 01:12:03,022] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1935.66 | bwd_microstep: 27699.90 | bwd_inner_microstep: 27473.26 | bwd_allreduce_microstep: 226.41 | step_microstep: 2819.40
+[2025-04-28 01:12:03,022] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1935.65 | bwd: 27699.91 | bwd_inner: 27473.33 | bwd_allreduce: 226.38 | step: 2819.40
+[2025-04-28 01:12:35,569] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 8589934592, reducing to 4294967296
+[2025-04-28 01:12:35,571] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1941.86 | bwd_microstep: 27757.04 | bwd_inner_microstep: 27528.37 | bwd_allreduce_microstep: 228.42 | step_microstep: 2843.59
+[2025-04-28 01:12:35,571] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1941.85 | bwd: 27757.05 | bwd_inner: 27528.46 | bwd_allreduce: 228.37 | step: 2843.59
+[2025-04-28 01:13:08,011] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 4294967296, reducing to 2147483648
+[2025-04-28 01:13:08,013] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1942.71 | bwd_microstep: 27715.46 | bwd_inner_microstep: 27491.09 | bwd_allreduce_microstep: 224.15 | step_microstep: 2776.57
+[2025-04-28 01:13:08,013] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1942.70 | bwd: 27715.47 | bwd_inner: 27491.15 | bwd_allreduce: 224.12 | step: 2776.57
+[2025-04-28 01:13:40,761] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 2147483648, reducing to 1073741824
+[2025-04-28 01:13:40,763] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1943.13 | bwd_microstep: 27999.70 | bwd_inner_microstep: 27773.29 | bwd_allreduce_microstep: 226.18 | step_microstep: 2800.90
+[2025-04-28 01:13:40,763] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1943.12 | bwd: 27999.71 | bwd_inner: 27773.37 | bwd_allreduce: 226.16 | step: 2800.90
+[2025-04-28 01:14:13,825] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 1073741824, reducing to 536870912
+[2025-04-28 01:14:13,827] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1944.05 | bwd_microstep: 28106.47 | bwd_inner_microstep: 27881.49 | bwd_allreduce_microstep: 224.72 | step_microstep: 3008.01
+[2025-04-28 01:14:13,828] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1944.04 | bwd: 28106.47 | bwd_inner: 27881.58 | bwd_allreduce: 224.68 | step: 3008.01
+[2025-04-28 01:14:46,543] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 536870912, reducing to 268435456
+[2025-04-28 01:14:46,546] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1947.51 | bwd_microstep: 27859.03 | bwd_inner_microstep: 27638.06 | bwd_allreduce_microstep: 220.71 | step_microstep: 2904.77
+[2025-04-28 01:14:46,546] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1947.49 | bwd: 27859.03 | bwd_inner: 27638.14 | bwd_allreduce: 220.68 | step: 2904.78
+[2025-04-28 01:15:19,535] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 268435456, reducing to 134217728
+[2025-04-28 01:15:19,537] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1949.67 | bwd_microstep: 27970.42 | bwd_inner_microstep: 27746.31 | bwd_allreduce_microstep: 223.85 | step_microstep: 3063.76
+[2025-04-28 01:15:19,538] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1949.66 | bwd: 27970.42 | bwd_inner: 27746.39 | bwd_allreduce: 223.81 | step: 3063.76
+[2025-04-28 01:15:52,253] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 134217728, reducing to 67108864
+[2025-04-28 01:15:52,256] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1949.83 | bwd_microstep: 27961.61 | bwd_inner_microstep: 27738.79 | bwd_allreduce_microstep: 222.55 | step_microstep: 2800.99
+[2025-04-28 01:15:52,256] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1949.82 | bwd: 27961.61 | bwd_inner: 27738.87 | bwd_allreduce: 222.52 | step: 2801.00
+[2025-04-28 01:16:24,890] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 67108864, reducing to 33554432
+[2025-04-28 01:16:24,891] [INFO] [logging.py:96:log_dist] [Rank 0] step=10, skipped=10, lr=[0.0, 0.0], mom=[(0.9, 0.999), (0.9, 0.999)]
+[2025-04-28 01:16:24,892] [INFO] [timer.py:260:stop] epoch=0/micro_step=10/global_step=10, RunningAvgSamplesPerSec=0.4888672712879852, CurrSamplesPerSec=0.4903432599749571, MemAllocated=0.41GB, MaxMemAllocated=11.27GB
+[2025-04-28 01:16:24,892] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1948.51 | bwd_microstep: 27864.10 | bwd_inner_microstep: 27646.40 | bwd_allreduce_microstep: 217.45 | step_microstep: 2815.93
+[2025-04-28 01:16:24,892] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1948.50 | bwd: 27864.11 | bwd_inner: 27646.48 | bwd_allreduce: 217.41 | step: 2815.93
+ iteration       10/     100 | elapsed time per iteration (ms): 32744.7 | learning rate: 0.000E+00 | lm loss: 1.132130E+01 | number of skipped iterations:   0 | number of nan iterations:   0 |
+after 10 iterations memory (MB) | allocated: 416.794921875 | max allocated: 11541.00634765625 | reserved: 21212.0 | max reserved: 21212.0
+time (ms) | forward: 1962.30 | backward: 27878.63 | backward-backward: 27878.58 | backward-allreduce: 0.00 | optimizer: 2902.62 | batch generator: 4.03
+Effective Tera Flops per GPU: 2.38 and total parameters 5.953 B
+[2025-04-28 01:16:57,692] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 33554432, reducing to 16777216
+[2025-04-28 01:16:57,695] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1953.79 | bwd_microstep: 27983.61 | bwd_inner_microstep: 27754.87 | bwd_allreduce_microstep: 228.48 | step_microstep: 2855.08
+[2025-04-28 01:16:57,695] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1953.78 | bwd: 27983.62 | bwd_inner: 27754.96 | bwd_allreduce: 228.45 | step: 2855.08
+[2025-04-28 01:17:30,329] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 16777216, reducing to 8388608
+[2025-04-28 01:17:30,331] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1950.66 | bwd_microstep: 27777.37 | bwd_inner_microstep: 27553.29 | bwd_allreduce_microstep: 223.82 | step_microstep: 2901.90
+[2025-04-28 01:17:30,331] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1950.65 | bwd: 27777.37 | bwd_inner: 27553.39 | bwd_allreduce: 223.79 | step: 2901.91
+[2025-04-28 01:18:03,000] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 8388608, reducing to 4194304
+[2025-04-28 01:18:03,002] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1952.78 | bwd_microstep: 27824.03 | bwd_inner_microstep: 27601.35 | bwd_allreduce_microstep: 222.44 | step_microstep: 2888.31
+[2025-04-28 01:18:03,003] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1952.77 | bwd: 27824.04 | bwd_inner: 27601.42 | bwd_allreduce: 222.41 | step: 2888.32
+[2025-04-28 01:18:36,655] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 4194304, reducing to 2097152
+[2025-04-28 01:18:36,664] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1953.42 | bwd_microstep: 27839.73 | bwd_inner_microstep: 27616.09 | bwd_allreduce_microstep: 223.40 | step_microstep: 3860.94
+[2025-04-28 01:18:36,665] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1953.41 | bwd: 27839.74 | bwd_inner: 27616.17 | bwd_allreduce: 223.35 | step: 3860.98
+[2025-04-28 01:19:09,644] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 2097152, reducing to 1048576
+[2025-04-28 01:19:09,648] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1955.69 | bwd_microstep: 27891.93 | bwd_inner_microstep: 27662.51 | bwd_allreduce_microstep: 229.15 | step_microstep: 3119.37
+[2025-04-28 01:19:09,649] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1955.67 | bwd: 27891.94 | bwd_inner: 27662.60 | bwd_allreduce: 229.10 | step: 3119.38
+[2025-04-28 01:19:42,403] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 1048576, reducing to 524288
+[2025-04-28 01:19:42,406] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1953.66 | bwd_microstep: 28046.23 | bwd_inner_microstep: 27825.71 | bwd_allreduce_microstep: 220.32 | step_microstep: 2748.52
+[2025-04-28 01:19:42,406] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1953.64 | bwd: 28046.24 | bwd_inner: 27825.77 | bwd_allreduce: 220.30 | step: 2748.53
+[2025-04-28 01:20:14,987] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 524288, reducing to 262144
+[2025-04-28 01:20:14,990] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1950.18 | bwd_microstep: 27833.23 | bwd_inner_microstep: 27601.99 | bwd_allreduce_microstep: 231.01 | step_microstep: 2793.29
+[2025-04-28 01:20:14,990] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1950.17 | bwd: 27833.24 | bwd_inner: 27602.07 | bwd_allreduce: 230.98 | step: 2793.30
+[2025-04-28 01:20:56,063] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | optimizer_step: 8504.44
+[2025-04-28 01:20:56,065] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1951.89 | bwd_microstep: 27831.07 | bwd_inner_microstep: 27609.13 | bwd_allreduce_microstep: 221.69 | step_microstep: 11285.11
+[2025-04-28 01:20:56,065] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1951.88 | bwd: 27831.07 | bwd_inner: 27609.22 | bwd_allreduce: 221.66 | step: 11285.11
+[2025-04-28 01:21:33,040] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | optimizer_step: 2123.46
+[2025-04-28 01:21:33,042] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1946.75 | bwd_microstep: 30105.96 | bwd_inner_microstep: 29842.66 | bwd_allreduce_microstep: 262.92 | step_microstep: 4916.61
+[2025-04-28 01:21:33,042] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1946.74 | bwd: 30105.98 | bwd_inner: 29842.79 | bwd_allreduce: 262.91 | step: 4916.60
+[2025-04-28 01:22:07,974] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | optimizer_step: 2117.73
+[2025-04-28 01:22:07,975] [INFO] [logging.py:96:log_dist] [Rank 0] step=20, skipped=17, lr=[0.0001590404182398875, 0.0001590404182398875], mom=[(0.9, 0.999), (0.9, 0.999)]
+[2025-04-28 01:22:07,976] [INFO] [timer.py:260:stop] epoch=0/micro_step=20/global_step=20, RunningAvgSamplesPerSec=0.4761556919350714, CurrSamplesPerSec=0.4580935844173734, MemAllocated=0.41GB, MaxMemAllocated=11.27GB
+[2025-04-28 01:22:07,976] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1950.89 | bwd_microstep: 28009.89 | bwd_inner_microstep: 27757.14 | bwd_allreduce_microstep: 252.51 | step_microstep: 4966.24
+[2025-04-28 01:22:07,976] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1950.87 | bwd: 28009.89 | bwd_inner: 27757.23 | bwd_allreduce: 252.48 | step: 4966.25
+ iteration       20/     100 | elapsed time per iteration (ms): 34308.4 | learning rate: 1.590E-04 | lm loss: 1.131695E+01 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward: 1956.57 | backward: 28115.82 | backward-backward: 28115.75 | backward-allreduce: 0.00 | optimizer: 4234.16 | batch generator: 1.97
+Effective Tera Flops per GPU: 2.27 and total parameters 5.953 B
+[2025-04-28 01:22:41,208] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 262144, reducing to 131072
+[2025-04-28 01:22:41,211] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1943.50 | bwd_microstep: 28173.95 | bwd_inner_microstep: 27909.67 | bwd_allreduce_microstep: 263.93 | step_microstep: 3108.96
+[2025-04-28 01:22:41,211] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1943.49 | bwd: 28173.99 | bwd_inner: 27909.77 | bwd_allreduce: 263.95 | step: 3108.94
+[2025-04-28 01:23:13,842] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 131072, reducing to 65536
+[2025-04-28 01:23:13,845] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1943.85 | bwd_microstep: 27575.47 | bwd_inner_microstep: 27292.11 | bwd_allreduce_microstep: 282.92 | step_microstep: 3106.66
+[2025-04-28 01:23:13,845] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1943.84 | bwd: 27575.49 | bwd_inner: 27292.28 | bwd_allreduce: 282.87 | step: 3106.67
+[2025-04-28 01:23:46,614] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 65536, reducing to 32768
+[2025-04-28 01:23:46,617] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1944.09 | bwd_microstep: 27697.30 | bwd_inner_microstep: 27420.77 | bwd_allreduce_microstep: 276.21 | step_microstep: 3122.01
+[2025-04-28 01:23:46,617] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1944.07 | bwd: 27697.32 | bwd_inner: 27420.88 | bwd_allreduce: 276.17 | step: 3122.01
+[2025-04-28 01:24:19,771] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 32768, reducing to 16384
+[2025-04-28 01:24:19,775] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1944.84 | bwd_microstep: 27847.34 | bwd_inner_microstep: 27582.43 | bwd_allreduce_microstep: 264.52 | step_microstep: 3355.83
+[2025-04-28 01:24:19,776] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1944.82 | bwd: 27847.37 | bwd_inner: 27582.55 | bwd_allreduce: 264.55 | step: 3355.82
+[2025-04-28 01:24:55,269] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | optimizer_step: 2615.86
+[2025-04-28 01:24:55,271] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1945.15 | bwd_microstep: 27834.56 | bwd_inner_microstep: 27605.52 | bwd_allreduce_microstep: 228.75 | step_microstep: 5703.00
+[2025-04-28 01:24:55,271] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1945.14 | bwd: 27834.57 | bwd_inner: 27605.61 | bwd_allreduce: 228.71 | step: 5703.01
+[2025-04-28 01:25:31,613] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | optimizer_step: 2757.60
+[2025-04-28 01:25:31,615] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1941.11 | bwd_microstep: 28806.53 | bwd_inner_microstep: 28585.16 | bwd_allreduce_microstep: 221.09 | step_microstep: 5587.85
+[2025-04-28 01:25:31,615] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1941.09 | bwd: 28806.54 | bwd_inner: 28585.27 | bwd_allreduce: 221.06 | step: 5587.86
+[2025-04-28 01:26:07,631] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | optimizer_step: 2033.34
+[2025-04-28 01:26:07,633] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1945.70 | bwd_microstep: 28726.83 | bwd_inner_microstep: 28502.26 | bwd_allreduce_microstep: 224.22 | step_microstep: 5337.47
+[2025-04-28 01:26:07,634] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1945.68 | bwd: 28726.84 | bwd_inner: 28502.43 | bwd_allreduce: 224.17 | step: 5337.48
+[2025-04-28 01:26:44,176] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | optimizer_step: 2671.41
+[2025-04-28 01:26:44,177] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1945.48 | bwd_microstep: 28841.99 | bwd_inner_microstep: 28597.44 | bwd_allreduce_microstep: 244.32 | step_microstep: 5747.89
+[2025-04-28 01:26:44,177] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1945.46 | bwd: 28841.99 | bwd_inner: 28597.51 | bwd_allreduce: 244.27 | step: 5747.89
+[2025-04-28 01:27:20,057] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | optimizer_step: 2120.69
+[2025-04-28 01:27:20,059] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1942.16 | bwd_microstep: 28797.04 | bwd_inner_microstep: 28572.07 | bwd_allreduce_microstep: 224.57 | step_microstep: 5131.92
+[2025-04-28 01:27:20,059] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1942.15 | bwd: 28797.04 | bwd_inner: 28572.21 | bwd_allreduce: 224.53 | step: 5131.93
+[2025-04-28 01:27:56,872] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | optimizer_step: 2614.90
+[2025-04-28 01:27:56,873] [INFO] [logging.py:96:log_dist] [Rank 0] step=30, skipped=21, lr=[0.000318080836479775, 0.000318080836479775], mom=[(0.9, 0.999), (0.9, 0.999)]
+[2025-04-28 01:27:56,874] [INFO] [timer.py:260:stop] epoch=0/micro_step=30/global_step=30, RunningAvgSamplesPerSec=0.4697617468827202, CurrSamplesPerSec=0.4346810740976923, MemAllocated=0.41GB, MaxMemAllocated=11.27GB
+[2025-04-28 01:27:56,874] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1943.11 | bwd_microstep: 29145.66 | bwd_inner_microstep: 28924.45 | bwd_allreduce_microstep: 220.88 | step_microstep: 5718.87
+[2025-04-28 01:27:56,874] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1943.09 | bwd: 29145.67 | bwd_inner: 28924.57 | bwd_allreduce: 220.84 | step: 5718.88
+ iteration       30/     100 | elapsed time per iteration (ms): 34889.9 | learning rate: 3.181E-04 | lm loss: 1.423485E+01 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward: 1948.40 | backward: 28346.83 | backward-backward: 28346.72 | backward-allreduce: 0.00 | optimizer: 4592.63 | batch generator: 1.90
+Effective Tera Flops per GPU: 2.24 and total parameters 5.953 B
+[2025-04-28 01:28:33,936] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | optimizer_step: 2667.06
+[2025-04-28 01:28:33,937] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1943.14 | bwd_microstep: 29042.24 | bwd_inner_microstep: 28824.77 | bwd_allreduce_microstep: 217.14 | step_microstep: 6067.52
+[2025-04-28 01:28:33,937] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1943.12 | bwd: 29042.25 | bwd_inner: 28824.91 | bwd_allreduce: 217.08 | step: 6067.52
+[2025-04-28 01:29:11,038] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | optimizer_step: 2556.11
+[2025-04-28 01:29:11,040] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1941.51 | bwd_microstep: 29125.67 | bwd_inner_microstep: 28862.96 | bwd_allreduce_microstep: 262.33 | step_microstep: 6026.64
+[2025-04-28 01:29:11,040] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1941.50 | bwd: 29125.68 | bwd_inner: 28863.08 | bwd_allreduce: 262.30 | step: 6026.63
+[2025-04-28 01:29:48,301] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | optimizer_step: 2511.46
+[2025-04-28 01:29:48,302] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1942.66 | bwd_microstep: 30052.99 | bwd_inner_microstep: 29847.31 | bwd_allreduce_microstep: 205.57 | step_microstep: 5260.68
+[2025-04-28 01:29:48,302] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1942.65 | bwd: 30053.00 | bwd_inner: 29847.32 | bwd_allreduce: 205.58 | step: 5260.69
+[2025-04-28 01:30:24,629] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | optimizer_step: 2509.34
+[2025-04-28 01:30:24,631] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1943.74 | bwd_microstep: 28798.16 | bwd_inner_microstep: 28594.54 | bwd_allreduce_microstep: 203.48 | step_microstep: 5580.00
+[2025-04-28 01:30:24,631] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1943.72 | bwd: 28798.15 | bwd_inner: 28594.55 | bwd_allreduce: 203.49 | step: 5580.00
+[2025-04-28 01:31:00,769] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | optimizer_step: 2207.12
+[2025-04-28 01:31:00,770] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1942.74 | bwd_microstep: 28826.95 | bwd_inner_microstep: 28598.56 | bwd_allreduce_microstep: 228.08 | step_microstep: 5360.23
+[2025-04-28 01:31:00,771] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1942.72 | bwd: 28826.96 | bwd_inner: 28598.67 | bwd_allreduce: 228.05 | step: 5360.24
+[2025-04-28 01:31:38,404] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | optimizer_step: 2706.18
+[2025-04-28 01:31:38,406] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1943.14 | bwd_microstep: 28890.52 | bwd_inner_microstep: 28671.18 | bwd_allreduce_microstep: 219.03 | step_microstep: 6794.67
+[2025-04-28 01:31:38,406] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1943.12 | bwd: 28890.52 | bwd_inner: 28671.28 | bwd_allreduce: 219.00 | step: 6794.68
+[2025-04-28 01:32:14,634] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | optimizer_step: 2524.66
+[2025-04-28 01:32:14,636] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1942.75 | bwd_microstep: 28796.71 | bwd_inner_microstep: 28511.64 | bwd_allreduce_microstep: 284.68 | step_microstep: 5480.15
+[2025-04-28 01:32:14,636] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1942.74 | bwd: 28796.73 | bwd_inner: 28511.76 | bwd_allreduce: 284.66 | step: 5480.15
+[2025-04-28 01:32:51,702] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | optimizer_step: 2682.18
+[2025-04-28 01:32:51,704] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1939.58 | bwd_microstep: 28955.40 | bwd_inner_microstep: 28718.72 | bwd_allreduce_microstep: 236.54 | step_microstep: 6166.33
+[2025-04-28 01:32:51,704] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1939.57 | bwd: 28955.42 | bwd_inner: 28718.74 | bwd_allreduce: 236.56 | step: 6166.33
+[2025-04-28 01:33:29,009] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | optimizer_step: 2900.01
+[2025-04-28 01:33:29,011] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1940.59 | bwd_microstep: 29400.56 | bwd_inner_microstep: 29195.34 | bwd_allreduce_microstep: 205.08 | step_microstep: 5960.31
+[2025-04-28 01:33:29,012] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1940.58 | bwd: 29400.56 | bwd_inner: 29195.37 | bwd_allreduce: 205.08 | step: 5960.32
+[2025-04-28 01:34:05,222] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | optimizer_step: 2343.74
+[2025-04-28 01:34:05,223] [INFO] [logging.py:96:log_dist] [Rank 0] step=40, skipped=21, lr=[0.00042625120031760966, 0.00042625120031760966], mom=[(0.9, 0.999), (0.9, 0.999)]
+[2025-04-28 01:34:05,224] [INFO] [timer.py:260:stop] epoch=0/micro_step=40/global_step=40, RunningAvgSamplesPerSec=0.45992195485136955, CurrSamplesPerSec=0.44191993181397843, MemAllocated=0.41GB, MaxMemAllocated=11.27GB
+[2025-04-28 01:34:05,224] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1943.89 | bwd_microstep: 28881.33 | bwd_inner_microstep: 28660.98 | bwd_allreduce_microstep: 220.07 | step_microstep: 5379.03
+[2025-04-28 01:34:05,224] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1943.87 | bwd: 28881.33 | bwd_inner: 28661.06 | bwd_allreduce: 220.04 | step: 5379.03
+ iteration       40/     100 | elapsed time per iteration (ms): 36835.0 | learning rate: 4.263E-04 | lm loss: 8.661194E+00 | number of skipped iterations:   0 | number of nan iterations:   0 |
+time (ms) | forward: 1946.25 | backward: 29078.64 | backward-backward: 29078.56 | backward-allreduce: 0.00 | optimizer: 5808.13 | batch generator: 1.68
+Effective Tera Flops per GPU: 2.12 and total parameters 5.953 B
+[2025-04-28 01:34:41,921] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | optimizer_step: 2678.44
+[2025-04-28 01:34:41,923] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1938.19 | bwd_microstep: 29052.98 | bwd_inner_microstep: 28833.24 | bwd_allreduce_microstep: 219.44 | step_microstep: 5696.35
+[2025-04-28 01:34:41,923] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1938.17 | bwd: 29052.98 | bwd_inner: 28833.33 | bwd_allreduce: 219.43 | step: 5696.35
+[2025-04-28 01:35:19,991] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | optimizer_step: 3159.84
+[2025-04-28 01:35:19,993] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1941.06 | bwd_microstep: 29150.94 | bwd_inner_microstep: 28893.92 | bwd_allreduce_microstep: 256.75 | step_microstep: 6971.30
+[2025-04-28 01:35:19,994] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1941.05 | bwd: 29150.95 | bwd_inner: 28894.00 | bwd_allreduce: 256.72 | step: 6971.30
+[2025-04-28 01:35:57,191] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | optimizer_step: 2504.98
+[2025-04-28 01:35:57,193] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1942.22 | bwd_microstep: 28919.59 | bwd_inner_microstep: 28654.15 | bwd_allreduce_microstep: 265.13 | step_microstep: 6327.76
+[2025-04-28 01:35:57,193] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1942.20 | bwd: 28919.61 | bwd_inner: 28654.24 | bwd_allreduce: 265.12 | step: 6327.74
+[2025-04-28 01:36:33,818] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | optimizer_step: 2533.88
+[2025-04-28 01:36:33,819] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1942.93 | bwd_microstep: 28833.21 | bwd_inner_microstep: 28593.77 | bwd_allreduce_microstep: 239.31 | step_microstep: 5843.71
+[2025-04-28 01:36:33,820] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1942.92 | bwd: 28833.22 | bwd_inner: 28593.79 | bwd_allreduce: 239.32 | step: 5843.71
+[2025-04-28 01:37:11,376] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | optimizer_step: 2754.73
+[2025-04-28 01:37:11,377] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1939.98 | bwd_microstep: 28861.56 | bwd_inner_microstep: 28622.65 | bwd_allreduce_microstep: 238.78 | step_microstep: 6749.27
+[2025-04-28 01:37:11,377] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1939.96 | bwd: 28861.57 | bwd_inner: 28622.66 | bwd_allreduce: 238.80 | step: 6749.27
+[2025-04-28 01:37:47,945] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | optimizer_step: 2834.54
+[2025-04-28 01:37:47,947] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1940.21 | bwd_microstep: 28807.08 | bwd_inner_microstep: 28567.13 | bwd_allreduce_microstep: 239.81 | step_microstep: 5814.43
+[2025-04-28 01:37:47,947] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1940.19 | bwd: 28807.09 | bwd_inner: 28567.14 | bwd_allreduce: 239.82 | step: 5814.43
+[2025-04-28 01:38:24,396] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | optimizer_step: 2547.63
+[2025-04-28 01:38:24,397] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1939.76 | bwd_microstep: 28804.87 | bwd_inner_microstep: 28569.41 | bwd_allreduce_microstep: 235.32 | step_microstep: 5699.24
+[2025-04-28 01:38:24,398] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1939.75 | bwd: 28804.88 | bwd_inner: 28569.42 | bwd_allreduce: 235.34 | step: 5699.24
+[2025-04-28 01:39:00,556] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | optimizer_step: 2191.30
+[2025-04-28 01:39:00,557] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1938.10 | bwd_microstep: 29023.85 | bwd_inner_microstep: 28763.70 | bwd_allreduce_microstep: 259.87 | step_microstep: 5191.08
+[2025-04-28 01:39:00,558] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1938.09 | bwd: 29023.87 | bwd_inner: 28763.79 | bwd_allreduce: 259.85 | step: 5191.07
+[2025-04-28 01:39:37,356] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | optimizer_step: 2588.93
+[2025-04-28 01:39:37,358] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd_microstep: 1941.67 | bwd_microstep: 29245.62 | bwd_inner_microstep: 29023.98 | bwd_allreduce_microstep: 221.36 | step_microstep: 5604.69
+[2025-04-28 01:39:37,358] [INFO] [logging.py:96:log_dist] [Rank 0] time (ms) | fwd: 1941.65 | bwd: 29245.62 | bwd_inner: 29024.07 | bwd_allreduce: 221.32 | step: 5604.69

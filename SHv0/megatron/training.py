@@ -2263,6 +2263,8 @@ def train(
     timers("interval-time").start()
     print_datetime("before the start of training step")
     report_memory_flag = True
+    torch.cuda.synchronize()
+    t0 = time.time()
     while iteration < args.train_iters:
         if iteration + 1 % args.log_interval == 1:
             timers("e2e-time").reset()
@@ -2320,6 +2322,13 @@ def train(
         if args.exit_interval and iteration % args.exit_interval == 0:
             torch.distributed.barrier()
             print_datetime("exiting program at iteration {}".format(iteration))
+            torch.cuda.synchronize()
+            t1 = time.time()
+            training_time = t1 - t0
+            print_rank_0(f"Training Time taken: {training_time / 1} s")
+            print_rank_0("Finished Training")
+            with open("/home/sabiha/stronghold/training_time.txt", 'a') as file:
+                file.write(f"Training Time taken stronghold batch size 16: {training_time / 1} s \n")
             return 0 #sys.exit()
 
         # Autoresume
@@ -2357,7 +2366,22 @@ def train(
                 save_checkpoint_and_time(iteration, model, optimizer, lr_scheduler)
             torch.distributed.barrier()
             print_datetime("exiting program at iteration {}".format(iteration))
+            torch.cuda.synchronize()
+            t1 = time.time()
+            training_time = t1 - t0
+            print_rank_0(f"Training Time taken: {training_time / 1} s")
+            print_rank_0("Finished Training")
+            with open("/home/sabiha/stronghold/training_time.txt", 'a') as file:
+                file.write(f"Training Time taken stronghold batch size 16: {training_time / 1} s \n")
             return 0 #sys.exit()
+
+    torch.cuda.synchronize()
+    t1 = time.time()
+    training_time = t1 - t0
+    print_rank_0(f"Training Time taken: {training_time / 1} s")
+    print_rank_0("Finished Training")
+    with open("/home/sabiha/stronghold/training_time.txt", 'a') as file:
+        file.write(f"Training Time taken stronghold batch size 16: {training_time / 1} s \n")
 
     return iteration
 

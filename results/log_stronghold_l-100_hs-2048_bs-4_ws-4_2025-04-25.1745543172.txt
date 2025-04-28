@@ -1,0 +1,13 @@
+PYTHONGIL=1 python pretrain_gpt.py --num-layers 100 --hidden-size 2048 --num-attention-heads 16 --seq-length 1024 --micro-batch-size 4 --global-batch-size 4 --max-position-embeddings 1024 --train-iters 50 --log-interval 10 --exit-interval 50 --lr-decay-iters 320000 --save /home/sabiha/stronghold/checkpoints/gpt2 --data-path /home/sabiha/stronghold/data/my-gpt2_text_document --vocab-file /home/sabiha/stronghold/data/gpt2-vocab.json --merge-file /home/sabiha/stronghold/data/gpt2-merges.txt --data-impl mmap --distributed-backend nccl --split 949,50,1 --lr 0.00015 --min-lr 0.00001 --lr-decay-style cosine --lr-warmup-fraction .01 --weight-decay 1e-2 --clip-grad 1.0 --log-interval 10 --save-interval 10000 --eval-interval 1000 --eval-iters 1000 --checkpoint-activations --activations-checkpoint-method 'uniform' --activations-checkpoint-num-layers 1 --enable-gl --use-cpu-initialization --gl-world-size 1 --gl-window-size 4 --gl-ray-max-concurrency 12
+Traceback (most recent call last):
+  File "/home/sabiha/stronghold/SHv0/pretrain_gpt.py", line 32, in <module>
+    from megatron.training import pretrain
+  File "/home/sabiha/stronghold/SHv0/megatron/training.py", line 44, in <module>
+    from megatron.optimizer import get_megatron_optimizer
+  File "/home/sabiha/stronghold/SHv0/megatron/optimizer/__init__.py", line 24, in <module>
+    from .optimizer import Float16OptimizerWithFloat16Params, FP32Optimizer
+  File "/home/sabiha/stronghold/SHv0/megatron/optimizer/optimizer.py", line 30, in <module>
+    from .clip_grads import clip_grad_norm_fp32, count_zeros_fp32
+  File "/home/sabiha/stronghold/SHv0/megatron/optimizer/clip_grads.py", line 19, in <module>
+    from torch._six import inf
+ModuleNotFoundError: No module named 'torch._six'

@@ -29,18 +29,20 @@
     "contiguous_gradients": true,
     "sub_group_size": 1e8,
     "offload_optimizer": {
-      "device": "cpu",
+      "device": "nvme",
+      "nvme_path": "/mnt/nvme/",
       "pin_memory": true,
       "ratio": 1.0,
       "buffer_count": 5,
       "fast_init": false
     },
     "offload_param": {
-      "device": "cpu",
+      "device": "nvme",
+      "nvme_path": "/mnt/nvme/",
       "pin_memory": true,
       "buffer_count": 5,
       "buffer_size": 3e9,
-      "max_in_cpu": 10000
+      "max_in_cpu": 0
     }
   },
   "gradient_clipping": 1.0,
@@ -50,7 +52,7 @@
     "loss_scale": 0,
     "loss_scale_window": 1000,
     "hysteresis": 2,
-    "min_loss_scale": 1e-10,
+    "min_loss_scale": 1,
     "initial_scale_power": 34
   },
   "wall_clock_breakdown": true,

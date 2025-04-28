@@ -1,0 +1,4 @@
+Training Time taken deepspeed_mine batch size 16: 1446.800466299057 s 
+Training Time taken deepspeed cpu gpu batch size 16: 3703.199415922165 s 
+Training Time taken deepspeed_mine batch size 16: 1299.4742085933685 s 
+Training Time taken stronghold batch size 16: 3663.2076172828674 s 

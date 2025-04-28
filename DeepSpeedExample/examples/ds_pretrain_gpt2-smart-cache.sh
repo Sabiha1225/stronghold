@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # rm -rf ./checkpoints/* 
-rm -rf /home/sabiha/stronghold/checkpoints/*
+rm -rf /home/sabiha/stronghold/checkpoints/* 
 
 GPUS_PER_NODE=1
 # Change for multinode config
@@ -28,7 +28,7 @@ CHECKPOINT_PATH=/home/sabiha/stronghold/checkpoints/gpt2
 
 script_path=$(realpath $0)
 script_dir=$(dirname $script_path)
-config_json="$script_dir/ds_zero_stage_infinity-cpu.json"
+config_json="$script_dir/ds_zero_stage_infinity-smart-cache.json"
 
 # Megatron Model Parallelism
 mp_size=1
@@ -87,7 +87,6 @@ gpt_options=" \
         --eval-iters 1000 \
         --cpu-optimizer
 "
-
 # --load $CHECKPOINT_PATH \
         #--fp16 \
         #--tensorboard-dir ${LOGDIR}

@@ -43,6 +43,7 @@ from megatron.utils import report_memory, flops_calculator
 
 import deepspeed
 from deepspeed.runtime.utils import see_memory_usage
+import time
 
 # for use 1-v100 server to mock 8-v100 server
 #torch.cuda.set_per_process_memory_fraction(1/8*1.1, 0)
@@ -472,10 +473,153 @@ def train(forward_step_func, model, optimizer, lr_scheduler,
     # Iterations.
     iteration = args.iteration
 
+    # timers('interval time').start()
+    # report_memory_flag = True
+    # data_parallel_size = mpu.get_data_parallel_world_size()
+    # global_batch_size = args.batch_size * data_parallel_size
+    # torch.cuda.synchronize()
+    # t0 = time.time()
+    # while iteration < args.train_iters and \
+    #     (args.train_tokens is None or args.tokens < args.train_tokens):
+    #     loss_dict, skipped_iter = train_step(forward_step_func,
+    #                                          train_data_iterator,
+    #                                          model,
+    #                                          optimizer,
+    #                                          lr_scheduler)
+    #     iteration += 1
+    #     if args.curriculum_learning:
+    #         args.tokens += global_batch_size * args.curriculum_seqlen
+    #     else:
+    #         args.tokens += global_batch_size * args.seq_length
+
+    #     # Logging.
+    #     loss_scale = None
+    #     if args.fp16:
+    #         loss_scale = optimizer.cur_scale if args.deepspeed else optimizer.loss_scale
+    #     report_memory_flag = training_log(loss_dict, total_loss_dict,
+    #                                       optimizer.param_groups[0]['lr'],
+    #                                       iteration, loss_scale,
+    #                                       report_memory_flag, skipped_iter,
+    #                                       model=model)
+
+    #     # Autoresume
+    #     if args.adlr_autoresume and \
+    #        (iteration % args.adlr_autoresume_interval == 0):
+    #         check_adlr_autoresume_termination(iteration, model, optimizer,
+    #                                           lr_scheduler)
+
+    #     # Checkpointing
+    #     if args.save and args.save_interval and \
+    #        iteration % args.save_interval == 0:
+    #         save_checkpoint(iteration, model, optimizer, lr_scheduler)
+
+    #     # Evaluation
+    #     # XXX temporarily disabled for ZeRO-3
+    #     """
+    #     if args.eval_interval and iteration % args.eval_interval == 0 and \
+    #        args.do_valid:
+    #         prefix = 'iteration {}'.format(iteration)
+    #         evaluate_and_print_results(prefix, forward_step_func,
+    #                                    valid_data_iterator, model,
+    #                                    iteration, False)
+    #     """
+
+    #     if args.exit_interval and iteration % args.exit_interval == 0:
+    #         ## @todo. have to exit program explicitly in case of hangs due to nogil-version python.
+    #         #import os
+    #         #os._exit(0)
+
+    #         torch.distributed.barrier()
+    #         time_str = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    #         rank = torch.distributed.get_rank()
+    #         print_rank_0('rank: {} | time: {} | exiting the program at '
+    #                      'iteration {}'.format(rank, time_str, iteration))
+
+    #         torch.cuda.synchronize()
+    #         t1 = time.time()
+    #         training_time = t1 - t0
+    #         print_rank_0(f"Training Time taken: {training_time / 1} s")
+    #         print_rank_0("Finished Training")
+    #         with open("/home/sabiha/stronghold/training_time.txt", 'a') as file:
+    #             file.write(f"Training Time taken deepspeed cpu gpu batch size 16: {training_time / 1} s \n")
+
+    #         sys.exit(0)
+
+    # torch.cuda.synchronize()
+    # t1 = time.time()
+    # training_time = t1 - t0
+    # print_rank_0(f"Training Time taken: {training_time / 1} s")
+    # print_rank_0("Finished Training")
+    # with open("/home/sabiha/stronghold/training_time.txt", 'a') as file:
+    #     file.write(f"Training Time taken stronghold batch size 16: {training_time / 1} s \n")
+
     timers('interval time').start()
     report_memory_flag = True
     data_parallel_size = mpu.get_data_parallel_world_size()
     global_batch_size = args.batch_size * data_parallel_size
+    while iteration < args.train_iters and \
+        (args.train_tokens is None or args.tokens < args.train_tokens):
+        loss_dict, skipped_iter = train_step(forward_step_func,
+                                             train_data_iterator,
+                                             model,
+                                             optimizer,
+                                             lr_scheduler)
+        # iteration += 1
+        if args.curriculum_learning:
+            args.tokens += global_batch_size * args.curriculum_seqlen
+        else:
+            args.tokens += global_batch_size * args.seq_length
+
+        # Logging.
+        loss_scale = None
+        if args.fp16:
+            loss_scale = optimizer.cur_scale if args.deepspeed else optimizer.loss_scale
+        report_memory_flag = training_log(loss_dict, total_loss_dict,
+                                          optimizer.param_groups[0]['lr'],
+                                          iteration, loss_scale,
+                                          report_memory_flag, skipped_iter,
+                                          model=model)
+
+        # Autoresume
+        if args.adlr_autoresume and \
+           (iteration % args.adlr_autoresume_interval == 0):
+            check_adlr_autoresume_termination(iteration, model, optimizer,
+                                              lr_scheduler)
+
+        # Checkpointing
+        if args.save and args.save_interval and \
+           iteration % args.save_interval == 0:
+            save_checkpoint(iteration, model, optimizer, lr_scheduler)
+
+        # Evaluation
+        # XXX temporarily disabled for ZeRO-3
+        """
+        if args.eval_interval and iteration % args.eval_interval == 0 and \
+           args.do_valid:
+            prefix = 'iteration {}'.format(iteration)
+            evaluate_and_print_results(prefix, forward_step_func,
+                                       valid_data_iterator, model,
+                                       iteration, False)
+        """
+
+        # if args.exit_interval and iteration % args.exit_interval == 0:
+        #     ## @todo. have to exit program explicitly in case of hangs due to nogil-version python.
+        #     #import os
+        #     #os._exit(0)
+
+        #     torch.distributed.barrier()
+        #     time_str = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        #     rank = torch.distributed.get_rank()
+        #     print_rank_0('rank: {} | time: {} | exiting the program at '
+        #                  'iteration {}'.format(rank, time_str, iteration))
+        #     sys.exit(0)
+
+        break
+
+    model.set_prefetch_table_warmup()
+    model.preallocate_memory()
+    torch.cuda.synchronize()
+    t0 = time.time()
     while iteration < args.train_iters and \
         (args.train_tokens is None or args.tokens < args.train_tokens):
         loss_dict, skipped_iter = train_step(forward_step_func,
@@ -531,7 +675,23 @@ def train(forward_step_func, model, optimizer, lr_scheduler,
             rank = torch.distributed.get_rank()
             print_rank_0('rank: {} | time: {} | exiting the program at '
                          'iteration {}'.format(rank, time_str, iteration))
+
+            torch.cuda.synchronize()
+            t1 = time.time()
+            training_time = t1 - t0
+            print_rank_0(f"Training Time taken: {training_time / 1} s")
+            print_rank_0("Finished Training")
+            with open("/home/sabiha/stronghold/training_time.txt", 'a') as file:
+                file.write(f"Training Time taken deepspeed_mine batch size 16: {training_time / 1} s \n")
             sys.exit(0)
+
+    torch.cuda.synchronize()
+    t1 = time.time()
+    training_time = t1 - t0
+    print_rank_0(f"Training Time taken: {training_time / 1} s")
+    print_rank_0("Finished Training")
+    with open("/home/sabiha/stronghold/training_time.txt", 'a') as file:
+        file.write(f"Training Time taken deepspeed batch size 16: {training_time / 1} s \n")
 
     return iteration
 

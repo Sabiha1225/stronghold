@@ -1,0 +1,900 @@
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.2
+[93m [WARNING] [0m using untested triton version (2.2.0), only 1.0.0 is known to be compatible
+using world size: 1, data-parallel-size: 1, tensor-model-parallel size: 1, pipeline-model-parallel size: 1 
+using torch.float32 for parameters ...
+------------------------ arguments ------------------------
+  accumulate_allreduce_grads_in_fp32 .............. False
+  activations_checkpoint_method ................... uniform
+  activations_checkpoint_num_layers ............... 1
+  adam_beta1 ...................................... 0.9
+  adam_beta2 ...................................... 0.999
+  adam_eps ........................................ 1e-08
+  adlr_autoresume ................................. False
+  adlr_autoresume_interval ........................ 1000
+  apply_query_key_layer_scaling ................... True
+  apply_residual_connection_post_layernorm ........ False
+  attention_dropout ............................... 0.1
+  attention_softmax_in_fp32 ....................... False
+  bert_binary_head ................................ True
+  bert_load ....................................... None
+  bf16 ............................................ False
+  bias_dropout_fusion ............................. True
+  bias_gelu_fusion ................................ True
+  biencoder_projection_dim ........................ 0
+  biencoder_shared_query_context_model ............ False
+  block_data_path ................................. None
+  clip_grad ....................................... 1.0
+  consumed_train_samples .......................... 0
+  consumed_valid_samples .......................... 0
+  data_impl ....................................... mmap
+  data_parallel_size .............................. 1
+  data_path ....................................... ['/home/sabiha/stronghold/data/my-gpt2_text_document']
+  dataloader_type ................................. single
+  DDP_impl ........................................ local
+  decoder_seq_length .............................. None
+  distribute_checkpointed_activations ............. False
+  distributed_backend ............................. nccl
+  embedding_path .................................. None
+  empty_unused_memory_level ....................... 0
+  enable_l2l ...................................... True
+  enbale_strongh .................................. None
+  encoder_seq_length .............................. 1024
+  eod_mask_loss ................................... False
+  eval_interval ................................... 1000
+  eval_iters ...................................... 1000
+  evidence_data_path .............................. None
+  exit_duration_in_mins ........................... None
+  exit_interval ................................... 100
+  ffn_hidden_size ................................. 10240
+  finetune ........................................ False
+  fp16 ............................................ False
+  fp16_lm_cross_entropy ........................... False
+  fp32_residual_connection ........................ False
+  global_batch_size ............................... 16
+  hidden_dropout .................................. 0.1
+  hidden_size ..................................... 2560
+  hysteresis ...................................... 2
+  ict_head_size ................................... None
+  ict_load ........................................ None
+  img_dim ......................................... 224
+  indexer_batch_size .............................. 128
+  indexer_log_interval ............................ 1000
+  init_method_std ................................. 0.02
+  init_method_xavier_uniform ...................... False
+  initial_loss_scale .............................. 4294967296
+  kv_channels ..................................... 160
+  layernorm_epsilon ............................... 1e-05
+  lazy_mpu_init ................................... None
+  load ............................................ None
+  local_rank ...................................... None
+  log_batch_size_to_tensorboard ................... False
+  log_interval .................................... 10
+  log_learning_rate_to_tensorboard ................ True
+  log_loss_scale_to_tensorboard ................... True
+  log_memory_to_tensorboard ....................... False
+  log_num_zeros_in_grad ........................... False
+  log_params_norm ................................. False
+  log_timers_to_tensorboard ....................... False
+  log_validation_ppl_to_tensorboard ............... False
+  loss_scale ...................................... None
+  loss_scale_window ............................... 1000
+  lr .............................................. 0.00015
+  lr_decay_iters .................................. 320000
+  lr_decay_samples ................................ None
+  lr_decay_style .................................. cosine
+  lr_warmup_fraction .............................. 0.01
+  lr_warmup_iters ................................. 0
+  lr_warmup_samples ............................... 0
+  make_vocab_size_divisible_by .................... 128
+  mask_prob ....................................... 0.15
+  masked_softmax_fusion ........................... True
+  max_position_embeddings ......................... 1024
+  merge_file ...................................... /home/sabiha/stronghold/data/gpt2-merges.txt
+  micro_batch_size ................................ 16
+  min_loss_scale .................................. 1.0
+  min_lr .......................................... 1e-05
+  mmap_warmup ..................................... False
+  no_load_optim ................................... None
+  no_load_rng ..................................... None
+  no_save_optim ................................... None
+  no_save_rng ..................................... None
+  num_attention_heads ............................. 16
+  num_channels .................................... 3
+  num_classes ..................................... 1000
+  num_layers ...................................... 74
+  num_layers_per_virtual_pipeline_stage ........... None
+  num_workers ..................................... 2
+  onnx_safe ....................................... None
+  openai_gelu ..................................... False
+  optimizer ....................................... adam
+  override_lr_scheduler ........................... False
+  params_dtype .................................... torch.float32
+  patch_dim ....................................... 16
+  pipeline_model_parallel_size .................... 1
+  query_in_block_prob ............................. 0.1
+  rampup_batch_size ............................... None
+  rank ............................................ 0
+  reset_attention_mask ............................ False
+  reset_position_ids .............................. False
+  retriever_report_topk_accuracies ................ []
+  retriever_score_scaling ......................... False
+  retriever_seq_length ............................ 256
+  sample_rate ..................................... 1.0
+  save ............................................ /home/sabiha/stronghold/checkpoints/gpt2
+  save_interval ................................... 10000
+  scatter_gather_tensors_in_pipeline .............. True
+  seed ............................................ 1234
+  seq_length ...................................... 1024
+  sgd_momentum .................................... 0.9
+  short_seq_prob .................................. 0.1
+  split ........................................... 949,50,1
+  tensor_model_parallel_size ...................... 1
+  tensorboard_dir ................................. None
+  tensorboard_log_interval ........................ 1
+  tensorboard_queue_size .......................... 1000
+  titles_data_path ................................ None
+  tokenizer_type .................................. GPT2BPETokenizer
+  train_iters ..................................... 100
+  train_samples ................................... None
+  use_checkpoint_lr_scheduler ..................... False
+  use_contiguous_buffers_in_local_ddp ............. True
+  use_cpu_initialization .......................... None
+  use_one_sent_docs ............................... False
+  virtual_pipeline_model_parallel_size ............ None
+  vocab_extra_ids ................................. 0
+  vocab_file ...................................... /home/sabiha/stronghold/data/gpt2-vocab.json
+  weight_decay .................................... 0.01
+  world_size ...................................... 1
+-------------------- end of arguments ---------------------
+setting number of micro-batches to constant 1
+> building GPT2BPETokenizer tokenizer ...
+ > padded vocab (size: 50257) with 47 dummy tokens (new size: 50304)
+[W init.cpp:767] Warning: nvfuser is no longer supported in torch script, use _jit_set_nvfuser_enabled is deprecated and a no-op (function operator())
+> initializing torch distributed ...
+> initializing tensor model parallel with size 1
+> initializing pipeline model parallel with size 1
+> setting random seeds to 1234 ...
+> initializing model parallel cuda seeds on global rank 0, model parallel rank 0, and data parallel rank 0 with model parallel seed: 3952 and data parallel seed: 1234
+make: Entering directory '/home/sabiha/stronghold/L2L/megatron/data'
+make: Nothing to be done for 'default'.
+make: Leaving directory '/home/sabiha/stronghold/L2L/megatron/data'
+> compiling dataset index builder ...
+>>> done with dataset index builder. Compilation time: 0.102 seconds
+WARNING: constraints for invoking optimized fused softmax kernel are not met. We default back to unfused kernel invocations.
+> compiling and loading fused kernels ...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /home/sabiha/stronghold/L2L/megatron/fused_kernels/build/build.ninja...
+Building extension module scaled_upper_triang_masked_softmax_cuda...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+[1/3] c++ -MMD -MF scaled_upper_triang_masked_softmax.o.d -DTORCH_EXTENSION_NAME=scaled_upper_triang_masked_softmax_cuda -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1011\" -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/torch/csrc/api/include -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/TH -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/THC -isystem /home/sabiha/miniconda3/envs/stronghold_deepspeed/include -isystem /home/sabiha/miniconda3/envs/stronghold/include/python3.9 -D_GLIBCXX_USE_CXX11_ABI=0 -fPIC -std=c++17 -O3 -c /home/sabiha/stronghold/L2L/megatron/fused_kernels/scaled_upper_triang_masked_softmax.cpp -o scaled_upper_triang_masked_softmax.o 
+[2/3] /home/sabiha/miniconda3/envs/stronghold_deepspeed/bin/nvcc --generate-dependencies-with-compile --dependency-output scaled_upper_triang_masked_softmax_cuda.cuda.o.d -DTORCH_EXTENSION_NAME=scaled_upper_triang_masked_softmax_cuda -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1011\" -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/torch/csrc/api/include -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/TH -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/THC -isystem /home/sabiha/miniconda3/envs/stronghold_deepspeed/include -isystem /home/sabiha/miniconda3/envs/stronghold/include/python3.9 -D_GLIBCXX_USE_CXX11_ABI=0 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_89,code=compute_89 -gencode=arch=compute_89,code=sm_89 --compiler-options '-fPIC' -O3 -gencode arch=compute_70,code=sm_70 --use_fast_math -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda -gencode arch=compute_80,code=sm_80 -std=c++17 -c /home/sabiha/stronghold/L2L/megatron/fused_kernels/scaled_upper_triang_masked_softmax_cuda.cu -o scaled_upper_triang_masked_softmax_cuda.cuda.o 
+[3/3] c++ scaled_upper_triang_masked_softmax.o scaled_upper_triang_masked_softmax_cuda.cuda.o -shared -L/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/home/sabiha/miniconda3/envs/stronghold_deepspeed/lib -lcudart -o scaled_upper_triang_masked_softmax_cuda.so
+Loading extension module scaled_upper_triang_masked_softmax_cuda...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /home/sabiha/stronghold/L2L/megatron/fused_kernels/build/build.ninja...
+Building extension module scaled_masked_softmax_cuda...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+[1/3] c++ -MMD -MF scaled_masked_softmax.o.d -DTORCH_EXTENSION_NAME=scaled_masked_softmax_cuda -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1011\" -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/torch/csrc/api/include -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/TH -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/THC -isystem /home/sabiha/miniconda3/envs/stronghold_deepspeed/include -isystem /home/sabiha/miniconda3/envs/stronghold/include/python3.9 -D_GLIBCXX_USE_CXX11_ABI=0 -fPIC -std=c++17 -O3 -c /home/sabiha/stronghold/L2L/megatron/fused_kernels/scaled_masked_softmax.cpp -o scaled_masked_softmax.o 
+[2/3] /home/sabiha/miniconda3/envs/stronghold_deepspeed/bin/nvcc --generate-dependencies-with-compile --dependency-output scaled_masked_softmax_cuda.cuda.o.d -DTORCH_EXTENSION_NAME=scaled_masked_softmax_cuda -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1011\" -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/torch/csrc/api/include -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/TH -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/THC -isystem /home/sabiha/miniconda3/envs/stronghold_deepspeed/include -isystem /home/sabiha/miniconda3/envs/stronghold/include/python3.9 -D_GLIBCXX_USE_CXX11_ABI=0 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_89,code=compute_89 -gencode=arch=compute_89,code=sm_89 --compiler-options '-fPIC' -O3 -gencode arch=compute_70,code=sm_70 --use_fast_math -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ --expt-relaxed-constexpr --expt-extended-lambda -gencode arch=compute_80,code=sm_80 -std=c++17 -c /home/sabiha/stronghold/L2L/megatron/fused_kernels/scaled_masked_softmax_cuda.cu -o scaled_masked_softmax_cuda.cuda.o 
+[3/3] c++ scaled_masked_softmax.o scaled_masked_softmax_cuda.cuda.o -shared -L/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/home/sabiha/miniconda3/envs/stronghold_deepspeed/lib -lcudart -o scaled_masked_softmax_cuda.so
+Loading extension module scaled_masked_softmax_cuda...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /home/sabiha/stronghold/L2L/megatron/fused_kernels/build/build.ninja...
+Building extension module fused_mix_prec_layer_norm_cuda...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+[1/3] c++ -MMD -MF layer_norm_cuda.o.d -DTORCH_EXTENSION_NAME=fused_mix_prec_layer_norm_cuda -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1011\" -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/torch/csrc/api/include -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/TH -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/THC -isystem /home/sabiha/miniconda3/envs/stronghold_deepspeed/include -isystem /home/sabiha/miniconda3/envs/stronghold/include/python3.9 -D_GLIBCXX_USE_CXX11_ABI=0 -fPIC -std=c++17 -O3 -c /home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda.cpp -o layer_norm_cuda.o 
+[2/3] /home/sabiha/miniconda3/envs/stronghold_deepspeed/bin/nvcc --generate-dependencies-with-compile --dependency-output layer_norm_cuda_kernel.cuda.o.d -DTORCH_EXTENSION_NAME=fused_mix_prec_layer_norm_cuda -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1011\" -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/torch/csrc/api/include -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/TH -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/THC -isystem /home/sabiha/miniconda3/envs/stronghold_deepspeed/include -isystem /home/sabiha/miniconda3/envs/stronghold/include/python3.9 -D_GLIBCXX_USE_CXX11_ABI=0 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_89,code=compute_89 -gencode=arch=compute_89,code=sm_89 --compiler-options '-fPIC' -O3 -gencode arch=compute_70,code=sm_70 --use_fast_math -maxrregcount=50 -gencode arch=compute_80,code=sm_80 -std=c++17 -c /home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu -o layer_norm_cuda_kernel.cuda.o 
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu: In function 'void cuda_layer_norm(at::Tensor*, at::Tensor*, at::Tensor*, at::Tensor*, int, int, c10::IntList, at::Tensor*, at::Tensor*, double)':
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:703:223: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  703 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                               ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:703:246: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  703 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                      ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:703:271: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  703 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                               ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:703:295: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  703 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                                       ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:703:358: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  703 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                                                                                                      ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:703:413: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  703 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                                                                                                                                                             ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:703:118: warning: 'T* at::Tensor::data() const [with T = c10::Half]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  703 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                      ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:703:141: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  703 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                             ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:703:166: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  703 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                      ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:703:190: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  703 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                              ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:703:257: warning: 'T* at::Tensor::data() const [with T = c10::Half]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  703 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                 ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:703:316: warning: 'T* at::Tensor::data() const [with T = c10::Half]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  703 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                                                            ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:703:130: warning: 'T* at::Tensor::data() const [with T = c10::BFloat16]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  703 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                  ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:703:153: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  703 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                         ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:703:178: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  703 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                  ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:703:202: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  703 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                          ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:703:273: warning: 'T* at::Tensor::data() const [with T = c10::BFloat16]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  703 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                 ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:703:336: warning: 'T* at::Tensor::data() const [with T = c10::BFloat16]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  703 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                                                                                ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:703:150: warning: 'T* at::Tensor::data() const [with T = c10::Half]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  703 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                      ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:703:173: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  703 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                             ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:703:198: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  703 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                      ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:703:226: warning: 'T* at::Tensor::data() const [with T = c10::Half]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  703 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                  ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:703:293: warning: 'T* at::Tensor::data() const [with T = c10::Half]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  703 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                                     ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:703:352: warning: 'T* at::Tensor::data() const [with T = c10::Half]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  703 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                                                                                                ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:703:165: warning: 'T* at::Tensor::data() const [with T = c10::BFloat16]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  703 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                     ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:703:188: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  703 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                            ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:703:213: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  703 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                     ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:703:245: warning: 'T* at::Tensor::data() const [with T = c10::BFloat16]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  703 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                     ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:703:316: warning: 'T* at::Tensor::data() const [with T = c10::BFloat16]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  703 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                                                            ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:703:379: warning: 'T* at::Tensor::data() const [with T = c10::BFloat16]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  703 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                                                                                                                           ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu: In function 'void cuda_layer_norm_gradient(at::Tensor*, at::Tensor*, at::Tensor*, at::Tensor*, int, int, c10::IntList, at::Tensor*, at::Tensor*, double, at::Tensor*, at::Tensor*, at::Tensor*)':
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:223: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                               ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:246: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                      ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:271: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                               ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:332: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                                                                            ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:388: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                                                                                                                                    ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:437: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                     ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:488: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:549: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:119: warning: 'T* at::Tensor::data() const [with T = c10::Half]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                       ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:142: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                              ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:167: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                       ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:232: warning: 'T* at::Tensor::data() const [with T = c10::Half]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                        ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:292: warning: 'T* at::Tensor::data() const [with T = c10::Half]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                                    ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:341: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                                                                                     ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:396: warning: 'T* at::Tensor::data() const [with T = c10::Half]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                                                                                                                                            ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:461: warning: 'T* at::Tensor::data() const [with T = c10::Half]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:131: warning: 'T* at::Tensor::data() const [with T = c10::BFloat16]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                   ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:154: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                          ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:179: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                   ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:248: warning: 'T* at::Tensor::data() const [with T = c10::BFloat16]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                        ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:312: warning: 'T* at::Tensor::data() const [with T = c10::BFloat16]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                                                        ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:361: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                                                                                                         ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:420: warning: 'T* at::Tensor::data() const [with T = c10::BFloat16]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                    ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:489: warning: 'T* at::Tensor::data() const [with T = c10::BFloat16]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:151: warning: 'T* at::Tensor::data() const [with T = c10::Half]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                       ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:174: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                              ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:199: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                       ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:264: warning: 'T* at::Tensor::data() const [with T = c10::Half]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                        ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:324: warning: 'T* at::Tensor::data() const [with T = c10::Half]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                                                                    ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:377: warning: 'T* at::Tensor::data() const [with T = c10::Half]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                                                                                                                         ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:432: warning: 'T* at::Tensor::data() const [with T = c10::Half]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:497: warning: 'T* at::Tensor::data() const [with T = c10::Half]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:166: warning: 'T* at::Tensor::data() const [with T = c10::BFloat16]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                      ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:189: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                             ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:214: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                      ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:283: warning: 'T* at::Tensor::data() const [with T = c10::BFloat16]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                           ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:347: warning: 'T* at::Tensor::data() const [with T = c10::BFloat16]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                                                                                           ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:404: warning: 'T* at::Tensor::data() const [with T = c10::BFloat16]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                                                                                                                                                    ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:463: warning: 'T* at::Tensor::data() const [with T = c10::BFloat16]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:532: warning: 'T* at::Tensor::data() const [with T = c10::BFloat16]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  811 |     DISPATCH_FLOAT_HALF_AND_BFLOAT_INOUT_TYPES(
+      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu: In instantiation of 'void HostLayerNormGradient(const V*, const U*, const U*, at::Tensor*, int, int, const V*, const V*, double, T*, V*, V*) [with T = float; U = float; V = float]':
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:203:   required from here
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:748:138: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  748 |       cuComputePartGradGammaBeta<<<blocks2, threads2, nshared2, stream>>>(
+      |                                                                                                                                          ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:748:210: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  748 |       cuComputePartGradGammaBeta<<<blocks2, threads2, nshared2, stream>>>(
+      |                                                                                                                                                                                                                  ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:748:247: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  748 |       cuComputePartGradGammaBeta<<<blocks2, threads2, nshared2, stream>>>(
+      |                                                                                                                                                                                                                                                       ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:761:137: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  761 |       cuComputeGradGammaBeta<<<blocks3, threads3, nshared3, stream>>>(
+      |                                                                                                                                         ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:761:174: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  761 |       cuComputeGradGammaBeta<<<blocks3, threads3, nshared3, stream>>>(
+      |                                                                                                                                                                              ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:779:129: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  779 |     cuComputeGradInput<<<blocks1, threads1, nshared, stream>>>(
+      |                                                                                                                                 ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu: In instantiation of 'void HostLayerNormGradient(const V*, const U*, const U*, at::Tensor*, int, int, const V*, const V*, double, T*, V*, V*) [with T = float; U = float; V = c10::Half]':
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:95:   required from here
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:748:138: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  748 |       cuComputePartGradGammaBeta<<<blocks2, threads2, nshared2, stream>>>(
+      |                                                                                                                                          ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:748:210: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  748 |       cuComputePartGradGammaBeta<<<blocks2, threads2, nshared2, stream>>>(
+      |                                                                                                                                                                                                                  ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:748:247: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  748 |       cuComputePartGradGammaBeta<<<blocks2, threads2, nshared2, stream>>>(
+      |                                                                                                                                                                                                                                                       ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:761:137: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  761 |       cuComputeGradGammaBeta<<<blocks3, threads3, nshared3, stream>>>(
+      |                                                                                                                                         ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:761:174: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  761 |       cuComputeGradGammaBeta<<<blocks3, threads3, nshared3, stream>>>(
+      |                                                                                                                                                                              ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:779:129: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  779 |     cuComputeGradInput<<<blocks1, threads1, nshared, stream>>>(
+      |                                                                                                                                 ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu: In instantiation of 'void HostLayerNormGradient(const V*, const U*, const U*, at::Tensor*, int, int, const V*, const V*, double, T*, V*, V*) [with T = float; U = float; V = c10::BFloat16]':
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:103:   required from here
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:748:138: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  748 |       cuComputePartGradGammaBeta<<<blocks2, threads2, nshared2, stream>>>(
+      |                                                                                                                                          ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:748:210: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  748 |       cuComputePartGradGammaBeta<<<blocks2, threads2, nshared2, stream>>>(
+      |                                                                                                                                                                                                                  ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:748:247: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  748 |       cuComputePartGradGammaBeta<<<blocks2, threads2, nshared2, stream>>>(
+      |                                                                                                                                                                                                                                                       ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:761:137: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  761 |       cuComputeGradGammaBeta<<<blocks3, threads3, nshared3, stream>>>(
+      |                                                                                                                                         ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:761:174: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  761 |       cuComputeGradGammaBeta<<<blocks3, threads3, nshared3, stream>>>(
+      |                                                                                                                                                                              ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:779:129: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  779 |     cuComputeGradInput<<<blocks1, threads1, nshared, stream>>>(
+      |                                                                                                                                 ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu: In instantiation of 'void HostLayerNormGradient(const V*, const U*, const U*, at::Tensor*, int, int, const V*, const V*, double, T*, V*, V*) [with T = c10::Half; U = float; V = c10::Half]':
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:127:   required from here
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:748:138: warning: 'T* at::Tensor::data() const [with T = c10::Half]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  748 |       cuComputePartGradGammaBeta<<<blocks2, threads2, nshared2, stream>>>(
+      |                                                                                                                                          ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:748:210: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  748 |       cuComputePartGradGammaBeta<<<blocks2, threads2, nshared2, stream>>>(
+      |                                                                                                                                                                                                                  ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:748:247: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  748 |       cuComputePartGradGammaBeta<<<blocks2, threads2, nshared2, stream>>>(
+      |                                                                                                                                                                                                                                                       ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:761:137: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  761 |       cuComputeGradGammaBeta<<<blocks3, threads3, nshared3, stream>>>(
+      |                                                                                                                                         ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:761:174: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  761 |       cuComputeGradGammaBeta<<<blocks3, threads3, nshared3, stream>>>(
+      |                                                                                                                                                                              ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:779:129: warning: 'T* at::Tensor::data() const [with T = c10::Half]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  779 |     cuComputeGradInput<<<blocks1, threads1, nshared, stream>>>(
+      |                                                                                                                                 ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu: In instantiation of 'void HostLayerNormGradient(const V*, const U*, const U*, at::Tensor*, int, int, const V*, const V*, double, T*, V*, V*) [with T = c10::BFloat16; U = float; V = c10::BFloat16]':
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:811:138:   required from here
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:748:138: warning: 'T* at::Tensor::data() const [with T = c10::BFloat16]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  748 |       cuComputePartGradGammaBeta<<<blocks2, threads2, nshared2, stream>>>(
+      |                                                                                                                                          ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:748:210: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  748 |       cuComputePartGradGammaBeta<<<blocks2, threads2, nshared2, stream>>>(
+      |                                                                                                                                                                                                                  ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:748:247: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  748 |       cuComputePartGradGammaBeta<<<blocks2, threads2, nshared2, stream>>>(
+      |                                                                                                                                                                                                                                                       ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:761:137: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  761 |       cuComputeGradGammaBeta<<<blocks3, threads3, nshared3, stream>>>(
+      |                                                                                                                                         ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:761:174: warning: 'T* at::Tensor::data() const [with T = float]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  761 |       cuComputeGradGammaBeta<<<blocks3, threads3, nshared3, stream>>>(
+      |                                                                                                                                                                              ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+/home/sabiha/stronghold/L2L/megatron/fused_kernels/layer_norm_cuda_kernel.cu:779:129: warning: 'T* at::Tensor::data() const [with T = c10::BFloat16]' is deprecated: Tensor.data<T>() is deprecated. Please use Tensor.data_ptr<T>() instead. [-Wdeprecated-declarations]
+  779 |     cuComputeGradInput<<<blocks1, threads1, nshared, stream>>>(
+      |                                                                                                                                 ^ 
+/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/ATen/core/TensorBody.h:247:1: note: declared here
+  247 |   T * data() const {
+      | ^ ~~
+[3/3] c++ layer_norm_cuda.o layer_norm_cuda_kernel.cuda.o -shared -L/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/home/sabiha/miniconda3/envs/stronghold_deepspeed/lib -lcudart -o fused_mix_prec_layer_norm_cuda.so
+Loading extension module fused_mix_prec_layer_norm_cuda...
+>>> done with compiling and loading fused kernels. Compilation time: 245.850 seconds
+> compiling and loading optimizer utils ...
+Emitting ninja build file /home/sabiha/stronghold/L2L/megatron/optimizer/build/build.ninja...
+Building extension module optimizer_utils...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+[1/2] c++ -MMD -MF cpu_ops.o.d -DTORCH_EXTENSION_NAME=optimizer_utils -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1011\" -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/torch/csrc/api/include -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/TH -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/THC -isystem /home/sabiha/miniconda3/envs/stronghold/include/python3.9 -D_GLIBCXX_USE_CXX11_ABI=0 -fPIC -std=c++17 -O3 -fopenmp -lpython3.9m -lboost_python-py39 -I /usr/local/cuda/include/ -lcurand -c /home/sabiha/stronghold/L2L/megatron/optimizer/cpp/cpu_ops.cpp -o cpu_ops.o 
+[2/2] c++ cpu_ops.o -shared -L/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/lib -lc10 -ltorch_cpu -ltorch -ltorch_python -o optimizer_utils.so
+Loading extension module optimizer_utils...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /home/sabiha/stronghold/L2L/megatron/optimizer/build/build.ninja...
+Building extension module ds_cpu_adam...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+[1/3] /home/sabiha/miniconda3/envs/stronghold_deepspeed/bin/nvcc --generate-dependencies-with-compile --dependency-output custom_cuda_kernel.cuda.o.d -DTORCH_EXTENSION_NAME=ds_cpu_adam -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1011\" -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/torch/csrc/api/include -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/TH -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/THC -isystem /home/sabiha/miniconda3/envs/stronghold_deepspeed/include -isystem /home/sabiha/miniconda3/envs/stronghold/include/python3.9 -D_GLIBCXX_USE_CXX11_ABI=0 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_89,code=compute_89 -gencode=arch=compute_89,code=sm_89 --compiler-options '-fPIC' -O3 -gencode arch=compute_86,code=sm_86 --use_fast_math -I /usr/local/cuda/include/ -std=c++17 --default-stream per-thread -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -lcurand -maxrregcount=50 -gencode arch=compute_80,code=sm_80 -c /home/sabiha/stronghold/L2L/megatron/optimizer/cpp/ds/custom_cuda_kernel.cu -o custom_cuda_kernel.cuda.o 
+[2/3] c++ -MMD -MF cpu_adam.o.d -DTORCH_EXTENSION_NAME=ds_cpu_adam -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1011\" -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/torch/csrc/api/include -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/TH -isystem /home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/include/THC -isystem /home/sabiha/miniconda3/envs/stronghold_deepspeed/include -isystem /home/sabiha/miniconda3/envs/stronghold/include/python3.9 -D_GLIBCXX_USE_CXX11_ABI=0 -fPIC -std=c++17 -O3 -fopenmp -lpython3.9m -lboost_python-py39 -I /usr/local/cuda/include/ -lcurand -c /home/sabiha/stronghold/L2L/megatron/optimizer/cpp/ds/cpu_adam.cpp -o cpu_adam.o 
+[3/3] c++ custom_cuda_kernel.cuda.o cpu_adam.o -shared -L/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/home/sabiha/miniconda3/envs/stronghold_deepspeed/lib -lcudart -o ds_cpu_adam.so
+Loading extension module ds_cpu_adam...
+>>> done with compiling and loading strongh utils. Compilation time: 35.332 seconds
+/home/sabiha/stronghold/L2L/megatron/training.py:103: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at /opt/conda/conda-bld/pytorch_1704987277512/work/torch/csrc/tensor/python_tensor.cpp:83.)
+  start_time_tensor = torch.cuda.DoubleTensor([_TRAIN_START_TIME])
+time to initialize megatron (seconds): 282.941
+[after megatron is initialized] datetime: 2025-04-26 05:52:34 
+building GPT model ...
+ > number of parameters on (tensor, pipeline) model parallel rank (0, 0): 5953464320
+Initiating L2L model
+> learning rate decay style: cosine
+[after model, optimizer, and learning rate scheduler are built] datetime: 2025-04-26 05:52:48 
+> building train, validation, and test datasets ...
+ > datasets target sizes (minimum size):
+    train:      1600
+    validation: 16000
+    test:       16000
+> building train, validation, and test datasets for GPT ...
+ > building dataset index ...
+    reading sizes...
+    reading pointers...
+    reading document index...
+    creating numpy buffer of mmap...
+    creating memory view of numpy buffer...
+ > finished creating indexed dataset in 0.000402 seconds
+    number of documents: 6351519
+ > dataset split:
+    train:
+     document indices in [0, 6027591) total of 6027591 documents
+    validation:
+     document indices in [6027591, 6345167) total of 317576 documents
+    test:
+     document indices in [6345167, 6351519) total of 6352 documents
+ > loading doc-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_train_indexmap_1600ns_1024sl_1234s_doc_idx.npy
+ > loading sample-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_train_indexmap_1600ns_1024sl_1234s_sample_idx.npy
+ > loading shuffle-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_train_indexmap_1600ns_1024sl_1234s_shuffle_idx.npy
+    loaded indexed file in 0.004 seconds
+    total number of samples: 3061569
+    total number of epochs: 1
+ > loading doc-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_valid_indexmap_16000ns_1024sl_1234s_doc_idx.npy
+ > loading sample-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_valid_indexmap_16000ns_1024sl_1234s_sample_idx.npy
+ > loading shuffle-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_valid_indexmap_16000ns_1024sl_1234s_shuffle_idx.npy
+    loaded indexed file in 0.002 seconds
+    total number of samples: 143830
+    total number of epochs: 1
+ > loading doc-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_test_indexmap_16000ns_1024sl_1234s_doc_idx.npy
+ > loading sample-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_test_indexmap_16000ns_1024sl_1234s_sample_idx.npy
+ > loading shuffle-idx mapping from /home/sabiha/stronghold/data/my-gpt2_text_document_test_indexmap_16000ns_1024sl_1234s_shuffle_idx.npy
+    loaded indexed file in 0.002 seconds
+    total number of samples: 17453
+    total number of epochs: 7
+> finished creating GPT datasets ...
+[after dataloaders are built] datetime: 2025-04-26 05:52:50 
+done with setup ...
+time (ms) | model-and-optimizer-setup: 13428.14 | train/valid/test-data-iterators-setup: 2307.74
+training ...
+[before the start of training step] datetime: 2025-04-26 05:52:50 
+Traceback (most recent call last):
+  File "/home/sabiha/stronghold/L2L/pretrain_gpt.py", line 124, in <module>
+    pretrain(train_valid_test_datasets_provider, model_provider, forward_step,
+  File "/home/sabiha/stronghold/L2L/megatron/training.py", line 145, in pretrain
+    iteration = train(forward_step_func,
+  File "/home/sabiha/stronghold/L2L/megatron/training.py", line 675, in train
+    train_step(forward_step_func,
+  File "/home/sabiha/stronghold/L2L/megatron/training.py", line 397, in train_step
+    losses_reduced = forward_backward_func(
+  File "/home/sabiha/stronghold/L2L/megatron/schedules.py", line 145, in forward_backward_no_pipelining
+    backward_step(optimizer, input_tensor, output_tensor, output_tensor_grad)
+  File "/home/sabiha/stronghold/L2L/megatron/schedules.py", line 96, in backward_step
+    torch.autograd.backward(output_tensor, grad_tensors=output_tensor_grad)
+  File "/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/autograd/__init__.py", line 266, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+  File "/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/autograd/function.py", line 289, in apply
+    return user_fn(self, *args)
+  File "/home/sabiha/stronghold/L2L/megatron/mpu/random.py", line 286, in backward
+    torch.autograd.backward(outputs, args)
+  File "/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/autograd/__init__.py", line 266, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+  File "/home/sabiha/miniconda3/envs/stronghold/lib/python3.9/site-packages/torch/autograd/function.py", line 289, in apply
+    return user_fn(self, *args)
+  File "/home/sabiha/stronghold/L2L/megatron/model/fused_bias_gelu.py", line 53, in backward
+    tmp = bias_gelu_back(grad_output, bias, input)
+  File "/home/sabiha/stronghold/L2L/megatron/model/fused_bias_gelu.py", line 38, in bias_gelu_back
+    tanh_out = torch.tanh(0.79788456 * x * (1 + 0.044715 * x * x))
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 640.00 MiB. GPU 0 has a total capacity of 44.52 GiB of which 186.25 MiB is free. Including non-PyTorch memory, this process has 44.33 GiB memory in use. Of the allocated memory 41.98 GiB is allocated by PyTorch, and 791.54 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

@@ -5,7 +5,7 @@ NUM_LAYERS=16
 HIDDEN_SIZE=2048
 HEADS=16
 SEQ_LEN=1024
-BATCH_SIZE=4
+BATCH_SIZE=16
 
 WINDOW_SIZE=4
 
@@ -44,6 +44,10 @@ elif [[ 'zero-infinity' = $METHOD ]]; then
 elif [[ 'zero-infinity-nvme' = $METHOD ]]; then
     _SRC_DIR=${script_dir}/../DeepSpeedExample/examples
     _SCRIPT=ds_pretrain_gpt2-infinity-nvme.sh
+
+elif [[ 'smart-cache' = $METHOD ]]; then
+    _SRC_DIR=${script_dir}/../DeepSpeedExample/examples
+    _SCRIPT=ds_pretrain_gpt2-smart-cache.sh
 
 elif [[ 'l2l' = $METHOD ]]; then
     _SRC_DIR=${script_dir}/../L2L/examples

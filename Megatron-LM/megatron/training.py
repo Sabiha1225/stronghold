@@ -634,6 +634,8 @@ def train(forward_step_func, model, optimizer, lr_scheduler,
     timers('interval-time').start()
     print_datetime('before the start of training step')
     report_memory_flag = True
+    torch.cuda.synchronize()
+    t0 = time.time()
     while iteration < args.train_iters:
         update_num_microbatches(args.consumed_train_samples)
         loss_dict, skipped_iter, grad_norm, num_zeros_in_grad = \
@@ -705,6 +707,13 @@ def train(forward_step_func, model, optimizer, lr_scheduler,
                                          lr_scheduler)
             torch.distributed.barrier()
             print_datetime('exiting program at iteration {}'.format(iteration))
+            torch.cuda.synchronize()
+            t1 = time.time()
+            training_time = t1 - t0
+            print_rank_0(f"Training Time taken: {training_time / 1} s")
+            print_rank_0("Finished Training")
+            with open("/home/sabiha/stronghold/training_time.txt", 'a') as file:
+                file.write(f"Training Time taken megatron batch size 16: {training_time / 1} s \n")
             sys.exit()
 
 
